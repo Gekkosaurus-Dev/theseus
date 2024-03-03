@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://by0ucc5es1q2b"]
+
+[ext_resource type="Script" path="res://Player.gd" id="1_5otx2"]
+[ext_resource type="Texture2D" uid="uid://dllpdiawylsqk" path="res://icon.svg" id="2_uqa0y"]
+[ext_resource type="Script" path="res://levels/enemy_spawner.gd" id="3_mvygp"]
+[ext_resource type="PackedScene" uid="uid://dkaeprjt76pfv" path="res://top down/enemy_td.tscn" id="3_p1j7i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c2krb"]
+size = Vector2(57, 57)
+
+[node name="top_down" type="Node2D"]
+
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(591, 308)
+script = ExtResource("1_5otx2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_c2krb")
+
+[node name="Icon" type="Sprite2D" parent="Player"]
+scale = Vector2(0.442887, 0.442887)
+texture = ExtResource("2_uqa0y")
+
+[node name="Enemy" parent="." instance=ExtResource("3_p1j7i")]
+
+[node name="enemy_spawner" type="Node2D" parent="."]
+script = ExtResource("3_mvygp")
