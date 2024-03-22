@@ -1,20 +1,28 @@
 extends CharacterBody2D
 
-
-const SPEED = 300.0
+@export var velocity_component: Node
+@export var health_component: Node
+@export var hitbox_collider: CollisionShape2D
+var max_speed
+var acceleration_value
 var player
 
-# Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-
 func _ready():
-	#player = get_parent().get_child($Player)
-	pass
+	player = $"../Player"
+	max_speed = velocity_component.max_speed
+	acceleration_value = velocity_component.acceleration_value
+	hitbox_collider.disabled = false
 	
+func _physics_process(_delta):
+	var direction = global_position.direction_to(player.position)
+	velocity = direction * max_speed
+	move_and_slide()
+	#print("enemy velocity = " + str(velocity))
+	pass
 
-func _physics_process(delta):
-	#var direction = global_position.direction_to(player.position)
-	#velocity = direction * SPEED
-	#move_and_slide()
+func _process(delta):
 	pass
-	
+		
+func damage_taken():
+	if health_component.health <= 0:
+		queue_free()

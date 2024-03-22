@@ -1,20 +1,52 @@
-[gd_scene load_steps=4 format=3 uid="uid://dkaeprjt76pfv"]
+[gd_scene load_steps=10 format=3 uid="uid://dkaeprjt76pfv"]
 
 [ext_resource type="Script" path="res://top down/enemy_td.gd" id="1_cgfnj"]
 [ext_resource type="Texture2D" uid="uid://dllpdiawylsqk" path="res://icon.svg" id="1_r8p72"]
+[ext_resource type="PackedScene" uid="uid://fg3eiqc5q8pi" path="res://hurtbox.tscn" id="2_cti7b"]
+[ext_resource type="PackedScene" uid="uid://skotr71q1hpn" path="res://hitbox.tscn" id="2_l4oty"]
+[ext_resource type="PackedScene" uid="uid://t5d300schnbx" path="res://velocity_component.tscn" id="3_0jm5w"]
+[ext_resource type="PackedScene" uid="uid://cfm8wr35elasl" path="res://health_component.tscn" id="5_ae2pk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xc6nk"]
-size = Vector2(86, 83)
+size = Vector2(76, 80)
 
-[node name="Enemy" type="CharacterBody2D"]
-position = Vector2(840, 700)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q4e7m"]
+size = Vector2(87, 90)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a4j47"]
+size = Vector2(66, 69)
+
+[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("velocity_component", "health_component", "hitbox_collider") groups=["enemy"]]
+platform_floor_layers = 4294901760
 script = ExtResource("1_cgfnj")
+velocity_component = NodePath("VelocityComponent")
+health_component = NodePath("health_component")
+hitbox_collider = NodePath("Hitbox/CollisionShape2D")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 0.5)
+[node name="Hitbox" parent="." instance=ExtResource("2_l4oty")]
+damage_amount = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("RectangleShape2D_xc6nk")
 
-[node name="Icon" type="Sprite2D" parent="."]
+[node name="Hurtbox" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("2_cti7b")]
+health_component = NodePath("../health_component")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_q4e7m")
+
+[node name="Sprite" type="Sprite2D" parent="."]
 modulate = Color(0.945098, 0, 0.141176, 1)
 scale = Vector2(0.64, 0.64)
 texture = ExtResource("1_r8p72")
+
+[node name="VelocityComponent" parent="." instance=ExtResource("3_0jm5w")]
+max_speed = 300
+
+[node name="health_component" parent="." instance=ExtResource("5_ae2pk")]
+max_health = 100
+
+[node name="PhysicsCollider" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -0.5)
+shape = SubResource("RectangleShape2D_a4j47")
