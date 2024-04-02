@@ -46,3 +46,4 @@ func try_attack():
 
 func damage_taken():
 	$AnimationPlayer.play("hit_flash")
+	print("PLAYER TOOK DAMAGE")
