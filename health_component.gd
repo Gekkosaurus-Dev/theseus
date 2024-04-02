@@ -12,6 +12,7 @@ func _ready():
 func _process(delta):
 	pass
 	
+#
 func apply_damage(damage_amount):
 	health = health - damage_amount
 	#print(health)

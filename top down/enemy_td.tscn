@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://top down/enemy_td.gd" id="1_cgfnj"]
 [ext_resource type="Texture2D" uid="uid://dllpdiawylsqk" path="res://icon.svg" id="1_r8p72"]
-[ext_resource type="PackedScene" uid="uid://fg3eiqc5q8pi" path="res://hurtbox.tscn" id="2_cti7b"]
-[ext_resource type="PackedScene" uid="uid://skotr71q1hpn" path="res://hitbox.tscn" id="2_l4oty"]
+[ext_resource type="PackedScene" uid="uid://skotr71q1hpn" path="res://hitbox_component.tscn" id="2_xbueg"]
 [ext_resource type="PackedScene" uid="uid://t5d300schnbx" path="res://velocity_component.tscn" id="3_0jm5w"]
+[ext_resource type="PackedScene" uid="uid://fg3eiqc5q8pi" path="res://hurtbox_component.tscn" id="3_2plgi"]
 [ext_resource type="PackedScene" uid="uid://cfm8wr35elasl" path="res://health_component.tscn" id="5_ae2pk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xc6nk"]
@@ -21,18 +21,18 @@ platform_floor_layers = 4294901760
 script = ExtResource("1_cgfnj")
 velocity_component = NodePath("VelocityComponent")
 health_component = NodePath("health_component")
-hitbox_collider = NodePath("Hitbox/CollisionShape2D")
+hitbox_collider = NodePath("HitboxComponent/CollisionShape2D")
 
-[node name="Hitbox" parent="." instance=ExtResource("2_l4oty")]
+[node name="HitboxComponent" parent="." instance=ExtResource("2_xbueg")]
 damage_amount = 10
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 shape = SubResource("RectangleShape2D_xc6nk")
 
-[node name="Hurtbox" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("2_cti7b")]
+[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_2plgi")]
 health_component = NodePath("../health_component")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
 position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_q4e7m")
 

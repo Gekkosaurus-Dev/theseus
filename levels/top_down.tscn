@@ -3,11 +3,11 @@
 [ext_resource type="PackedScene" uid="uid://ckfhx8ybmk8q1" path="res://player.tscn" id="1_pfm4l"]
 [ext_resource type="Script" path="res://levels/enemy_spawner.gd" id="3_mvygp"]
 
-[node name="top_down" type="Node2D"]
+[node name="TopDown" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_pfm4l")]
 
-[node name="enemy_spawner" type="Node2D" parent="."]
+[node name="EnemySpawner" type="Node2D" parent="."]
 script = ExtResource("3_mvygp")
 
 [node name="Camera2D" type="Camera2D" parent="."]

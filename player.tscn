@@ -1,12 +1,12 @@
 [gd_scene load_steps=19 format=3 uid="uid://ckfhx8ybmk8q1"]
 
-[ext_resource type="Script" path="res://Player.gd" id="1_5v52i"]
+[ext_resource type="Script" path="res://player.gd" id="1_5v52i"]
 [ext_resource type="Texture2D" uid="uid://dllpdiawylsqk" path="res://icon.svg" id="2_yus7t"]
 [ext_resource type="PackedScene" uid="uid://t5d300schnbx" path="res://velocity_component.tscn" id="3_cd58x"]
-[ext_resource type="PackedScene" uid="uid://skotr71q1hpn" path="res://hitbox.tscn" id="3_ur2e8"]
+[ext_resource type="PackedScene" uid="uid://skotr71q1hpn" path="res://hitbox_component.tscn" id="3_ur2e8"]
 [ext_resource type="Texture2D" uid="uid://cojwlcydkjqd5" path="res://guy_front.png" id="4_6icbu"]
 [ext_resource type="Texture2D" uid="uid://hd08p8fhdse2" path="res://guy_back.png" id="5_xds1h"]
-[ext_resource type="PackedScene" uid="uid://fg3eiqc5q8pi" path="res://hurtbox.tscn" id="7_xq8gp"]
+[ext_resource type="PackedScene" uid="uid://fg3eiqc5q8pi" path="res://hurtbox_component.tscn" id="7_xq8gp"]
 [ext_resource type="PackedScene" uid="uid://cfm8wr35elasl" path="res://health_component.tscn" id="8_mars2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c2krb"]
@@ -14,33 +14,6 @@ size = Vector2(104, 166)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t8wyq"]
 size = Vector2(127.469, 117.469)
-
-[sub_resource type="Animation" id="Animation_eia3q"]
-resource_name = "front_run"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("4_6icbu")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
 
 [sub_resource type="Animation" id="Animation_v80u4"]
 length = 0.001
@@ -120,6 +93,49 @@ tracks/1/keys = {
 "values": [Vector2(0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_eia3q"]
+resource_name = "front_run"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_6icbu")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_55hn0"]
+resource_name = "hit_flash"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_xjoun"]
 resource_name = "left_run"
 tracks/0/type = "value"
@@ -162,22 +178,6 @@ tracks/0/keys = {
 "values": [false]
 }
 
-[sub_resource type="Animation" id="Animation_55hn0"]
-resource_name = "hit_flash"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:self_modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xcwav"]
 _data = {
 "RESET": SubResource("Animation_v80u4"),
@@ -196,8 +196,8 @@ position = Vector2(591, 308)
 platform_floor_layers = 4294901760
 script = ExtResource("1_5v52i")
 velocity_component = NodePath("VelocityComponent")
-hitbox = NodePath("Icon/Hitbox")
-hitbox_collider = NodePath("Icon/Hitbox/CollisionShape2D")
+hitbox = NodePath("Icon/HitboxComponent")
+hitbox_collider = NodePath("Icon/HitboxComponent/CollisionShape2D")
 
 [node name="PhysicsCollider" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 1)
@@ -208,11 +208,11 @@ scale = Vector2(0.25248, 0.282597)
 texture = ExtResource("2_yus7t")
 offset = Vector2(500, 0)
 
-[node name="Hitbox" parent="Icon" instance=ExtResource("3_ur2e8")]
+[node name="HitboxComponent" parent="Icon" instance=ExtResource("3_ur2e8")]
 scale = Vector2(7.83126, 7.83126)
 damage_amount = 100
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Icon/Hitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Icon/HitboxComponent"]
 position = Vector2(63.7253, -3.42727e-06)
 scale = Vector2(0.127693, 0.127693)
 shape = SubResource("RectangleShape2D_t8wyq")
@@ -231,11 +231,11 @@ libraries = {
 "": SubResource("AnimationLibrary_xcwav")
 }
 
-[node name="Hurtbox" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("7_xq8gp")]
+[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("7_xq8gp")]
 scale = Vector2(0.127693, 0.127693)
 health_component = NodePath("../health_component")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
 position = Vector2(0, -39.1563)
 shape = SubResource("RectangleShape2D_vkpy5")
 
