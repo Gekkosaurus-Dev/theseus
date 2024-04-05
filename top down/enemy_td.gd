@@ -23,7 +23,7 @@ func _physics_process(_delta):
 	else:
 		pass
 
-func _process(delta):
+func _process(_delta):
 	pass
 		
 func damage_taken():
