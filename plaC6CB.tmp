@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cfm8wr35elasl" path="res://health_component.tscn" id="8_mars2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c2krb"]
-size = Vector2(237, 43)
+size = Vector2(104, 166)
 
 [sub_resource type="Animation" id="Animation_bljtr"]
 length = 0.001
@@ -138,7 +138,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vkpy5"]
-size = Vector2(603.009, 728.309)
+size = Vector2(892.763, 1550.59)
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("velocity_component", "hitbox", "hitbox_collider") groups=["player"]]
 position = Vector2(591, 308)
@@ -149,7 +149,8 @@ hitbox = NodePath("DirectionFlipper/HitboxComponent")
 hitbox_collider = NodePath("DirectionFlipper/HitboxComponent/CollisionPolygon2D")
 
 [node name="PhysicsCollider" type="CollisionShape2D" parent="."]
-position = Vector2(15, 140.5)
+visible = false
+position = Vector2(-1, 1)
 shape = SubResource("RectangleShape2D_c2krb")
 
 [node name="Icon" type="Sprite2D" parent="."]
@@ -159,7 +160,7 @@ texture = ExtResource("2_yus7t")
 offset = Vector2(500, 0)
 
 [node name="VelocityComponent" parent="." instance=ExtResource("3_cd58x")]
-max_speed = 1000
+max_speed = 500
 
 [node name="health_component" parent="." instance=ExtResource("8_mars2")]
 max_health = 100
@@ -177,7 +178,6 @@ root_node = NodePath("../Sprite2D")
 libraries = {
 "": SubResource("AnimationLibrary_xcwav")
 }
-speed_scale = 2.313
 
 [node name="HitboxComponent" parent="DirectionFlipper" instance=ExtResource("3_ur2e8")]
 scale = Vector2(1.97724, 2.21309)
@@ -186,13 +186,10 @@ damage_amount = 100
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DirectionFlipper/HitboxComponent"]
 
 [node name="HurtboxComponent" parent="DirectionFlipper" node_paths=PackedStringArray("health_component") instance=ExtResource("7_xq8gp")]
+visible = false
 scale = Vector2(0.127693, 0.127693)
 health_component = NodePath("../../health_component")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DirectionFlipper/HurtboxComponent"]
-position = Vector2(109.638, 281.926)
-scale = Vector2(0.999999, 0.999999)
+position = Vector2(0, -39.1563)
 shape = SubResource("RectangleShape2D_vkpy5")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DirectionFlipper/HurtboxComponent"]
-polygon = PackedVector2Array(-93.9756, -963.248, -39.1563, -775.297, 164.457, -618.671, 211.444, -603.009, 203.613, -422.889, 148.794, -321.083, -258.433, -289.758, -187.951, -140.963, -328.914, 78.3127, -336.745, 266.263, -180.12, 548.19, -281.926, 1213.85, -399.396, 1002.4, -696.984, 1025.9, -869.272, 1331.32, -618.671, 1182.52, -195.782, 1362.64, 148.794, 775.297, 477.708, 1088.55, 493.371, 1370.47, 939.754, 1856.01, 1229.51, 1534.93, 924.091, 1668.06, 626.502, 963.248, 360.239, 563.852, 485.54, 430.72, 477.708, 148.794, 610.84, 78.3127, 266.264, -203.614, 430.721, -399.396, 579.515, -328.914, 556.021, -853.61, 383.733, -916.26, 219.276, -1143.37, 219.276, -861.441)

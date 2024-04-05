@@ -5,6 +5,11 @@ extends CharacterBody2D
 @export var hitbox_collider: CollisionPolygon2D
 var max_speed
 var acceleration_value
+var attack_up = true
+
+@export var hurt_anim_enabled = true
+
+@export var attack_speed = 1
 
 func _ready():
 	max_speed = velocity_component.max_speed
@@ -58,10 +63,28 @@ func get_input():
 		#$AnimationPlayer.play("back_run")
 
 func try_attack():
-	$DirectionFlipper/AnimationPlayer.play("attack_1")
-	#await get_tree().create_timer(0.1).timeout
+	if attack_up:
+		$DirectionFlipper/AnimationPlayer.play("attack_1")
+		#print("attack up")
+		attack_up = false
+	else:
+		$DirectionFlipper/AnimationPlayer.play("attack_2")
+		#print("attack down")
+		attack_up = true
+		
+	#var attack_state = attack_state * -1
+	#if (attack_state == 1):
+		#$DirectionFlipper/AnimationPlayer.play("attack_1")
+	#if (attack_state == -1):
+		#$DirectionFlipper/AnimationPlayer.play("attack_2")
+	##await get_tree().create_timer(0.1).timeout
 	#hitbox_collider.disabled = true
 
 func damage_taken():
-	#$AnimationPlayer.play("hit_flash")
-	print("PLAYER TOOK DAMAGE")
+	if hurt_anim_enabled:
+		print("PLAYER TOOK DAMAGE")
+		$DirectionFlipper/Sprite2D.modulate = "000000"
+		await get_tree().create_timer(0.1).timeout
+		$DirectionFlipper/Sprite2D.modulate = "ffffff"
+		#$AnimationPlayer.play("hit_flash")
+	
