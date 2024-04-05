@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dgf6emqrsvrd2"]
+[gd_scene load_steps=3 format=3 uid="uid://dgf6emqrsvrd2"]
 
 [ext_resource type="Script" path="res://main_menu.gd" id="1_lilqs"]
+[ext_resource type="Theme" uid="uid://6pdtpatqujo6" path="res://levels/main_menu_theme.tres" id="2_1f0v2"]
 
 [node name="Main Menu" type="Control"]
 layout_mode = 3
@@ -48,6 +49,7 @@ offset_right = 573.5
 offset_bottom = 323.5
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_1f0v2")
 text = "Play
 "
 
