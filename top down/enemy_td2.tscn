@@ -35,6 +35,7 @@ shape = SubResource("RectangleShape2D_xc6nk")
 
 [node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_edeut")]
 health_component = NodePath("../HealthComponent")
+damage_from_player = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
 position = Vector2(0.5, 1.5)

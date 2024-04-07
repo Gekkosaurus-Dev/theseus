@@ -30,11 +30,8 @@ layer_0/tile_data = PackedInt32Array(327680, 0, 0, 393217, 0, 0, 327681, 0, 0, 2
 
 [node name="Player" parent="." instance=ExtResource("1_pfm4l")]
 z_index = 1
-hurt_anim_enabled = false
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2(-1614, -871)
-anchor_mode = 0
 zoom = Vector2(0.33, 0.33)
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://ckfhx8ybmk8q1"]
+[gd_scene load_steps=15 format=3 uid="uid://ckfhx8ybmk8q1"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_5v52i"]
 [ext_resource type="Texture2D" uid="uid://dllpdiawylsqk" path="res://icon.svg" id="2_yus7t"]
@@ -9,9 +9,6 @@
 [ext_resource type="Script" path="res://DirectionFlipper.gd" id="7_mwda3"]
 [ext_resource type="PackedScene" uid="uid://fg3eiqc5q8pi" path="res://hurtbox_component.tscn" id="7_xq8gp"]
 [ext_resource type="PackedScene" uid="uid://cfm8wr35elasl" path="res://health_component.tscn" id="8_mars2"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_c2krb"]
-size = Vector2(237, 43)
 
 [sub_resource type="Animation" id="Animation_bljtr"]
 length = 0.001
@@ -88,7 +85,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.3, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [PackedVector2Array(), PackedVector2Array(99.1283, -106.638, 158.808, -106.638, 159.313, 87.2083, 97.1052, 88.5639, 15.1727, 53.3191, 38.4375, -43.8301), PackedVector2Array()]
+"values": [PackedVector2Array(), PackedVector2Array(99.1283, -106.638, 158.808, -106.638, 159.313, 87.2083, 97.1052, 88.5639, -4.04605, 45.1857, 2.52878, -10.3927, 20.2302, -50.1561), PackedVector2Array()]
 }
 
 [sub_resource type="Animation" id="Animation_3gg8t"]
@@ -127,7 +124,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.3, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [PackedVector2Array(), PackedVector2Array(100.646, 86.7565, 149.704, 84.0453, 147.175, -106.186, 98.6225, -107.09, 33.8857, -51.9635, 11.6324, 54.2228), PackedVector2Array()]
+"values": [PackedVector2Array(), PackedVector2Array(100.646, 86.7565, 149.704, 84.0453, 147.175, -106.186, 98.6225, -107.09, 58.6677, -79.5268, 23.2648, -40.6671, -5.05756, 16.2668, 11.6324, 54.2228), PackedVector2Array()]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xcwav"]
@@ -148,11 +145,7 @@ velocity_component = NodePath("VelocityComponent")
 hitbox = NodePath("DirectionFlipper/HitboxComponent")
 hitbox_collider = NodePath("DirectionFlipper/HitboxComponent/CollisionPolygon2D")
 
-[node name="PhysicsCollider" type="CollisionShape2D" parent="."]
-position = Vector2(15, 140.5)
-shape = SubResource("RectangleShape2D_c2krb")
-
-[node name="Icon" type="Sprite2D" parent="."]
+[node name="DirectionPointer" type="Sprite2D" parent="."]
 visible = false
 scale = Vector2(0.25248, 0.282597)
 texture = ExtResource("2_yus7t")
@@ -160,6 +153,8 @@ offset = Vector2(500, 0)
 
 [node name="VelocityComponent" parent="." instance=ExtResource("3_cd58x")]
 max_speed = 1000
+attack_move_speed = 2000
+dash_move_speed = 2000
 
 [node name="health_component" parent="." instance=ExtResource("8_mars2")]
 max_health = 100
@@ -188,6 +183,7 @@ damage_amount = 100
 [node name="HurtboxComponent" parent="DirectionFlipper" node_paths=PackedStringArray("health_component") instance=ExtResource("7_xq8gp")]
 scale = Vector2(0.127693, 0.127693)
 health_component = NodePath("../../health_component")
+damage_from_enemy = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DirectionFlipper/HurtboxComponent"]
 position = Vector2(109.638, 281.926)
@@ -195,4 +191,33 @@ scale = Vector2(0.999999, 0.999999)
 shape = SubResource("RectangleShape2D_vkpy5")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DirectionFlipper/HurtboxComponent"]
-polygon = PackedVector2Array(-93.9756, -963.248, -39.1563, -775.297, 164.457, -618.671, 211.444, -603.009, 203.613, -422.889, 148.794, -321.083, -258.433, -289.758, -187.951, -140.963, -328.914, 78.3127, -336.745, 266.263, -180.12, 548.19, -281.926, 1213.85, -399.396, 1002.4, -696.984, 1025.9, -869.272, 1331.32, -618.671, 1182.52, -195.782, 1362.64, 148.794, 775.297, 477.708, 1088.55, 493.371, 1370.47, 939.754, 1856.01, 1229.51, 1534.93, 924.091, 1668.06, 626.502, 963.248, 360.239, 563.852, 485.54, 430.72, 477.708, 148.794, 610.84, 78.3127, 266.264, -203.614, 430.721, -399.396, 579.515, -328.914, 556.021, -853.61, 383.733, -916.26, 219.276, -1143.37, 219.276, -861.441)
+polygon = PackedVector2Array(117.469, -720.478, 203.613, -422.889, 86.144, -313.251, -195.782, -321.083, -164.457, 430.72, -281.926, 1213.85, -399.396, 1002.4, -696.984, 1025.9, -869.272, 1331.32, -618.671, 1182.52, -195.782, 1362.64, 93.9751, 783.128, 477.708, 1088.55, 493.371, 1370.47, 939.754, 1856.01, 1229.51, 1534.93, 924.091, 1668.06, 626.502, 963.248, 360.239, 563.852, 383.733, -211.445, 266.264, -203.614, 407.227, -368.07, 579.515, -328.914, 556.021, -853.61, 313.251, -908.429)
+
+[node name="attack_move_cooldown" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[node name="attack_cooldwon" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="attack_move" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="dash_timer" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+
+[node name="dash_cooldown" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-70, 155, 12, -22, 87, 155)
+
+[connection signal="timeout" from="attack_move_cooldown" to="." method="_on_attack_move_cooldown_timeout"]
+[connection signal="timeout" from="attack_cooldwon" to="." method="_on_attack_cooldwon_timeout"]
+[connection signal="timeout" from="attack_move" to="." method="_on_attack_move_timeout"]
+[connection signal="timeout" from="dash_timer" to="." method="_on_dash_timer_timeout"]
+[connection signal="timeout" from="dash_cooldown" to="." method="_on_dash_cooldown_timeout"]
