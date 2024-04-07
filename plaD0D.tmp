@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://ckfhx8ybmk8q1"]
+[gd_scene load_steps=15 format=3 uid="uid://ckfhx8ybmk8q1"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_5v52i"]
 [ext_resource type="Texture2D" uid="uid://dllpdiawylsqk" path="res://icon.svg" id="2_yus7t"]
@@ -9,7 +9,6 @@
 [ext_resource type="Script" path="res://DirectionFlipper.gd" id="7_mwda3"]
 [ext_resource type="PackedScene" uid="uid://fg3eiqc5q8pi" path="res://hurtbox_component.tscn" id="7_xq8gp"]
 [ext_resource type="PackedScene" uid="uid://cfm8wr35elasl" path="res://health_component.tscn" id="8_mars2"]
-[ext_resource type="Script" path="res://DamageManager.gd" id="10_nqv2s"]
 
 [sub_resource type="Animation" id="Animation_bljtr"]
 length = 0.001
@@ -138,18 +137,11 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vkpy5"]
 size = Vector2(603.009, 728.309)
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fnb2e"]
-radius = 36.0
-height = 232.0
-
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("velocity_component", "health_component", "damage_manager", "hitbox", "hitbox_collider") groups=["player"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("velocity_component", "hitbox", "hitbox_collider") groups=["player"]]
 position = Vector2(591, 308)
-collision_mask = 6
 platform_floor_layers = 4294901760
 script = ExtResource("1_5v52i")
 velocity_component = NodePath("VelocityComponent")
-health_component = NodePath("health_component")
-damage_manager = NodePath("DamageManager")
 hitbox = NodePath("DirectionFlipper/HitboxComponent")
 hitbox_collider = NodePath("DirectionFlipper/HitboxComponent/CollisionPolygon2D")
 
@@ -162,7 +154,7 @@ offset = Vector2(500, 0)
 [node name="VelocityComponent" parent="." instance=ExtResource("3_cd58x")]
 max_speed = 1000
 attack_move_speed = 2000
-dash_move_speed = 3000
+dash_move_speed = 2000
 
 [node name="health_component" parent="." instance=ExtResource("8_mars2")]
 max_health = 100
@@ -221,31 +213,8 @@ one_shot = true
 wait_time = 0.5
 one_shot = true
 
-[node name="EnemyPhysicsCollider" type="StaticBody2D" parent="."]
-visible = false
-collision_layer = 0
-collision_mask = 0
-
-[node name="PhysicsCollider2" type="CollisionShape2D" parent="EnemyPhysicsCollider"]
-position = Vector2(14, 79)
-shape = SubResource("CapsuleShape2D_fnb2e")
-
-[node name="EnemyColliderShape" type="CollisionPolygon2D" parent="EnemyPhysicsCollider"]
-polygon = PackedVector2Array(-38, 153, -34, 120, -33, 78, -16, 46, -20, -2, -39, -42, 14, -41, 27, -56, 12, -83, 22, -110, 43, -122, 73, -113, 80, -68, 75, -43, 53, -42, 41, -28, 75, -11, 55, 15, 49, 75, 65, 97, 93, 147, 95, 197, 63, 178, 62, 144, 17, 105, -25, 173)
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(14, -40, 49, -26, 66, 18, 45, 74, 72, 101, 102, 174, 94, 208, 64, 180, 61, 140, 12, 100, 0, 142, -25, 173, -39, 156, -39, 155, -24, 74, -40, 19, -31, -37)
-
-[node name="UI" type="CanvasLayer" parent="."]
-
-[node name="Label" type="Label" parent="UI"]
-offset_right = 40.0
-offset_bottom = 23.0
-theme_override_font_sizes/font_size = 30
-text = "Player health:"
-
-[node name="DamageManager" type="Node" parent="."]
-script = ExtResource("10_nqv2s")
+[node name="PhysicsCollider" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-70, 155, 12, -22, 87, 155)
 
 [connection signal="timeout" from="attack_move_cooldown" to="." method="_on_attack_move_cooldown_timeout"]
 [connection signal="timeout" from="attack_cooldwon" to="." method="_on_attack_cooldwon_timeout"]

@@ -10,7 +10,7 @@ func _ready():
 
 func _on_play_pressed():
 	print("a")
-	$"..".start_game()
+	game_manager.start_game()
 	queue_free()
 
 func _on_options_pressed():

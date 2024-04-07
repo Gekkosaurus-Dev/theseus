@@ -7,18 +7,13 @@ func get_game_manager():
 
 func _ready():
 	get_game_manager()
-	$AnimationPlayer.play("cutscene")
+	$MarginContainer/HBoxContainer/VBoxContainer/Label2.text = ("You reached the end of the area and took damage " + str(game_manager.damage_taken_amount) + " times!")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
+func _process(delta):
 	pass
 
+
 func _on_button_pressed():
-	load_next()
-
-func _on_animation_player_animation_finished(anim_name):
-	load_next()
-
-func load_next():
-	game_manager.load_test_area()
+	game_manager.start_game()
 	queue_free()

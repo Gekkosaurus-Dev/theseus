@@ -27,9 +27,12 @@ func _process(_delta):
 	pass
 		
 func damage_taken():
+	$Sprite.modulate = "000000"
+	await get_tree().create_timer(0.1).timeout
+	$Sprite.modulate = "f10024"
+
 	if health_component.health <= 0:
 		queue_free()
-
 
 func _on_aggression_area_area_entered(area):
 	if isAggressive == false:

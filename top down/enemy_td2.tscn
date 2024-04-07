@@ -14,12 +14,15 @@ size = Vector2(234, 239)
 size = Vector2(235, 239)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a4j47"]
-size = Vector2(223, 78.9904)
+size = Vector2(262.883, 1672.78)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_otgu3"]
 radius = 586.085
 
 [node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("velocity_component", "health_component", "hitbox_collider") groups=["enemy"]]
+y_sort_enabled = true
+collision_layer = 2
+collision_mask = 5
 platform_floor_layers = 4294901760
 script = ExtResource("1_cgp08")
 velocity_component = NodePath("VelocityComponent")
@@ -53,7 +56,7 @@ max_speed = 150
 max_health = 300
 
 [node name="PhysicsCollider" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 104)
+position = Vector2(4.76837e-07, 16.5)
 scale = Vector2(0.905347, -0.126137)
 shape = SubResource("RectangleShape2D_a4j47")
 
