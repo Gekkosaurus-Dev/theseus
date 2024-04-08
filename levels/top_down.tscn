@@ -73,13 +73,13 @@ position = Vector2(528, 1482)
 position = Vector2(1017, 1315)
 
 [node name="Enemy10" parent="Node" instance=ExtResource("3_o6jwu")]
-position = Vector2(4270, -624)
+position = Vector2(4518, -619)
 
 [node name="Enemy11" parent="Node" instance=ExtResource("3_o6jwu")]
-position = Vector2(4465, -523)
+position = Vector2(4591, 148)
 
 [node name="Enemy12" parent="Node" instance=ExtResource("3_o6jwu")]
-position = Vector2(4929, -1007)
+position = Vector2(5516, -991)
 
 [node name="Enemy13" parent="Node" instance=ExtResource("3_o6jwu")]
 position = Vector2(3664, 607)
@@ -91,13 +91,13 @@ position = Vector2(3415, 473)
 position = Vector2(3590, 15)
 
 [node name="Enemy16" parent="Node" instance=ExtResource("3_o6jwu")]
-position = Vector2(3409, -375)
+position = Vector2(3388, -240)
 
 [node name="Enemy17" parent="Node" instance=ExtResource("3_o6jwu")]
-position = Vector2(3436, -234)
+position = Vector2(4044, -258)
 
 [node name="Enemy18" parent="Node" instance=ExtResource("3_o6jwu")]
-position = Vector2(3570, -328)
+position = Vector2(4457, 196)
 
 [node name="Enemy19" parent="Node" instance=ExtResource("4_hv6y7")]
 position = Vector2(2709, -570)
@@ -121,10 +121,10 @@ position = Vector2(7780, -1557)
 position = Vector2(7373, -1768)
 
 [node name="Enemy26" parent="Node" instance=ExtResource("3_o6jwu")]
-position = Vector2(7856, -1934)
+position = Vector2(7183, -2391)
 
 [node name="Enemy27" parent="Node" instance=ExtResource("3_o6jwu")]
-position = Vector2(6300, -1995)
+position = Vector2(6268, -2078)
 
 [node name="Enemy28" parent="Node" instance=ExtResource("3_o6jwu")]
 position = Vector2(6361, -953)
@@ -221,5 +221,12 @@ collision_layer = 0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
 polygon = PackedVector2Array(12102, -8238, 16246, -6118, 14526, -5206, 10430, -7382)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 4
+collision_mask = 3
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-1717, 475, 772, 1731, 3193, 532, 3668, 758, 7798, -1290, 7651, -1357, 7945, -1539, 7787, -1618, 8115, -1742, 7888, -1844, 8137, -1923, 7787, -2093, 7922, -2172, 6338, -2964, 6508, -3043, 6225, -3168, 6327, -3290, 6191, -3380, 6316, -3437, 6180, -3539, 9133, -5010, 11317, -3901, 15911, -6164, 12155, -8042, 6622, -5270, 6792, -5191, 5366, -4489, 5502, -4376, 4857, -4071, 5061, -3946, 4518, -3742, 4755, -3629, 4506, -3595, 4699, -3527, 4552, -3471, 4699, -3346, 4552, -3301, 4868, -3154, 4744, -3041, 5004, -2883, 4823, -2792, 5547, -2487, 5378, -2385, 6486, -1864, 3606, -304, 2713, -757, 1773, -282, 789, -757, -1643, 420, -1768, 148, 970, -1244, 4398, -1277, 4048, -3846, 9818, -7589, 12117, -8551, 16937, -6051, 11585, -3335, 9017, -4603, 6596, -3505, 8757, -1711, 8180, -1010, 6006, 43, 755, 2102, -2039, 506, -1768, 325)
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
