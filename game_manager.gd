@@ -7,6 +7,12 @@ var intro_cutscene_instance = preload("res://intro_cutscene.tscn")
 var pause_screen_instance = preload("res://levels/pause.tscn")
 var medic_report_instance = preload("res://medic_report.tscn")
 
+var map_instance = preload("res://map_select.tscn")
+
+var area1_instance = preload("res://levels/area1.tscn")
+var area2_instance = preload("res://levels/area2.tscn")
+var area3_instance = preload("res://levels/area3.tscn")
+
 var damage_taken_amount
 
 enum GameStates {MAIN_MENU, MENU, GAMEPLAY}
@@ -15,6 +21,9 @@ var game_state
 enum GameInputs {CONTROLLER, KEYBOARD_MOUSE}
 var game_input
 
+var area1_visited = false
+var area2_visited = false
+var area3_visited = false
 #change_scene_to_file()
 
 # Called when the node enters the scene tree for the first time.
@@ -34,6 +43,9 @@ func _process(_delta):
 		pass
 
 func _input(event):
+	detect_input(event)
+	
+func detect_input(event):
 	if (event is InputEventJoypadButton):
 	#if ((event is InputEventJoypadButton) or (event is InputEventJoypadMotion)):
 		if (game_input !=GameInputs.CONTROLLER):
@@ -49,7 +61,7 @@ func clear_game_values():
 	
 func start_game():
 	clear_game_values()
-	load_test_area()
+	load_map_select()
 	#load_intro_cutscene()
 
 func load_main_menu():
@@ -80,3 +92,26 @@ func load_medic_report(damage_amount):
 	var medic_report = medic_report_instance.instantiate()
 	add_child(medic_report)
 	
+	
+func load_area1():
+	var area1 = area1_instance.instantiate()
+	add_child(area1)
+	game_state = GameStates.GAMEPLAY
+	area1_visited = true
+	
+func load_area2():
+	var area2 = area2_instance.instantiate()
+	add_child(area2)
+	game_state = GameStates.GAMEPLAY
+	area2_visited = true
+	
+func load_area3():
+	var area3 = area3_instance.instantiate()
+	add_child(area3)
+	game_state = GameStates.GAMEPLAY
+	area3_visited = true
+
+func load_map_select():
+	var map = map_instance.instantiate()
+	add_child(map)
+	game_state = GameStates.GAMEPLAY
