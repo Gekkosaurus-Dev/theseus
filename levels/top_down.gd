@@ -17,9 +17,9 @@ func _process(delta):
 func _on_area_2d_area_entered(area):
 	var object_type = area.owner.get_groups()
 	if (object_type.has("player")):
-		print("AAAAAAAAAAA")
+		#print("AAAAAAAAAAA")
 		var damage_amount = player.get_damage_taken_amount()
-		print("damadmad" + str(damage_amount))
+		#print("damadmad" + str(damage_amount))
 		game_manager.load_medic_report(damage_amount)
 		queue_free()
 

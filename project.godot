@@ -13,7 +13,7 @@ config_version=5
 config/name="Theseus"
 run/main_scene="res://game_manager.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://icon-temp.png"
 
 [input]
 
