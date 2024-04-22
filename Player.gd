@@ -123,9 +123,12 @@ func try_dash():
 		set_collision_mask_value(2,false)
 
 func damage_taken():
-	damage_manager.damage_taken()
-	print(damage_manager.damage_amount)
-	$UI/Label.text = ("Player health: " + str($health_component.health))
+	#print(damage_manager.damage_amount)
+	if $health_component.health > 0:
+		$UI/Label.text = ("Armour health: " + str($health_component.health))
+	else:
+		damage_manager.damage_taken()
+		$UI/Label.text = ("Armour health: 0\n Unprotected hits taken: " + str($DamageManager.damage_amount))
 	#if !invincible:
 	#print("PLAYER TOOK DAMAGE")
 	health_component.invincible = true
