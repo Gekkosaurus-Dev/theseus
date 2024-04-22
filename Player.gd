@@ -30,6 +30,7 @@ func get_game_manager():
 func _ready():
 	$UI/Label.text = ("Player health: " + str($health_component.max_health))
 	get_game_manager()
+	$DirectionPointer/EnemyPusher/EnemyPusherHitbox.disabled = true
 	
 func _physics_process(_delta):
 	get_input()
@@ -42,10 +43,13 @@ func get_attack_direction():
 	#$DirectionPointer.look_at(get_global_mouse_position())
 	if (game_manager.game_input == game_manager.GameInputs.KEYBOARD_MOUSE):
 		attack_direction = global_position.direction_to(get_global_mouse_position())
+		$DirectionPointer.rotation = atan2(attack_direction.y, attack_direction.x)
 	else:
 		var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 		if direction:
 			attack_direction = direction
+			$DirectionPointer.rotation = atan2(attack_direction.y, attack_direction.x)
+			
 	
 func get_dash_direction():
 	var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
@@ -79,6 +83,7 @@ func get_input():
 		
 func try_attack():
 	if (can_attack):
+		$DirectionPointer/EnemyPusher/EnemyPusherHitbox.disabled = false
 		attacking = true
 		$attack_cooldwon.start()
 		attack_dashing = true
@@ -156,6 +161,7 @@ func _on_attack_move_timeout():
 	set_collision_mask_value(2,true)
 
 func _on_attack_move_cooldown_timeout():
+	$DirectionPointer/EnemyPusher/EnemyPusherHitbox.disabled = false
 	can_move = true
 	
 

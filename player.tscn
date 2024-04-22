@@ -154,10 +154,15 @@ hitbox = NodePath("DirectionFlipper/HitboxComponent")
 hitbox_collider = NodePath("DirectionFlipper/HitboxComponent/CollisionPolygon2D")
 
 [node name="DirectionPointer" type="Sprite2D" parent="."]
-visible = false
 scale = Vector2(0.25248, 0.282597)
 texture = ExtResource("2_yus7t")
 offset = Vector2(500, 0)
+
+[node name="EnemyPusher" type="StaticBody2D" parent="DirectionPointer"]
+collision_mask = 2
+
+[node name="EnemyPusherHitbox" type="CollisionPolygon2D" parent="DirectionPointer/EnemyPusher"]
+polygon = PackedVector2Array(118.821, -523.714, 685.203, 28.3088, 170.311, 725.415, -110.9, 49.5405)
 
 [node name="VelocityComponent" parent="." instance=ExtResource("3_cd58x")]
 max_speed = 1000
