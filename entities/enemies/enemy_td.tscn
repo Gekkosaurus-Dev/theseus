@@ -1,0 +1,66 @@
+[gd_scene load_steps=11 format=3 uid="uid://dkaeprjt76pfv"]
+
+[ext_resource type="Script" path="res://entities/enemies/enemy_td.gd" id="1_b0w67"]
+[ext_resource type="PackedScene" uid="uid://skotr71q1hpn" path="res://entities/hitbox_component.tscn" id="2_a6hsi"]
+[ext_resource type="PackedScene" uid="uid://fg3eiqc5q8pi" path="res://entities/hurtbox_component.tscn" id="3_vfhig"]
+[ext_resource type="Texture2D" uid="uid://dllpdiawylsqk" path="res://icon.svg" id="4_mhoog"]
+[ext_resource type="PackedScene" uid="uid://t5d300schnbx" path="res://entities/velocity_component.tscn" id="5_h1xpw"]
+[ext_resource type="PackedScene" uid="uid://cfm8wr35elasl" path="res://entities/health_component.tscn" id="6_hekfl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xc6nk"]
+size = Vector2(76, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q4e7m"]
+size = Vector2(87, 90)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a4j47"]
+size = Vector2(83, 76)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_otgu3"]
+radius = 586.085
+
+[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("velocity_component", "health_component", "hitbox_collider") groups=["enemy"]]
+y_sort_enabled = true
+collision_layer = 2
+collision_mask = 5
+platform_floor_layers = 4294901760
+script = ExtResource("1_b0w67")
+velocity_component = NodePath("VelocityComponent")
+health_component = NodePath("HealthComponent")
+hitbox_collider = NodePath("HitboxComponent/CollisionShape2D")
+
+[node name="HitboxComponent" parent="." instance=ExtResource("2_a6hsi")]
+damage_amount = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("RectangleShape2D_xc6nk")
+
+[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_vfhig")]
+health_component = NodePath("../HealthComponent")
+damage_from_player = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_q4e7m")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+modulate = Color(0.945098, 0, 0.141176, 1)
+scale = Vector2(0.64, 0.64)
+texture = ExtResource("4_mhoog")
+
+[node name="VelocityComponent" parent="." instance=ExtResource("5_h1xpw")]
+max_speed = 300
+
+[node name="HealthComponent" parent="." instance=ExtResource("6_hekfl")]
+max_health = 100
+
+[node name="PhysicsCollider" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 3)
+shape = SubResource("RectangleShape2D_a4j47")
+
+[node name="AggressionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AggressionArea"]
+shape = SubResource("CircleShape2D_otgu3")
+
+[connection signal="area_entered" from="AggressionArea" to="." method="_on_aggression_area_area_entered"]

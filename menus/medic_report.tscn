@@ -1,0 +1,65 @@
+[gd_scene load_steps=4 format=3 uid="uid://bcnmobbt1i3dj"]
+
+[ext_resource type="Script" path="res://menus/medic_report.gd" id="1_oblns"]
+[ext_resource type="Texture2D" uid="uid://ddtkkwm1fgq2c" path="res://cutscenes/placeholders/mechanic placeholder.png" id="2_3g17x"]
+[ext_resource type="Texture2D" uid="uid://dfmkkddt3l55g" path="res://cutscenes/placeholders/doctor report placeholder.png" id="3_mc748"]
+
+[node name="Medic Report" type="Node2D"]
+script = ExtResource("1_oblns")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Panel"]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 24.0
+offset_right = 516.0
+offset_bottom = 615.0
+
+[node name="Label2" type="Label" parent="CanvasLayer"]
+offset_left = 24.0
+offset_top = 21.0
+offset_right = 482.0
+offset_bottom = 192.0
+theme_override_font_sizes/font_size = 31
+text = "Medic's report:
+
+"
+
+[node name="MechanicPlaceholder" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(712, 376)
+texture = ExtResource("2_3g17x")
+
+[node name="DoctorReportPlaceholder" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(976, 361)
+texture = ExtResource("3_mc748")
+
+[node name="temp button" type="Button" parent="CanvasLayer"]
+offset_left = 193.0
+offset_top = 423.0
+offset_right = 354.0
+offset_bottom = 476.0
+text = "b a c k   t o   m a p"
+
+[node name="heal" type="Button" parent="CanvasLayer"]
+offset_left = 208.0
+offset_top = 542.0
+offset_right = 327.0
+offset_bottom = 573.0
+text = "wait to heal"
+
+[node name="mechanic" type="Button" parent="CanvasLayer"]
+offset_left = 209.0
+offset_top = 484.0
+offset_right = 328.0
+offset_bottom = 515.0
+text = "visit mechanic"
+
+[connection signal="pressed" from="CanvasLayer/temp button" to="." method="_on_temp_button_pressed"]

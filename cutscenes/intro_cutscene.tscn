@@ -1,0 +1,365 @@
+[gd_scene load_steps=19 format=3 uid="uid://d0x5uai34hsgt"]
+
+[ext_resource type="Script" path="res://cutscenes/intro_cutscene.gd" id="1_kkato"]
+[ext_resource type="Texture2D" uid="uid://bbiwojwh2ntah" path="res://cutscenes/placeholders/cutsceneplaceholder1.png" id="2_ui78f"]
+[ext_resource type="Texture2D" uid="uid://dx0j8tdqbvgmc" path="res://cutscenes/placeholders/cutsceneplaceholder2.png" id="3_63rbp"]
+[ext_resource type="Texture2D" uid="uid://ximeau1ky808" path="res://cutscenes/placeholders/cutsceneplaceholder3.png" id="4_feyvw"]
+[ext_resource type="Texture2D" uid="uid://xbic6fbgsoyg" path="res://cutscenes/placeholders/cutsceneplaceholder4.png" id="5_aadgx"]
+[ext_resource type="Texture2D" uid="uid://b5nvvfoo4cnt0" path="res://cutscenes/placeholders/black_screen.png" id="6_6ef72"]
+[ext_resource type="Texture2D" uid="uid://cyuv2y83ydrar" path="res://cutscenes/placeholders/cutscene_landscape1.png" id="7_acm2j"]
+[ext_resource type="Texture2D" uid="uid://b2apnux0hg7md" path="res://cutscenes/placeholders/cutscene_landscape2.png" id="8_impcp"]
+[ext_resource type="Texture2D" uid="uid://bsv4sr2ecs6wn" path="res://cutscenes/placeholders/cutscene_guy1.png" id="9_q52i1"]
+[ext_resource type="Texture2D" uid="uid://cmeqyehcfdev3" path="res://cutscenes/placeholders/cutscene_guy2.png" id="10_bfgnj"]
+[ext_resource type="Texture2D" uid="uid://bph8dw5j1mnyn" path="res://cutscenes/placeholders/closeup2.png" id="11_mclcg"]
+[ext_resource type="Texture2D" uid="uid://cuflqqafonyvm" path="res://cutscenes/placeholders/closeup1.png" id="12_6sp5j"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pxgv2"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Animation" id="Animation_3qlt7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../TextureRect:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../landscape1:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../landscape2:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [null]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../landscape2:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -41)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Guy:texture")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../landscape1:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 184)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Guy:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -35)]
+}
+
+[sub_resource type="Animation" id="Animation_1wwy0"]
+resource_name = "cutscene"
+length = 6.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../TextureRect:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 3, 4.5, 5.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_ui78f"), ExtResource("3_63rbp"), ExtResource("4_feyvw"), ExtResource("5_aadgx"), ExtResource("6_6ef72")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Guy:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../landscape2:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../landscape1:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+
+[sub_resource type="Animation" id="Animation_6d811"]
+resource_name = "cutscene1"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../TextureRect:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../landscape1:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("7_acm2j")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../landscape2:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [ExtResource("8_impcp")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../landscape2:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -76), Vector2(0, -9)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Guy:texture")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("9_q52i1"), ExtResource("10_bfgnj")]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../landscape1:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 152), Vector2(0, 26)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Guy:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-278, -302), Vector2(-278, -214)]
+}
+
+[sub_resource type="Animation" id="Animation_ne6gy"]
+resource_name = "cutscene2"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../TextureRect:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("6_6ef72"), ExtResource("11_mclcg"), ExtResource("12_6sp5j")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../landscape1:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../landscape2:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Guy:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lu8c6"]
+_data = {
+"RESET": SubResource("Animation_3qlt7"),
+"cutscene": SubResource("Animation_1wwy0"),
+"cutscene1": SubResource("Animation_6d811"),
+"cutscene2": SubResource("Animation_ne6gy")
+}
+
+[node name="IntroCutscene" type="CanvasLayer"]
+script = ExtResource("1_kkato")
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_pxgv2")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = 440.0
+offset_top = 315.0
+offset_right = 705.0
+offset_bottom = 338.0
+text = "introduction cutscene placeholder
+"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+
+[node name="Button" type="Button" parent="."]
+offset_left = 1038.0
+offset_top = 573.0
+offset_right = 1078.0
+offset_bottom = 604.0
+text = "skip
+"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Button")
+libraries = {
+"": SubResource("AnimationLibrary_lu8c6")
+}
+
+[node name="landscape1" type="TextureRect" parent="."]
+offset_top = 184.0
+offset_right = 1152.0
+offset_bottom = 832.0
+
+[node name="landscape2" type="TextureRect" parent="."]
+offset_top = -41.0
+offset_right = 1152.0
+offset_bottom = 607.0
+
+[node name="Guy" type="TextureRect" parent="."]
+offset_top = -35.0
+offset_right = 1152.0
+offset_bottom = 613.0
+scale = Vector2(1.48, 1.48)
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

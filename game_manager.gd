@@ -1,13 +1,13 @@
 extends Node2D
 
-@onready var main_menu_instance = preload("res://levels/main_menu.tscn")
-var options_menu_instance = preload("res://levels/options.tscn")
+@onready var main_menu_instance = preload("res://menus/main_menu.tscn")
+var options_menu_instance = preload("res://menus/options.tscn")
 var test_area_instance = preload("res://levels/top_down.tscn")
-var intro_cutscene_instance = preload("res://intro_cutscene.tscn")
-var pause_screen_instance = preload("res://levels/pause.tscn")
-var medic_report_instance = preload("res://medic_report.tscn")
+var intro_cutscene_instance = preload("res://cutscenes/intro_cutscene.tscn")
+var pause_screen_instance = preload("res://menus/pause.tscn")
+var medic_report_instance = preload("res://menus/medic_report.tscn")
 
-var map_instance = preload("res://map_select.tscn")
+var map_instance = preload("res://menus/map_select.tscn")
 
 var area1_instance = preload("res://levels/area1.tscn")
 var area2_instance = preload("res://levels/area2.tscn")
