@@ -42,10 +42,11 @@ position = Vector2(976, 361)
 texture = ExtResource("3_bbpop")
 
 [node name="temp button" type="Button" parent="CanvasLayer"]
-offset_left = 198.0
-offset_top = 296.0
-offset_right = 359.0
-offset_bottom = 349.0
+offset_left = 193.0
+offset_top = 423.0
+offset_right = 354.0
+offset_bottom = 476.0
+text = "b a c k   t o   m a p"
 
 [node name="heal" type="Button" parent="CanvasLayer"]
 offset_left = 208.0
