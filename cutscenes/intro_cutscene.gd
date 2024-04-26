@@ -27,5 +27,5 @@ func _on_animation_player_animation_finished(anim_name):
 		load_next()
 
 func load_next():
-	game_manager.load_test_area()
+	game_manager.load_map_select()
 	queue_free()

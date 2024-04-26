@@ -61,8 +61,8 @@ func clear_game_values():
 	
 func start_game():
 	clear_game_values()
-	load_map_select()
-	#load_intro_cutscene()
+	#load_map_select()
+	load_intro_cutscene()
 
 func load_main_menu():
 	var main_menu = main_menu_instance.instantiate()
