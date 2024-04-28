@@ -1,0 +1,52 @@
+[gd_scene load_steps=5 format=3 uid="uid://vq3hp754w4a1"]
+
+[ext_resource type="Texture2D" uid="uid://dl5t5jc3acstc" path="res://cutscenes/placeholders/lion man.png" id="1_7h1b7"]
+[ext_resource type="Script" path="res://cutscenes/placeholders/another_cutscene.gd" id="1_pt2t7"]
+[ext_resource type="Texture2D" uid="uid://yws37qdbffdd" path="res://cutscenes/placeholders/lookin.png" id="2_n30kw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vc7cw"]
+bg_color = Color(1, 1, 1, 1)
+
+[node name="another_cutscene" type="CanvasLayer"]
+script = ExtResource("1_pt2t7")
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_vc7cw")
+
+[node name="LionMan" type="Sprite2D" parent="."]
+position = Vector2(508.302, 365.08)
+scale = Vector2(0.889136, 0.889136)
+texture = ExtResource("1_7h1b7")
+
+[node name="Lookin" type="Sprite2D" parent="."]
+position = Vector2(733, 509)
+scale = Vector2(0.72, 0.72)
+texture = ExtResource("2_n30kw")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 355.0
+offset_top = 45.0
+offset_right = 1146.0
+offset_bottom = 338.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 23
+text = "The kingdom is under attack!
+
+You received major injuries defending your village but luckily we were able to reconstruct your face with cybernetics.
+
+The king has chosen you for your valiant bravery and has sent you on a mission to contact the neighbouring kingdoms and convince them to help us defend against the invaiding forces."
+autowrap_mode = 2
+
+[node name="Button" type="Button" parent="."]
+offset_left = 554.0
+offset_top = 568.0
+offset_right = 636.0
+offset_bottom = 617.0
+text = "next"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

@@ -249,6 +249,13 @@ offset_bottom = 23.0
 theme_override_font_sizes/font_size = 30
 text = "Player health:"
 
+[node name="HealthBar" type="ProgressBar" parent="UI"]
+offset_left = 4.0
+offset_top = 41.0
+offset_right = 404.0
+offset_bottom = 68.0
+show_percentage = false
+
 [node name="DamageManager" type="Node" parent="."]
 script = ExtResource("10_nqv2s")
 

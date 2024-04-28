@@ -6,6 +6,7 @@ var test_area_instance = preload("res://levels/top_down.tscn")
 var intro_cutscene_instance = preload("res://cutscenes/intro_cutscene.tscn")
 var pause_screen_instance = preload("res://menus/pause.tscn")
 var medic_report_instance = preload("res://menus/medic_report.tscn")
+var another_cutscene_instance = preload("res://cutscenes/placeholders/another_cutscene.tscn")
 
 var map_instance = preload("res://menus/map_select.tscn")
 
@@ -25,6 +26,11 @@ var area1_visited = false
 var area2_visited = false
 var area3_visited = false
 #change_scene_to_file()
+
+@onready var days_left = 70
+@onready var number_of_levels = 3
+var cybernetics_percentage_worth = 100/number_of_levels
+var robotics_percent = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -62,7 +68,7 @@ func clear_game_values():
 func start_game():
 	clear_game_values()
 	#load_map_select()
-	load_intro_cutscene()
+	load_another_cutscene()
 
 func load_main_menu():
 	var main_menu = main_menu_instance.instantiate()
@@ -114,4 +120,9 @@ func load_area3():
 func load_map_select():
 	var map = map_instance.instantiate()
 	add_child(map)
+	game_state = GameStates.GAMEPLAY
+
+func load_another_cutscene():
+	var another_cutscene = another_cutscene_instance.instantiate()
+	add_child(another_cutscene)
 	game_state = GameStates.GAMEPLAY
