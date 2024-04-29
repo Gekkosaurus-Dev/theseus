@@ -27,15 +27,18 @@ var area2_visited = false
 var area3_visited = false
 #change_scene_to_file()
 
-@onready var days_left = 70
+@onready var max_days_left = 70
+var days_left
 @onready var number_of_levels = 3
-var cybernetics_percentage_worth = 100/number_of_levels
-var robotics_percent = 0
+var cybernetics_percentage_worth
+@onready var soul_percent = 90 #starts at a small amount lost becasue of the robot face
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	days_left = max_days_left
 	#set default input as keyboard mouse
 	game_input = GameInputs.KEYBOARD_MOUSE
+	cybernetics_percentage_worth = 100/number_of_levels
 	
 	clear_game_values()
 	load_main_menu()
@@ -63,6 +66,7 @@ func detect_input(event):
 			game_input = GameInputs.KEYBOARD_MOUSE
 
 func clear_game_values():
+	
 	pass
 	
 func start_game():
@@ -97,6 +101,7 @@ func load_medic_report(damage_amount):
 	damage_taken_amount = damage_amount
 	var medic_report = medic_report_instance.instantiate()
 	add_child(medic_report)
+	$UI.set_level_UI_visibility(false)
 	
 	
 func load_area1():
@@ -121,6 +126,10 @@ func load_map_select():
 	var map = map_instance.instantiate()
 	add_child(map)
 	game_state = GameStates.GAMEPLAY
+	$UI.set_day_counter_visibility(true)
+	$UI.set_soul_visibility(true)
+	$UI.update_day_counter()
+	$UI.update_soul()
 
 func load_another_cutscene():
 	var another_cutscene = another_cutscene_instance.instantiate()

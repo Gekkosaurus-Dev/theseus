@@ -1,0 +1,85 @@
+[gd_scene load_steps=2 format=3 uid="uid://bpp2yno1b40mt"]
+
+[ext_resource type="Script" path="res://menus/UI.gd" id="1_4yscg"]
+
+[node name="UI" type="CanvasLayer"]
+layer = 2
+script = ExtResource("1_4yscg")
+
+[node name="DayCounterUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="DayCounterBar" type="ProgressBar" parent="DayCounterUI"]
+layout_mode = 0
+offset_left = 841.0
+offset_top = 22.0
+offset_right = 1143.0
+offset_bottom = 46.0
+max_value = 70.0
+value = 70.0
+show_percentage = false
+
+[node name="DayCounterLabel" type="Label" parent="DayCounterUI/DayCounterBar"]
+layout_mode = 0
+offset_left = 6.0
+offset_right = 78.0
+offset_bottom = 23.0
+text = "Days left until attack: 70"
+
+[node name="InLevelUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ArmourHealthBar" type="ProgressBar" parent="InLevelUI"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 23.0
+offset_right = 404.0
+offset_bottom = 68.0
+value = 100.0
+show_percentage = false
+
+[node name="ArmourHealthLabel" type="Label" parent="InLevelUI/ArmourHealthBar"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = -3.0
+offset_right = 210.0
+offset_bottom = 39.0
+theme_override_font_sizes/font_size = 30
+text = "Armour: 100%
+"
+
+[node name="UnprotectedHitsLabel" type="Label" parent="InLevelUI"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 71.0
+offset_right = 350.0
+offset_bottom = 113.0
+theme_override_font_sizes/font_size = 25
+text = "Unprotected hits taken:"
+
+[node name="SoulUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SoulBar" type="ProgressBar" parent="SoulUI"]
+offset_left = 419.0
+offset_top = 23.0
+offset_right = 816.0
+offset_bottom = 47.0
+value = 90.0
+show_percentage = false
+
+[node name="SoulLabel" type="Label" parent="SoulUI/SoulBar"]
+layout_mode = 0
+offset_left = 180.0
+offset_right = 252.0
+offset_bottom = 23.0
+text = "soul"

@@ -31,7 +31,11 @@ func _on_temp_button_pressed():
 
 
 func _on_mechanic_pressed():
-	pass # Replace with function body.
+	game_manager.soul_percent = game_manager.soul_percent - game_manager.cybernetics_percentage_worth
+	game_manager.load_map_select()
+	queue_free()
 
 func _on_heal_pressed():
-	pass # Replace with function body.
+	game_manager.days_left = game_manager.days_left - 7
+	game_manager.load_map_select()
+	queue_free()

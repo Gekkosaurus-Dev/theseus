@@ -24,15 +24,19 @@ var game_manager
 var attack_direction
 var dash_direction
 
+var UI
+
 func get_game_manager():
 	game_manager =  get_tree().root.get_child(0)
 
 func _ready():
 	#$UI/Label.text = ("Player health: " + str($health_component.max_health))
-	$UI/Label.text = ("Armour health: ")
-	$UI/HealthBar.max_value = $health_component.max_health
-	$UI/HealthBar.value = $health_component.health
+	
 	get_game_manager()
+	UI = game_manager.get_child(0)
+	print(UI)
+	UI.setup_armour_bar($health_component.max_health)
+	UI.set_level_UI_visibility(true)
 	$DirectionPointer/EnemyPusher/EnemyPusherHitbox.disabled = true
 	
 func _physics_process(_delta):
@@ -129,10 +133,13 @@ func damage_taken():
 	#print(damage_manager.damage_amount)
 	if $health_component.health > 0:
 		#$UI/Label.text = ("Armour health: " + str($health_component.health))
-		$UI/HealthBar.value = $health_component.health
+		#$UI/HealthBar.value = $health_component.health
+		UI.set_armour_bar($health_component.health, $health_component.max_health)
 	else:
 		damage_manager.damage_taken()
-		$UI/Label.text = ("Armour health: \n Unprotected hits taken: " + str($DamageManager.damage_amount))
+		#$UI/Label.text = ("Armour health: \n Unprotected hits taken: " + str($DamageManager.damage_amount))
+		UI.set_armour_bar(0, $health_component.max_health)
+		UI.set_number_hits($DamageManager.damage_amount)
 	#if !invincible:
 	#print("PLAYER TOOK DAMAGE")
 	health_component.invincible = true
