@@ -70,6 +70,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="SoulBar" type="ProgressBar" parent="SoulUI"]
+layout_mode = 0
 offset_left = 419.0
 offset_top = 23.0
 offset_right = 816.0
