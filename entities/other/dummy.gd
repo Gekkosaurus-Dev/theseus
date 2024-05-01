@@ -12,3 +12,18 @@ func _process(delta):
 
 func damage_taken():
 	print("took damge")
+	play_damage_animation()
+
+func play_damage_animation():
+	$Icon4.modulate = "ff0000"
+	await get_tree().create_timer(0.1).timeout
+	$Icon4.modulate = "ffffff"
+	await get_tree().create_timer(0.1).timeout
+	$Icon4.modulate = "ff0000"
+	await get_tree().create_timer(0.1).timeout
+	$Icon4.modulate = "ffffff"
+	await get_tree().create_timer(0.1).timeout
+	$Icon4.modulate = "ff0000"
+	await get_tree().create_timer(0.1).timeout
+	$Icon4.modulate = "ffffff"
+	await get_tree().create_timer(0.5).timeout

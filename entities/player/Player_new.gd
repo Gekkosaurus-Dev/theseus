@@ -162,6 +162,12 @@ func damage_taken():
 	#if !invincible:
 	#print("PLAYER TOOK DAMAGE")
 	health_component.invincible = true
+	play_damage_animation()
+	
+	health_component.invincible = false
+	#$DirectionFlipper/AnimationPlayer.play("hit_flash")
+
+func play_damage_animation():
 	$DirectionFlipper/Sprite2D.modulate = "000000"
 	await get_tree().create_timer(0.1).timeout
 	$DirectionFlipper/Sprite2D.modulate = "ffffff"
@@ -174,14 +180,13 @@ func damage_taken():
 	await get_tree().create_timer(0.1).timeout
 	$DirectionFlipper/Sprite2D.modulate = "ffffff"
 	await get_tree().create_timer(0.5).timeout
-	health_component.invincible = false
-	#$DirectionFlipper/AnimationPlayer.play("hit_flash")
 
 func get_damage_taken_amount():
 	#print ("returning " + str(damage_manager.damage_amount))
 	#return damage_manager.damage_amount
 	pass
 
+#-----timers-----#
 func _on_attack_move_timeout():
 	attack_dashing = false
 	can_move = false
@@ -193,7 +198,6 @@ func _on_attack_move_cooldown_timeout():
 	#$DirectionPointer/EnemyPusher/EnemyPusherHitbox.disabled = false
 	can_move = true
 	
-
 func _on_dash_timer_timeout():
 	dashing = false
 	set_collision_layer_value(1,true)
@@ -202,7 +206,6 @@ func _on_dash_timer_timeout():
 
 func _on_dash_cooldown_timeout():
 	can_dash = true
-
 
 func _on_attack_cooldown_timeout():
 	#print("huh")

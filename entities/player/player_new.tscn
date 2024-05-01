@@ -605,6 +605,7 @@ height = 142.0
 
 [node name="player_new" type="CharacterBody2D" node_paths=PackedStringArray("health_component", "hitbox", "animation_player", "attack_move_cooldown", "attack_cooldown", "attack_move", "dash_timer", "dash_cooldown") groups=["player"]]
 y_sort_enabled = true
+collision_mask = 14
 script = ExtResource("1_5tyq2")
 health_component = NodePath("HealthComponent")
 hitbox = NodePath("DirectionFlipper/HitboxComponent")
@@ -671,6 +672,7 @@ shape = SubResource("CapsuleShape2D_om0qi")
 debug_color = Color(0, 1, 0, 0.419608)
 
 [node name="HitboxComponent" parent="DirectionFlipper" instance=ExtResource("7_qy51v")]
+damage_amount = 10
 
 [node name="HitboxShape" type="CollisionShape2D" parent="DirectionFlipper/HitboxComponent"]
 position = Vector2(-15, -2)

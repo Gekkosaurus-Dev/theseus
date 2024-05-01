@@ -9,7 +9,7 @@ var player
 var isAggressive = false
 
 func _ready():
-	player = $"../../Player"
+	player = $"../../player_new"
 	max_speed = velocity_component.max_speed
 	acceleration_value = velocity_component.acceleration_value
 	hitbox_collider.disabled = false

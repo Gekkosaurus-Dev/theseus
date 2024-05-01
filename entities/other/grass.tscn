@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://c2hsao0svpn4v"]
+
+[ext_resource type="Script" path="res://Node2D.gd" id="1_x17wx"]
+[ext_resource type="Texture2D" uid="uid://clpiwlkem0yb5" path="res://entities/other/grass_placeholder.png" id="2_wcvkj"]
+[ext_resource type="PackedScene" uid="uid://fg3eiqc5q8pi" path="res://entities/hurtbox_component.tscn" id="3_8exab"]
+[ext_resource type="PackedScene" uid="uid://cfm8wr35elasl" path="res://entities/health_component.tscn" id="4_1mo7x"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t5l3i"]
+radius = 24.1868
+
+[node name="Grass" type="Node2D"]
+modulate = Color(0.333333, 0.501961, 0.388235, 1)
+script = ExtResource("1_x17wx")
+
+[node name="GrassPlaceholder" type="Sprite2D" parent="."]
+position = Vector2(4, -16)
+texture = ExtResource("2_wcvkj")
+
+[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_8exab")]
+health_component = NodePath("../HealthComponent")
+damage_from_player = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
+position = Vector2(1, -12)
+shape = SubResource("CircleShape2D_t5l3i")
+debug_color = Color(0, 1, 0, 0.419608)
+
+[node name="HealthComponent" parent="." instance=ExtResource("4_1mo7x")]
