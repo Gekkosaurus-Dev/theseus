@@ -1,24 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://b7ap371plye3y"]
+[gd_scene load_steps=6 format=3 uid="uid://b7ap371plye3y"]
 
 [ext_resource type="Script" path="res://levels/top_down.gd" id="1_y1w57"]
-[ext_resource type="Texture2D" uid="uid://d23h5rpuutkx6" path="res://levels/floor1.png" id="2_11ie1"]
 [ext_resource type="PackedScene" uid="uid://ckfhx8ybmk8q1" path="res://entities/player/player.tscn" id="3_1jotj"]
 [ext_resource type="PackedScene" uid="uid://dkaeprjt76pfv" path="res://entities/enemies/enemy_td.tscn" id="4_oifpu"]
 [ext_resource type="PackedScene" uid="uid://dk3nilfr0e6vl" path="res://entities/enemies/enemy_td2.tscn" id="5_oluym"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_heuit"]
-texture = ExtResource("2_11ie1")
-texture_region_size = Vector2i(320, 160)
-0:0/0 = 0
-1:0/0 = 0
-2:0/0 = 0
-0:1/0 = 0
-1:1/0 = 0
-
 [sub_resource type="TileSet" id="TileSet_tp77f"]
 tile_shape = 1
 tile_size = Vector2i(320, 160)
-sources/0 = SubResource("TileSetAtlasSource_heuit")
 
 [node name="TopDown" type="Node2D" node_paths=PackedStringArray("player")]
 script = ExtResource("1_y1w57")

@@ -57,15 +57,18 @@ func _physics_process(_delta):
 	
 func get_attack_direction():
 	#$DirectionPointer.look_at(get_global_mouse_position())
-	if (game_manager.game_input == game_manager.GameInputs.KEYBOARD_MOUSE):
-		attack_direction = global_position.direction_to(get_global_mouse_position())
-		$DirectionPointer.rotation = atan2(attack_direction.y, attack_direction.x)
-	else:
-		var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
-		if direction:
-			attack_direction = direction
-			$DirectionPointer.rotation = atan2(attack_direction.y, attack_direction.x)
-			
+	attack_direction = global_position.direction_to(get_global_mouse_position())
+	$DirectionPointer.rotation = atan2(attack_direction.y, attack_direction.x)
+	
+	#if (game_manager.game_input == game_manager.GameInputs.KEYBOARD_MOUSE):
+		#attack_direction = global_position.direction_to(get_global_mouse_position())
+		#$DirectionPointer.rotation = atan2(attack_direction.y, attack_direction.x)
+	#else:
+		#var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+		#if direction:
+			#attack_direction = direction
+			#$DirectionPointer.rotation = atan2(attack_direction.y, attack_direction.x)
+			#
 	
 func get_dash_direction():
 	var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")

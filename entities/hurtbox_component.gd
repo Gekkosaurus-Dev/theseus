@@ -19,7 +19,10 @@ func _on_area_entered(area):
 	var box_type = area.get_groups()
 	if (box_type.has("hitbox")):
 		var object_type = area.owner.get_groups()
+		#print(object_type)
 		if (object_type.has("player") and damage_from_player):
+			#print("hit")
 			health_component.apply_damage(area.damage_amount)
 		if (object_type.has("enemy") and damage_from_enemy):
+			#print("hit")
 			health_component.apply_damage(area.damage_amount)

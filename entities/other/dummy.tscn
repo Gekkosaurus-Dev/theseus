@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=3 uid="uid://dvu7wdo35wlgd"]
+
+[ext_resource type="Texture2D" uid="uid://dllpdiawylsqk" path="res://icon.svg" id="1_4oxur"]
+[ext_resource type="Script" path="res://entities/other/dummy.gd" id="1_ioxuf"]
+[ext_resource type="PackedScene" uid="uid://fg3eiqc5q8pi" path="res://entities/hurtbox_component.tscn" id="2_fkqf8"]
+[ext_resource type="PackedScene" uid="uid://cfm8wr35elasl" path="res://entities/health_component.tscn" id="3_6oxaj"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g84nh"]
+radius = 104.0
+height = 388.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ymjla"]
+radius = 43.0
+height = 128.0
+
+[node name="Dummy" type="StaticBody2D"]
+y_sort_enabled = true
+script = ExtResource("1_ioxuf")
+
+[node name="Icon4" type="Sprite2D" parent="."]
+position = Vector2(9, -185.849)
+scale = Vector2(3.05469, 0.252353)
+texture = ExtResource("1_4oxur")
+
+[node name="Icon" type="Sprite2D" parent="Icon4"]
+position = Vector2(-2.29156, -416.083)
+scale = Vector2(0.327366, 3.9627)
+texture = ExtResource("1_4oxur")
+
+[node name="Icon2" type="Sprite2D" parent="Icon4"]
+position = Vector2(-1.63683, 45.571)
+scale = Vector2(0.547315, 3.68407)
+texture = ExtResource("1_4oxur")
+
+[node name="Icon3" type="Sprite2D" parent="Icon4"]
+position = Vector2(-2.61893, 507.225)
+scale = Vector2(0.219949, 3.59119)
+texture = ExtResource("1_4oxur")
+
+[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("2_fkqf8")]
+position = Vector2(0, -149.849)
+health_component = NodePath("../HealthComponent")
+damage_from_player = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
+position = Vector2(0, -42)
+shape = SubResource("CapsuleShape2D_g84nh")
+debug_color = Color(0, 1, 0, 0.419608)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -60.8494)
+shape = SubResource("CapsuleShape2D_ymjla")
+
+[node name="HealthComponent" parent="." instance=ExtResource("3_6oxaj")]
