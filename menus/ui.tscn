@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bpp2yno1b40mt"]
+[gd_scene load_steps=3 format=3 uid="uid://bpp2yno1b40mt"]
 
 [ext_resource type="Script" path="res://menus/UI.gd" id="1_4yscg"]
+[ext_resource type="Texture2D" uid="uid://bcyybgmun2kji" path="res://entities/player/health_temp/000.png" id="2_lrfa3"]
 
 [node name="UI" type="CanvasLayer"]
 layer = 2
@@ -62,6 +63,15 @@ offset_right = 350.0
 offset_bottom = 113.0
 theme_override_font_sizes/font_size = 25
 text = "Unprotected hits taken:"
+
+[node name="TextureRect" type="TextureRect" parent="InLevelUI"]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 108.0
+offset_right = 281.0
+offset_bottom = 431.0
+scale = Vector2(0.44, 0.44)
+texture = ExtResource("2_lrfa3")
 
 [node name="SoulUI" type="Control" parent="."]
 layout_mode = 3

@@ -1,8 +1,10 @@
 extends StaticBody2D
 
+var sprite
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	sprite = $Dummy
 	pass # Replace with function body.
 
 
@@ -15,15 +17,15 @@ func damage_taken():
 	play_damage_animation()
 
 func play_damage_animation():
-	$Icon4.modulate = "ff0000"
+	sprite.modulate = "ff0000"
 	await get_tree().create_timer(0.1).timeout
-	$Icon4.modulate = "ffffff"
+	sprite.modulate = "ffffff"
 	await get_tree().create_timer(0.1).timeout
-	$Icon4.modulate = "ff0000"
+	sprite.modulate = "ff0000"
 	await get_tree().create_timer(0.1).timeout
-	$Icon4.modulate = "ffffff"
+	sprite.modulate = "ffffff"
 	await get_tree().create_timer(0.1).timeout
-	$Icon4.modulate = "ff0000"
+	sprite.modulate = "ff0000"
 	await get_tree().create_timer(0.1).timeout
-	$Icon4.modulate = "ffffff"
+	sprite.modulate = "ffffff"
 	await get_tree().create_timer(0.5).timeout

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://ca3il8qfcg5fv"]
+[gd_scene load_steps=21 format=3 uid="uid://ca3il8qfcg5fv"]
 
 [ext_resource type="Script" path="res://entities/player/Player_new.gd" id="1_5tyq2"]
 [ext_resource type="Texture2D" uid="uid://4roewycywcv4" path="res://entities/player/base_spritesheets/Player Sword Run 48x48.png" id="2_htvay"]
@@ -165,7 +165,8 @@ tracks/11/keys = {
 
 [sub_resource type="Animation" id="Animation_e5fhs"]
 resource_name = "attack"
-length = 0.6
+length = 0.35
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -173,7 +174,7 @@ tracks/0/path = NodePath("DirectionFlipper/Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.3),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5]
@@ -221,7 +222,7 @@ tracks/4/path = NodePath("DirectionFlipper/HurtboxComponent/HurtboxHead:position
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.3),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [Vector2(20, -80), Vector2(39, -79), Vector2(76, -52), Vector2(100, -40), Vector2(110, -29), Vector2(30, -81)]
@@ -233,7 +234,7 @@ tracks/5/path = NodePath("DirectionFlipper/HurtboxComponent/HurtboxBody:position
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.3),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [Vector2(0, 5), Vector2(22, 9), Vector2(41, 24), Vector2(57, 36), Vector2(60, 47), Vector2(0, 18)]
@@ -245,7 +246,7 @@ tracks/6/path = NodePath("DirectionFlipper/HurtboxComponent/HurtboxBody:rotation
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.5),
+"times": PackedFloat32Array(0, 0.1, 0.3),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [0.0, 0.785398, 0.0]
@@ -257,10 +258,10 @@ tracks/7/path = NodePath("DirectionFlipper/HitboxComponent/HitboxShape:position"
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [Vector2(-153, -35), Vector2(-146, -117), Vector2(-37, -142), Vector2(172, -68), Vector2(66, 141)]
+"values": [Vector2(-153, -35), Vector2(-146, -117), Vector2(-37, -142), Vector2(146, 59)]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
@@ -269,10 +270,10 @@ tracks/8/path = NodePath("DirectionFlipper/HitboxComponent/HitboxShape:rotation"
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [0.0, 1.11113, 1.69517, 2.90425, 1.5708]
+"values": [0.0, 1.11113, 1.69517, 0.0]
 }
 tracks/9/type = "value"
 tracks/9/imported = false
@@ -281,10 +282,10 @@ tracks/9/path = NodePath("DirectionFlipper/HitboxComponent/HitboxShape:shape:rad
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.3, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.05, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [87.0, 118.04, 159.354, 74.0]
+"values": [87.0, 118.04, 156.0]
 }
 tracks/10/type = "value"
 tracks/10/imported = false
@@ -293,10 +294,10 @@ tracks/10/path = NodePath("DirectionFlipper/HitboxComponent/HitboxShape:shape:he
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [310.0, 371.202, 416.509, 581.576, 180.0]
+"values": [310.0, 371.202, 416.509, 462.0]
 }
 tracks/11/type = "value"
 tracks/11/imported = false
@@ -305,14 +306,16 @@ tracks/11/path = NodePath("DirectionFlipper/HitboxComponent/HitboxShape:shape")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [SubResource("CapsuleShape2D_0x4kl")]
+"values": [null, SubResource("CapsuleShape2D_0x4kl")]
 }
 
 [sub_resource type="Animation" id="Animation_sjca2"]
 resource_name = "dash"
+length = 0.25
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -320,10 +323,10 @@ tracks/0/path = NodePath("DirectionFlipper/Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+"values": [0, 1, 2, 3, 4, 5]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -368,10 +371,10 @@ tracks/4/path = NodePath("DirectionFlipper/HurtboxComponent/HurtboxHead:position
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.6, 0.7, 0.8, 0.9),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [Vector2(20, -100), Vector2(151, -60), Vector2(-20, -70), Vector2(10, -72), Vector2(22, -83), Vector2(20, -100)]
+"values": [Vector2(20, -100), Vector2(151, -60)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -392,10 +395,10 @@ tracks/6/path = NodePath("DirectionFlipper/HurtboxComponent/HurtboxBody:position
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.6, 0.7, 0.9),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [Vector2(0, 5), Vector2(67, 17), Vector2(-33, 25), Vector2(-16, 27), Vector2(0, 5)]
+"values": [Vector2(0, 5), Vector2(67, 17)]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
@@ -404,10 +407,10 @@ tracks/7/path = NodePath("DirectionFlipper/HurtboxComponent/HurtboxBody:rotation
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [0.0, 0.785398, 0.0]
+"values": [0.0, 0.785398]
 }
 
 [sub_resource type="Animation" id="Animation_cwevn"]
@@ -587,11 +590,113 @@ tracks/6/keys = {
 "values": [0.0]
 }
 
+[sub_resource type="Animation" id="Animation_pp0sf"]
+resource_name = "dash_cooldown"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DirectionFlipper/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [6, 7, 8, 9]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DirectionFlipper/Sprite:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_1wgwp")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DirectionFlipper/Sprite:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [10]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("DirectionFlipper/Sprite:vframes")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("DirectionFlipper/HurtboxComponent/HurtboxHead:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(-20, -70), Vector2(10, -72), Vector2(22, -83), Vector2(20, -79)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("DirectionFlipper/HitboxComponent/HitboxShape:shape")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("DirectionFlipper/HurtboxComponent/HurtboxBody:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(-33, 25), Vector2(-11, 27), Vector2(-1, 24), Vector2(0, 26)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("DirectionFlipper/HurtboxComponent/HurtboxBody:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0.0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0wp2y"]
 _data = {
 "RESET": SubResource("Animation_eluk1"),
 "attack": SubResource("Animation_e5fhs"),
 "dash": SubResource("Animation_sjca2"),
+"dash_cooldown": SubResource("Animation_pp0sf"),
 "idle": SubResource("Animation_cwevn"),
 "run": SubResource("Animation_87o12")
 }
@@ -614,13 +719,13 @@ attack_move_speed = 2000
 dash_move_speed = 3000
 animation_player = NodePath("DirectionFlipper/AnimationPlayer")
 attack_move_cooldown = NodePath("Timers/attack_move_cooldown")
-attack_cooldown = NodePath("Timers/attack_cooldown")
+attack_cooldown = NodePath("")
 attack_move = NodePath("Timers/attack_move")
-dash_timer = NodePath("Timers/dash_timer")
-dash_cooldown = NodePath("Timers/dash_cooldown")
+dash_timer = NodePath("")
+dash_cooldown = NodePath("")
 
 [node name="CollisionBox" type="CollisionShape2D" parent="."]
-position = Vector2(-1, -71)
+position = Vector2(-1, -79)
 shape = SubResource("CapsuleShape2D_066ak")
 
 [node name="Timers" type="Node" parent="."]
@@ -629,24 +734,12 @@ shape = SubResource("CapsuleShape2D_066ak")
 wait_time = 0.2
 one_shot = true
 
-[node name="attack_cooldown" type="Timer" parent="Timers"]
-wait_time = 0.3
-one_shot = true
-
 [node name="attack_move" type="Timer" parent="Timers"]
 wait_time = 0.1
 one_shot = true
 
-[node name="dash_timer" type="Timer" parent="Timers"]
-wait_time = 0.2
-one_shot = true
-
-[node name="dash_cooldown" type="Timer" parent="Timers"]
-wait_time = 0.5
-one_shot = true
-
 [node name="DirectionFlipper" type="Node2D" parent="."]
-position = Vector2(0, -153)
+position = Vector2(0, -161)
 script = ExtResource("2_plpgb")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="DirectionFlipper"]
@@ -659,7 +752,9 @@ libraries = {
 texture = ExtResource("2_htvay")
 hframes = 8
 
-[node name="HurtboxComponent" parent="DirectionFlipper" instance=ExtResource("8_yxr1f")]
+[node name="HurtboxComponent" parent="DirectionFlipper" node_paths=PackedStringArray("health_component") instance=ExtResource("8_yxr1f")]
+health_component = NodePath("../../HealthComponent")
+damage_from_enemy = true
 
 [node name="HurtboxHead" type="CollisionShape2D" parent="DirectionFlipper/HurtboxComponent"]
 position = Vector2(4, -9)
@@ -672,7 +767,7 @@ shape = SubResource("CapsuleShape2D_om0qi")
 debug_color = Color(0, 1, 0, 0.419608)
 
 [node name="HitboxComponent" parent="DirectionFlipper" instance=ExtResource("7_qy51v")]
-damage_amount = 10
+damage_amount = 50
 
 [node name="HitboxShape" type="CollisionShape2D" parent="DirectionFlipper/HitboxComponent"]
 position = Vector2(-15, -2)
@@ -680,14 +775,13 @@ shape = SubResource("CapsuleShape2D_0x4kl")
 debug_color = Color(1, 0, 0, 0.419608)
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_xy7er")]
+max_health = 100
 
 [node name="DirectionPointer" type="Sprite2D" parent="."]
-position = Vector2(0, -153)
+position = Vector2(0, -161)
 scale = Vector2(0.25248, 0.282597)
 offset = Vector2(500, 0)
 
 [connection signal="timeout" from="Timers/attack_move_cooldown" to="." method="_on_attack_move_cooldown_timeout"]
-[connection signal="timeout" from="Timers/attack_cooldown" to="." method="_on_attack_cooldown_timeout"]
 [connection signal="timeout" from="Timers/attack_move" to="." method="_on_attack_move_timeout"]
-[connection signal="timeout" from="Timers/dash_timer" to="." method="_on_dash_timer_timeout"]
-[connection signal="timeout" from="Timers/dash_cooldown" to="." method="_on_dash_cooldown_timeout"]
+[connection signal="animation_finished" from="DirectionFlipper/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
