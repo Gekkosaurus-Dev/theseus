@@ -29,7 +29,9 @@ var dash_direction
 
 var UI
 
-var max_health
+
+var armour_max_health
+var player_max_health = 100
 
 @export var attack_move_cooldown: Timer
 @export var attack_cooldown: Timer
@@ -43,16 +45,20 @@ var hits_taken = 0 #specifically unprotected hits taken
 enum PlayerStates {ATTACKING, DASHING, OTHER}
 var player_state
 
+enum PlayerHealthStates {NO_HITS, ARMOUR_DAMAGED, ARMOUR_BROKEN, MINOR_INJURY, MAJOR_INJURY, EXTREME_INJURY}
+var player_health_state
+
 func get_game_manager():
 	game_manager =  get_tree().root.get_child(0)
 
 func _ready():
 	player_state = PlayerStates.OTHER
+	player_health_state = PlayerHealthStates.NO_HITS
 	get_game_manager()
 	UI = game_manager.get_child(0)
 	print(UI)
-	max_health = health_component.max_health
-	UI.setup_armour_bar(max_health)
+	armour_max_health = health_component.max_health
+	UI.setup_armour_bar(armour_max_health)
 	UI.set_level_UI_visibility(true)
 	
 func _physics_process(_delta):
@@ -156,10 +162,10 @@ func try_dash():
 func damage_taken():
 	print("player took damage")
 	if health_component.health >= 0:
-		UI.set_armour_bar(health_component.health, max_health)
+		UI.set_armour_bar(health_component.health, armour_max_health)
 	else:
 		hits_taken = hits_taken + 1
-		UI.set_armour_bar(0, max_health)
+		UI.set_armour_bar(0, armour_max_health)
 		UI.set_number_hits(hits_taken)
 	health_component.invincible = true
 	play_damage_animation() #at the end of this, .invincible is set back to false

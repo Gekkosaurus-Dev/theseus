@@ -21,7 +21,7 @@ func _ready():
 	player = $"../player_new"
 	enemy_state = EnemyStates.IDLE
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	
 	if (enemy_state == EnemyStates.IDLE):
 		animation_player.play("idle")

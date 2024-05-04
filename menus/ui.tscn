@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://bpp2yno1b40mt"]
+[gd_scene load_steps=5 format=3 uid="uid://bpp2yno1b40mt"]
 
 [ext_resource type="Script" path="res://menus/UI.gd" id="1_4yscg"]
 [ext_resource type="Texture2D" uid="uid://bcyybgmun2kji" path="res://entities/player/health_temp/000.png" id="2_lrfa3"]
+[ext_resource type="Texture2D" uid="uid://dyruq4j5gjxvp" path="res://menus/bar.png" id="3_3mxl1"]
+[ext_resource type="Texture2D" uid="uid://lbwsx0krlvxw" path="res://menus/cirlce.png" id="4_flg3n"]
 
 [node name="UI" type="CanvasLayer"]
 layer = 2
@@ -10,7 +12,8 @@ script = ExtResource("1_4yscg")
 [node name="DayCounterUI" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
+offset_left = 11.0
+offset_right = 51.0
 offset_bottom = 40.0
 
 [node name="DayCounterBar" type="ProgressBar" parent="DayCounterUI"]
@@ -36,7 +39,8 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="ArmourHealthBar" type="ProgressBar" parent="InLevelUI"]
+[node name="ArmourHealthBarOLD" type="ProgressBar" parent="InLevelUI"]
+visible = false
 layout_mode = 0
 offset_left = 4.0
 offset_top = 23.0
@@ -45,7 +49,7 @@ offset_bottom = 68.0
 value = 100.0
 show_percentage = false
 
-[node name="ArmourHealthLabel" type="Label" parent="InLevelUI/ArmourHealthBar"]
+[node name="ArmourHealthLabel" type="Label" parent="InLevelUI/ArmourHealthBarOLD"]
 layout_mode = 0
 offset_left = 5.0
 offset_top = -3.0
@@ -56,6 +60,7 @@ text = "Armour: 100%
 "
 
 [node name="UnprotectedHitsLabel" type="Label" parent="InLevelUI"]
+visible = false
 layout_mode = 0
 offset_left = 7.0
 offset_top = 71.0
@@ -64,20 +69,47 @@ offset_bottom = 113.0
 theme_override_font_sizes/font_size = 25
 text = "Unprotected hits taken:"
 
-[node name="TextureRect" type="TextureRect" parent="InLevelUI"]
+[node name="Face" type="TextureRect" parent="InLevelUI"]
 layout_mode = 0
-offset_left = 15.0
-offset_top = 108.0
-offset_right = 281.0
-offset_bottom = 431.0
+offset_left = 64.0
+offset_top = 48.0
+offset_right = 330.0
+offset_bottom = 371.0
 scale = Vector2(0.44, 0.44)
 texture = ExtResource("2_lrfa3")
+
+[node name="ArmourHealthBar" type="TextureProgressBar" parent="InLevelUI"]
+layout_mode = 0
+offset_left = 112.0
+offset_top = 7.0
+offset_right = 407.0
+offset_bottom = 47.0
+value = 100.0
+texture_under = ExtResource("3_3mxl1")
+texture_progress = ExtResource("3_3mxl1")
+tint_progress = Color(0, 0.482353, 0.486275, 1)
+
+[node name="PlayerHealthBar" type="TextureProgressBar" parent="InLevelUI"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 6.0
+offset_right = 220.0
+offset_bottom = 228.0
+value = 100.0
+fill_mode = 4
+texture_under = ExtResource("4_flg3n")
+texture_progress = ExtResource("4_flg3n")
+tint_progress = Color(0, 0.596078, 0.6, 1)
+radial_initial_angle = 90.0
+radial_fill_degrees = 271.0
 
 [node name="SoulUI" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 15.0
+offset_top = 5.0
+offset_right = 55.0
+offset_bottom = 45.0
 
 [node name="SoulBar" type="ProgressBar" parent="SoulUI"]
 layout_mode = 0
