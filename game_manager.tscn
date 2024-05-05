@@ -7,3 +7,7 @@
 script = ExtResource("1_hmg5f")
 
 [node name="UI" parent="." instance=ExtResource("2_cq7wx")]
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

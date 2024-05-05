@@ -16,7 +16,7 @@ func _ready():
 	
 func _physics_process(_delta):
 	if isAggressive:
-		var direction = global_position.direction_to(player.position)
+		var direction = global_position.direction_to(player.get_target_position())
 		velocity = direction * max_speed
 		move_and_slide()
 		#print("enemy velocity = " + str(velocity))

@@ -33,11 +33,18 @@ var UI
 var armour_max_health
 var player_max_health = 100
 
+var player_health = 100
+
+var armour_broken = false
+
 @export var attack_move_cooldown: Timer
 @export var attack_cooldown: Timer
 @export var attack_move: Timer
 @export var dash_timer: Timer
 @export var dash_cooldown: Timer
+
+
+@export var enemy_target: Marker2D
 
 var hits_taken = 0 #specifically unprotected hits taken
 
@@ -67,6 +74,10 @@ func _physics_process(_delta):
 	get_attack_direction()
 	
 	move_and_slide()
+	
+#returns the position for an enemy
+func get_target_position():
+	return enemy_target.global_position
 	
 func get_attack_direction():
 	if (game_manager.game_input == game_manager.GameInputs.KEYBOARD_MOUSE):
@@ -158,15 +169,24 @@ func try_dash():
 		health_component.invincible = true
 		set_collision_layer_value(1,false)
 		set_collision_mask_value(2,false)
+		set_collision_mask_value(4,false)
 
 func damage_taken():
-	print("player took damage")
-	if health_component.health >= 0:
-		UI.set_armour_bar(health_component.health, armour_max_health)
+	if (!armour_broken):
+		if health_component.health > 0:
+			UI.set_armour_bar(health_component.health, armour_max_health)
+		else:
+			armour_broken = true
+			health_component.health = 100
+			UI.set_armour_bar(0, armour_max_health)
 	else:
-		hits_taken = hits_taken + 1
-		UI.set_armour_bar(0, armour_max_health)
-		UI.set_number_hits(hits_taken)
+		player_health = health_component.health
+		#hits_taken = hits_taken + 1
+		print(player_health)
+		UI.set_number_hits(player_health)
+		if (player_health < 0):
+			$"..".player_died()
+		
 	health_component.invincible = true
 	play_damage_animation() #at the end of this, .invincible is set back to false
 
@@ -212,6 +232,7 @@ func _on_animation_player_animation_finished(anim_name):
 	elif (anim_name == "dash"):
 		dashing = false
 		animation_player.play("dash_cooldown")
+		set_collision_mask_value(4,true)
 	elif(anim_name == "dash_cooldown"):
 		can_dash = true
 		can_move = true

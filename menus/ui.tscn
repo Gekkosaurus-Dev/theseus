@@ -1,8 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://bpp2yno1b40mt"]
+[gd_scene load_steps=8 format=3 uid="uid://bpp2yno1b40mt"]
 
 [ext_resource type="Script" path="res://menus/UI.gd" id="1_4yscg"]
+[ext_resource type="Texture2D" uid="uid://cfj4mef1krbl0" path="res://menus/bars/timer_top.png" id="2_716hd"]
 [ext_resource type="Texture2D" uid="uid://bcyybgmun2kji" path="res://entities/player/health_temp/000.png" id="2_lrfa3"]
 [ext_resource type="Texture2D" uid="uid://dyruq4j5gjxvp" path="res://menus/bar.png" id="3_3mxl1"]
+[ext_resource type="Texture2D" uid="uid://cvqc0o54la8kc" path="res://menus/bars/timer_over.png" id="3_nyejh"]
+[ext_resource type="Texture2D" uid="uid://cdndbnysjpcy0" path="res://menus/bars/timer_bottom.png" id="4_7xpkh"]
 [ext_resource type="Texture2D" uid="uid://lbwsx0krlvxw" path="res://menus/cirlce.png" id="4_flg3n"]
 
 [node name="UI" type="CanvasLayer"]
@@ -16,7 +19,16 @@ offset_left = 11.0
 offset_right = 51.0
 offset_bottom = 40.0
 
+[node name="DayCounterLabel" type="Label" parent="DayCounterUI"]
+layout_mode = 0
+offset_left = 950.0
+offset_top = 8.0
+offset_right = 1137.0
+offset_bottom = 31.0
+text = "Days left until attack: 100"
+
 [node name="DayCounterBar" type="ProgressBar" parent="DayCounterUI"]
+visible = false
 layout_mode = 0
 offset_left = 841.0
 offset_top = 22.0
@@ -26,12 +38,22 @@ max_value = 70.0
 value = 70.0
 show_percentage = false
 
-[node name="DayCounterLabel" type="Label" parent="DayCounterUI/DayCounterBar"]
+[node name="TimerTop" type="TextureProgressBar" parent="DayCounterUI"]
 layout_mode = 0
-offset_left = 6.0
-offset_right = 78.0
-offset_bottom = 23.0
-text = "Days left until attack: 70"
+offset_left = 948.0
+offset_top = 31.0
+offset_right = 1148.0
+offset_bottom = 231.0
+fill_mode = 3
+texture_progress = ExtResource("2_716hd")
+
+[node name="TimerBottom" type="TextureProgressBar" parent="DayCounterUI/TimerTop"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+fill_mode = 3
+texture_over = ExtResource("3_nyejh")
+texture_progress = ExtResource("4_7xpkh")
 
 [node name="InLevelUI" type="Control" parent="."]
 layout_mode = 3
@@ -106,10 +128,10 @@ radial_fill_degrees = 271.0
 [node name="SoulUI" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 15.0
-offset_top = 5.0
-offset_right = 55.0
-offset_bottom = 45.0
+offset_left = 62.0
+offset_top = -6.0
+offset_right = 102.0
+offset_bottom = 34.0
 
 [node name="SoulBar" type="ProgressBar" parent="SoulUI"]
 layout_mode = 0

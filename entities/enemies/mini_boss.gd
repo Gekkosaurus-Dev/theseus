@@ -27,7 +27,7 @@ func _physics_process(_delta):
 		animation_player.play("idle")
 	elif (enemy_state == EnemyStates.MOVING):
 		animation_player.play("walk")
-		var direction = global_position.direction_to(player.position)
+		var direction = global_position.direction_to(player.get_target_position())
 		velocity = direction * max_speed
 		move_and_slide()
 	

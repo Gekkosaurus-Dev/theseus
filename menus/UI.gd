@@ -30,6 +30,7 @@ func set_soul_visibility(bool):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+	
 
 func setup_day_counter():
 	$DayCounterUI/DayCounterBar.max_value = game_manager.max_days_left
@@ -37,8 +38,12 @@ func setup_day_counter():
 	$DayCounterUI/DayCounterBar/DayCounterLabel.text = "Days left until attack: " + str(game_manager.max_days_left)
 
 func update_day_counter():
-	$DayCounterUI/DayCounterBar.value = game_manager.days_left
-	$DayCounterUI/DayCounterBar/DayCounterLabel.text = "Days left until attack: " + str(game_manager.days_left)
+	#$DayCounterUI/DayCounterBar.value = game_manager.days_left
+	var top_bar = 50 + (game_manager.days_left/2)
+	var bottom_bar = 50 - (game_manager.days_left/2)
+	$DayCounterUI/TimerTop.value = top_bar
+	$DayCounterUI/TimerTop/TimerBottom.value = bottom_bar
+	$DayCounterUI/DayCounterLabel.text = "Days left until attack: " + str(game_manager.days_left)
 
 func update_soul():
 	$SoulUI/SoulBar.value = game_manager.soul_percent
@@ -68,5 +73,5 @@ func set_armour_bar(health, max_health):
 		$InLevelUI/Face.texture = (no_armour_txt)
 	
 func set_number_hits(value):
-	$InLevelUI/PlayerHealthBar.value = 10 - value
+	$InLevelUI/PlayerHealthBar.value = value
 	#$InLevelUI/UnprotectedHitsLabel.text = "Unprotected hits taken: " + str(value)

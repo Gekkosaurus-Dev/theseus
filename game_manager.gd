@@ -11,8 +11,12 @@ var another_cutscene_instance = preload("res://cutscenes/placeholders/another_cu
 var map_instance = preload("res://menus/map_select.tscn")
 
 var area1_instance = preload("res://levels/area1.tscn")
-var area2_instance = preload("res://levels/area2.tscn")
-var area3_instance = preload("res://levels/area3.tscn")
+var area2_instance = preload("res://levels/area1.tscn")
+var area3_instance = preload("res://levels/area1.tscn")
+#
+#var area1_instance = preload("res://levels/area1.tscn")
+#var area2_instance = preload("res://levels/area2.tscn")
+#var area3_instance = preload("res://levels/area3.tscn")
 
 var tutorial_instance = preload("res://levels/tutorial.tscn")
 
@@ -31,7 +35,7 @@ var area2_visited = false
 var area3_visited = false
 #change_scene_to_file()
 
-var max_days_left = 70
+var max_days_left = 100
 var days_left
 var number_of_levels = 3
 var cybernetics_percentage_worth
@@ -94,6 +98,11 @@ func load_scene(scene):
 	var scene_instance = scene.instantiate()
 	add_child(scene_instance)
 
+func tutorial_finished(from):
+	fade_to(from,another_cutscene_instance)
+	$UI.set_level_UI_visibility(false)
+
+
 func load_medic_report(damage_amount):
 	damage_taken_amount = damage_amount
 	var medic_report = medic_report_instance.instantiate()
@@ -108,3 +117,10 @@ func load_map_select():
 	$UI.set_soul_visibility(true)
 	$UI.update_day_counter()
 	$UI.update_soul()
+
+func start_timer():
+	$Timer.start()
+
+func _on_timer_timeout():
+	days_left = days_left - 1
+	$UI.update_day_counter()

@@ -13,7 +13,9 @@ func _ready():
 	cybernetics_percentage_worth_base = game_manager.cybernetics_percentage_worth/2
 	var damage_amount = game_manager.damage_taken_amount
 	var report
-	if ( damage_amount <= 0):
+	if (damage_amount == -1):
+		report = "Your armour was shattered and you took some major damage. We needed to operate to save your life."
+	elif ( damage_amount <= 0):
 		report = "Your armour sustained some damage but you didn't take any hits yourself."
 		cybernetics_percentage_worth_weighted = (cybernetics_percentage_worth_base*0)
 	elif (damage_amount < 5):

@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://vq3hp754w4a1"]
+[gd_scene load_steps=6 format=3 uid="uid://vq3hp754w4a1"]
 
 [ext_resource type="Texture2D" uid="uid://dl5t5jc3acstc" path="res://cutscenes/placeholders/lion man.png" id="1_7h1b7"]
 [ext_resource type="Script" path="res://cutscenes/placeholders/another_cutscene.gd" id="1_pt2t7"]
 [ext_resource type="Texture2D" uid="uid://yws37qdbffdd" path="res://cutscenes/placeholders/lookin.png" id="2_n30kw"]
+[ext_resource type="Texture2D" uid="uid://ddtkkwm1fgq2c" path="res://cutscenes/placeholders/mechanic placeholder.png" id="4_halrg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vc7cw"]
 bg_color = Color(1, 1, 1, 1)
@@ -19,16 +20,22 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_vc7cw")
 
 [node name="LionMan" type="Sprite2D" parent="."]
-position = Vector2(508.302, 365.08)
+position = Vector2(438, 360)
 scale = Vector2(0.889136, 0.889136)
 texture = ExtResource("1_7h1b7")
 
 [node name="Lookin" type="Sprite2D" parent="."]
-position = Vector2(733, 509)
+position = Vector2(743, 506)
 scale = Vector2(0.72, 0.72)
 texture = ExtResource("2_n30kw")
 
+[node name="MechanicPlaceholder" type="Sprite2D" parent="."]
+position = Vector2(1033, 151)
+scale = Vector2(0.68, 0.68)
+texture = ExtResource("4_halrg")
+
 [node name="Label" type="Label" parent="."]
+visible = false
 offset_left = 355.0
 offset_top = 45.0
 offset_right = 1146.0
@@ -40,6 +47,41 @@ text = "The kingdom is under attack!
 You received major injuries defending your village but luckily we were able to reconstruct your face with cybernetics.
 
 The king has chosen you for your valiant bravery and has sent you on a mission to contact the neighbouring kingdoms and convince them to help us defend against the invaiding forces."
+autowrap_mode = 2
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 256.0
+offset_top = 69.0
+offset_right = 947.0
+offset_bottom = 276.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 23
+text = "The kingdom is under attack!
+You received major injuries in combat with an unknown foe. Your armour was shattered and your face badly injured. Luckily our trusty mechanic was able to reconstruct your face with cybernetics.
+
+"
+autowrap_mode = 2
+
+[node name="Label3" type="Label" parent="."]
+offset_left = 302.0
+offset_top = 248.0
+offset_right = 993.0
+offset_bottom = 455.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 23
+text = "It is suspected that this was just a scouting party and only a fraction of what is to come.
+
+"
+autowrap_mode = 2
+
+[node name="Label4" type="Label" parent="."]
+offset_left = 403.0
+offset_top = 343.0
+offset_right = 865.0
+offset_bottom = 585.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 23
+text = "The king estimates that we have 100 days before the invading forces reach the kingdom and has chosen you to embark on a mission to contact the neighbouring kingdoms and convince them to help us defend against the unknown forces."
 autowrap_mode = 2
 
 [node name="Button" type="Button" parent="."]

@@ -15,15 +15,17 @@ func _process(_delta):
 
 func _on_area_1_pressed():
 	if (game_manager.area1_visited == false):
-		game_manager.load_area1()
+		game_manager.load_scene(game_manager.area1_instance)
+		
+		game_manager.start_timer()
 		queue_free()
 
 func _on_area_2_pressed():
 	if (game_manager.area2_visited == false):
-		game_manager.load_area2()
+		game_manager.load_scene(game_manager.area2_instance)
 		queue_free()
 
 func _on_area_3_pressed():
 	if (game_manager.area3_visited == false):
-		game_manager.load_area3()
+		game_manager.load_scene(game_manager.area3_instance)
 		queue_free()
