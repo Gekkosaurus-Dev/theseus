@@ -5,6 +5,8 @@ var game_manager
 var cybernetics_percentage_worth_base
 var cybernetics_percentage_worth_weighted
 
+var rest_amount = 0
+
 func get_game_manager():
 	game_manager =  get_tree().root.get_child(0)
 
@@ -13,18 +15,18 @@ func _ready():
 	cybernetics_percentage_worth_base = game_manager.cybernetics_percentage_worth/2
 	var damage_amount = game_manager.damage_taken_amount
 	var report
-	if (damage_amount == -1):
-		report = "Your armour was shattered and you took some major damage. We needed to operate to save your life."
-	elif ( damage_amount <= 0):
+	if ( damage_amount > 100):
 		report = "Your armour sustained some damage but you didn't take any hits yourself."
 		cybernetics_percentage_worth_weighted = (cybernetics_percentage_worth_base*0)
-	elif (damage_amount < 5):
+	elif (damage_amount > 70):
 		report = "Your armour was damaged and you took a few hits. You should be fine to set out in the morning though."
 		cybernetics_percentage_worth_weighted = (cybernetics_percentage_worth_base*0)
-	elif (damage_amount > 5):
+		rest_amount = 1
+	elif (damage_amount >= 40):
 		report = "Your armour broke and you have taken some major damage. We'll either need to replace the limb or it will take a few weeks to heal."
 		cybernetics_percentage_worth_weighted = (cybernetics_percentage_worth_base*1)
-	elif (damage_amount > 10):
+		rest_amount = 14
+	elif (damage_amount < 40):
 		report = "Your armour was destroyed and you've sustained some life-threatening damage. We need to operate immediately."
 		cybernetics_percentage_worth_weighted = (cybernetics_percentage_worth_base*2)
 	$CanvasLayer/Label2.text = ("Medic's Report:\n" + report)
@@ -46,6 +48,6 @@ func _on_mechanic_pressed():
 	queue_free()
 
 func _on_heal_pressed():
-	game_manager.days_left = game_manager.days_left - 7
+	game_manager.days_left = game_manager.days_left - rest_amount
 	game_manager.load_map_select()
 	queue_free()

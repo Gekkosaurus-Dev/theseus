@@ -103,11 +103,13 @@ func tutorial_finished(from):
 	$UI.set_level_UI_visibility(false)
 
 
-func load_medic_report(damage_amount):
-	damage_taken_amount = damage_amount
+func load_medic_report(player_health):
+	damage_taken_amount = player_health
 	var medic_report = medic_report_instance.instantiate()
 	add_child(medic_report)
 	$UI.set_level_UI_visibility(false)
+	$Timer.stop()
+	
 
 func load_map_select():
 	var map = map_instance.instantiate()
@@ -117,9 +119,11 @@ func load_map_select():
 	$UI.set_soul_visibility(true)
 	$UI.update_day_counter()
 	$UI.update_soul()
+	$UI.set_number_hits(100) 
 
 func start_timer():
 	$Timer.start()
+	
 
 func _on_timer_timeout():
 	days_left = days_left - 1

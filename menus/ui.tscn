@@ -46,6 +46,7 @@ offset_right = 1148.0
 offset_bottom = 231.0
 fill_mode = 3
 texture_progress = ExtResource("2_716hd")
+tint_progress = Color(0.811765, 0.811765, 0.811765, 1)
 
 [node name="TimerBottom" type="TextureProgressBar" parent="DayCounterUI/TimerTop"]
 layout_mode = 0
@@ -54,6 +55,7 @@ offset_bottom = 40.0
 fill_mode = 3
 texture_over = ExtResource("3_nyejh")
 texture_progress = ExtResource("4_7xpkh")
+tint_progress = Color(0.811765, 0.811765, 0.811765, 1)
 
 [node name="InLevelUI" type="Control" parent="."]
 layout_mode = 3
