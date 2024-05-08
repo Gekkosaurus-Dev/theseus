@@ -1,28 +1,39 @@
 extends Node2D
 
-var main_menu_instance = preload("res://menus/main_menu.tscn")
-var options_menu_instance = preload("res://menus/options.tscn")
-var test_area_instance = preload("res://levels/top_down.tscn")
-var intro_cutscene_instance = preload("res://cutscenes/intro_cutscene.tscn")
-var pause_screen_instance = preload("res://menus/pause.tscn")
-var medic_report_instance = preload("res://menus/medic_report.tscn")
-var another_cutscene_instance = preload("res://cutscenes/placeholders/another_cutscene.tscn")
+#region scene declarations
+#region menu related
+const main_menu_instance = preload("res://menus/main_menu.tscn")
+const options_menu_instance = preload("res://menus/options.tscn")
+const pause_screen_instance = preload("res://menus/pause.tscn")
+#endregion
 
-var map_instance = preload("res://menus/map_select.tscn")
+#region levels
+const test_area_instance = preload("res://levels/top_down.tscn")
+const area1_instance = preload("res://levels/area1.tscn")
+const area2_instance = preload("res://levels/area1.tscn")
+const area3_instance = preload("res://levels/area1.tscn")
+const tutorial_instance = preload("res://levels/tutorial.tscn")
+#const area1_instance = preload("res://levels/area1.tscn")
+#const area2_instance = preload("res://levels/area2.tscn")
+#const area3_instance = preload("res://levels/area3.tscn")
+#endregion
 
-var area1_instance = preload("res://levels/area1.tscn")
-var area2_instance = preload("res://levels/area1.tscn")
-var area3_instance = preload("res://levels/area1.tscn")
-#
-#var area1_instance = preload("res://levels/area1.tscn")
-#var area2_instance = preload("res://levels/area2.tscn")
-#var area3_instance = preload("res://levels/area3.tscn")
+#region other areas
+const medic_report_instance = preload("res://menus/medic_report.tscn")
+const map_instance = preload("res://menus/map_select.tscn")
+#endregion
 
-var tutorial_instance = preload("res://levels/tutorial.tscn")
+#region cutscenes
+const intro_cutscene_instance = preload("res://cutscenes/intro_cutscene.tscn")
+const another_cutscene_instance = preload("res://cutscenes/placeholders/another_cutscene.tscn")
+#endregion
 
-var fade_instance = preload("res://cutscenes/transition_fade.tscn")
+#region UI related
+const fade_instance = preload("res://cutscenes/transition_fade.tscn")
+const UI_instance = preload("res://menus/ui.tscn")
+#endregion
 
-var damage_taken_amount
+#endregion
 
 enum GameStates {MAIN_MENU, MENU, GAMEPLAY, CUTSCENE}
 var game_state
@@ -30,16 +41,29 @@ var game_state
 enum GameInputs {CONTROLLER, KEYBOARD_MOUSE}
 var game_input
 
-var area1_visited = false
-var area2_visited = false
-var area3_visited = false
-#change_scene_to_file()
-
-var max_days_left = 100
+#variables which are used throughout the game and need to be reset upon game reset
+@export var max_days_left: int
+@export var starting_soul_percent: float
+@export var number_of_levels: int
+@export var starting_gold: int
 var days_left
-var number_of_levels = 3
+var soul_percent
 var cybernetics_percentage_worth
-var soul_percent = 90 #starts at a small amount lost becasue of the robot face
+var gold
+var visited_areas: Array
+
+var UI: CanvasLayer
+var current_game_scene: Node2D
+
+var damage_taken_amount
+
+#resets all game values 
+func clear_game_values():
+	days_left = max_days_left
+	soul_percent = starting_soul_percent
+	cybernetics_percentage_worth = 100/number_of_levels
+	gold = starting_gold
+	visited_areas.clear()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -51,13 +75,13 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	if (Input.is_action_just_pressed("pause") and (game_state == GameStates.GAMEPLAY)):
-		#load_pause_screen()
-		pass
-	else:
-		pass
+	pass
 
 func _input(event):
+	#handle pause
+	if event.is_action_pressed("pause") and (game_state == GameStates.GAMEPLAY):
+		pause_game()
+	#detect input
 	if (event is InputEventJoypadButton):
 	#if ((event is InputEventJoypadButton) or (event is InputEventJoypadMotion)):
 		if (game_input !=GameInputs.CONTROLLER):
@@ -67,18 +91,20 @@ func _input(event):
 		if (game_input !=GameInputs.KEYBOARD_MOUSE):
 			print("keyboard/mouse detected")
 			game_input = GameInputs.KEYBOARD_MOUSE
-
-func clear_game_values():
-	days_left = max_days_left
-	cybernetics_percentage_worth = 100/number_of_levels
+	
+func pause_game():
+	#load_pause_screen()
+	pass
 	
 #clears values and starts game from tutorial
 func start_game(menu):
 	clear_game_values()
-	fade_to(menu,tutorial_instance)
 	game_state = GameStates.GAMEPLAY
-
+	current_game_scene = await fade_to(menu,tutorial_instance)
+	#fade_to(menu,tutorial_instance)
+	
 #loads the fade transition and waits for the screen to be black before loading the next bit
+#also returns the scene incase we want to use it
 func fade_to(from,to):
 	#saves the game state that we want the game to be after the fade
 	#and then sets the current state to be a cutscene so you cant pause during the fade
@@ -89,14 +115,17 @@ func fade_to(from,to):
 	add_child(fade)
 	await fade.screen_black
 	from.queue_free()
-	load_scene(to)
+	var new_scene = (load_scene(to))
 	#sets the game state back to what we want it to be once the scene is loaded
 	game_state = cur_game_state
+	return (new_scene)
 
 #reusable code to load the scene we want
-func load_scene(scene):
-	var scene_instance = scene.instantiate()
-	add_child(scene_instance)
+#also returns the scene incase we want to use it
+func load_scene(scene_path):
+	var scene = scene_path.instantiate()
+	add_child(scene)
+	return (scene)
 
 func tutorial_finished(from):
 	fade_to(from,another_cutscene_instance)

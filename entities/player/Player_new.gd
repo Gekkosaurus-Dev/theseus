@@ -188,6 +188,9 @@ func damage_taken():
 		if (player_health < 0):
 			$"..".player_died()
 			player_state = PlayerStates.DEAD
+			can_attack = false
+			can_dash = false
+			can_move = false
 			animation_player.play("death")
 		
 	health_component.invincible = true
