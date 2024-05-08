@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://bpp2yno1b40mt"]
+[gd_scene load_steps=9 format=3 uid="uid://bpp2yno1b40mt"]
 
 [ext_resource type="Script" path="res://menus/UI.gd" id="1_4yscg"]
 [ext_resource type="Texture2D" uid="uid://cfj4mef1krbl0" path="res://menus/bars/timer_top.png" id="2_716hd"]
 [ext_resource type="Texture2D" uid="uid://bcyybgmun2kji" path="res://entities/player/health_temp/000.png" id="2_lrfa3"]
 [ext_resource type="Texture2D" uid="uid://dyruq4j5gjxvp" path="res://menus/bar.png" id="3_3mxl1"]
 [ext_resource type="Texture2D" uid="uid://cvqc0o54la8kc" path="res://menus/bars/timer_over.png" id="3_nyejh"]
+[ext_resource type="Texture2D" uid="uid://ce78d1aoo1vvc" path="res://menus/bars/timer_under.png" id="3_vwys6"]
 [ext_resource type="Texture2D" uid="uid://cdndbnysjpcy0" path="res://menus/bars/timer_bottom.png" id="4_7xpkh"]
 [ext_resource type="Texture2D" uid="uid://lbwsx0krlvxw" path="res://menus/cirlce.png" id="4_flg3n"]
 
@@ -44,6 +45,7 @@ offset_left = 948.0
 offset_top = 31.0
 offset_right = 1148.0
 offset_bottom = 231.0
+value = 100.0
 fill_mode = 3
 texture_progress = ExtResource("2_716hd")
 tint_progress = Color(0.811765, 0.811765, 0.811765, 1)
@@ -53,8 +55,10 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 fill_mode = 3
+texture_under = ExtResource("3_vwys6")
 texture_over = ExtResource("3_nyejh")
 texture_progress = ExtResource("4_7xpkh")
+tint_under = Color(0.811765, 0.811765, 0.811765, 1)
 tint_progress = Color(0.811765, 0.811765, 0.811765, 1)
 
 [node name="InLevelUI" type="Control" parent="."]

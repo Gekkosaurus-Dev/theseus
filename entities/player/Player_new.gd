@@ -49,7 +49,7 @@ var armour_broken = false
 var hits_taken = 0 #specifically unprotected hits taken
 
 
-enum PlayerStates {ATTACKING, DASHING, OTHER}
+enum PlayerStates {ATTACKING, DASHING, DEAD, OTHER}
 var player_state
 
 enum PlayerHealthStates {NO_HITS, ARMOUR_DAMAGED, ARMOUR_BROKEN, MINOR_INJURY, MAJOR_INJURY, EXTREME_INJURY}
@@ -115,6 +115,7 @@ func get_input():
 			if input_direction: #if player holding down a movement key
 				animation_player.play("run")
 				velocity = input_direction * max_speed
+				velocity.y = (velocity.y * 0.85) #half the veloctiy because isometric
 			else:
 				animation_player.play("idle")
 				velocity.y = move_toward(velocity.y, 0, max_speed)
@@ -186,6 +187,8 @@ func damage_taken():
 		UI.set_number_hits(player_health)
 		if (player_health < 0):
 			$"..".player_died()
+			player_state = PlayerStates.DEAD
+			animation_player.play("death")
 		
 	health_component.invincible = true
 	play_damage_animation() #at the end of this, .invincible is set back to false
