@@ -1,3 +1,53 @@
 join medic 1
-medic (default): test
+set {player_health} = 10
+if {player_health} == 200:
+	medic: Looks like you didn’t take any hits at all!
+	medic: There’s nothing that we need to do here. Rest up so you are ready to set out tomorrow.
+	- Rest until tomorrow
+elif {player_health} > 100:
+	medic: You took a few hits out there, but your armour held together. 
+	We’ll get the mechanic to repair it while you rest up so you’re ready to set out again tomorrow.
+	join mechanic 3
+	mechanic: I’ll fix up your armour for you.
+	- Rest until tomorrow
+elif {player_health} == 100:
+	medic: Your armour broke out there but thankfully you didn’t take any other hits.
+	medic: Our trusty mechanic will be able to fix it up for tomorrow so that you’re ready to set out again.
+	join mechanic 3
+	mechanic: I'll take that off your hands.
+	- Rest until tomorrow
+elif {player_health} > 90:
+	medic: Your armour broke out there and you took a few unprotected hits. 
+	medic: You’re a bit bruised but with a day or so of rest you should be back to full health. 
+	medic: Alternatively, you could just set out in the morning, but you wont be 100%.
+	- Rest for a few days
+	- Set out tomorrow morning
+elif {player_health} > 70:
+	if :
+	medic: Your armour was broken and you've taken a few bad hits.
+	medic: You've got a pretty nasty wound there, but you should be okay after a week of rest. 
+	join mechanic 3
+	mechanic: Alternatively, we could just amputate the limb and replace it with a shiny robotic one. 
+	mechanic: You'd be ready to go by tomorrow morning. It'd be stronger too.
+	- Rest for a week
+		medic: Good choice.
+	- Replace limb with robotics
+		mechanic: Let's get started.
+elif {player_health} > 50:
+elif {player_health} > 20:
+elif {player_health} > 0:
+	medic: You made it! 
+	medic: You're in pretty bad shape, I'm suprised you're still conscious.
+	medic: You probably wont be conscious for much longer though, and it's going to take quite awhile for you to recover.
+	join mechanic 3
+	mechanic: Alternatively, we could speed up your recovery tenfold if we just replace all your injuries with cybernetics.
+	- Rest for 5 weeks
+	- Repair with cybernetics
+else:
+	medic: You passed out back there. Are you alright?
+	medic: Luckily we were able to reach you in time.
+	join mechanic 3
+	mechanic: We had to operate to save your life.
+	mechanic: Hopefully you don't miss what you've lost. You've got shiny new robotic parts now!
+	- Rest until tomorrow
 [end_timeline]

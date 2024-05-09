@@ -30,6 +30,12 @@ directories/dch_directory={
 directories/dtl_directory={
 "medic_report": "res://dialogic/characters/medic_report.dtl"
 }
+variables={
+"player_health": ""
+}
+layout/style_list=[]
+layout/default_style="Default"
+glossary/default_case_sensitive=true
 
 [editor_plugins]
 

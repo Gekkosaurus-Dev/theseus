@@ -4,7 +4,7 @@ var game_manager
 @export var player: CharacterBody2D
 
 func get_game_manager():
-	game_manager =  get_tree().root.get_child(0)
+	game_manager =  get_tree().root.get_child(1)
 
 func _ready():
 	get_game_manager()

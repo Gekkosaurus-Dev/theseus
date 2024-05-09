@@ -8,7 +8,7 @@ var cybernetics_percentage_worth_weighted
 var rest_amount = 0
 
 func get_game_manager():
-	game_manager =  get_tree().root.get_child(0)
+	game_manager =  get_tree().root.get_child(1)
 
 func _ready():
 	get_game_manager()

@@ -46,11 +46,13 @@ var game_input
 @export var starting_soul_percent: float
 @export var number_of_levels: int
 @export var starting_gold: int
+@export var starting_max_armour_health: int
 var days_left
 var soul_percent
 var cybernetics_percentage_worth
 var gold
 var visited_areas: Array
+var max_armour_health #could be altered over the course of the game if armour upgraded
 
 var UI: CanvasLayer
 var current_game_scene: Node2D
@@ -63,6 +65,7 @@ func clear_game_values():
 	soul_percent = starting_soul_percent
 	cybernetics_percentage_worth = 100/number_of_levels
 	gold = starting_gold
+	max_armour_health = starting_max_armour_health
 	visited_areas.clear()
 
 # Called when the node enters the scene tree for the first time.
@@ -99,8 +102,10 @@ func pause_game():
 #clears values and starts game from tutorial
 func start_game(menu):
 	clear_game_values()
+	UI = load_scene(UI_instance)
 	game_state = GameStates.GAMEPLAY
 	current_game_scene = await fade_to(menu,tutorial_instance)
+	
 	#fade_to(menu,tutorial_instance)
 	
 #loads the fade transition and waits for the screen to be black before loading the next bit

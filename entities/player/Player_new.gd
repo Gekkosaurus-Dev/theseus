@@ -30,8 +30,8 @@ var dash_direction
 var UI
 
 
-var armour_max_health
-var player_max_health = 100
+var armour_max_health: int #retrieved from game_manager
+const player_max_health = 100
 
 var player_health = 100
 
@@ -56,17 +56,20 @@ enum PlayerHealthStates {NO_HITS, ARMOUR_DAMAGED, ARMOUR_BROKEN, MINOR_INJURY, M
 var player_health_state
 
 func get_game_manager():
-	game_manager =  get_tree().root.get_child(0)
+	game_manager =  get_tree().root.get_child(1)
 
 func _ready():
 	player_state = PlayerStates.OTHER
 	player_health_state = PlayerHealthStates.NO_HITS
 	get_game_manager()
-	UI = game_manager.get_child(0)
-	print(UI)
+	get_game_manager_values()
+	UI = game_manager.UI
 	armour_max_health = health_component.max_health
 	UI.setup_armour_bar(armour_max_health)
 	UI.set_level_UI_visibility(true)
+	
+func get_game_manager_values():
+	pass
 	
 func _physics_process(_delta):
 	get_input()

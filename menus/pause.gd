@@ -4,7 +4,7 @@ extends CanvasLayer
 
 var game_manager
 func get_game_manager():
-	game_manager =  get_tree().root.get_child(0)
+	game_manager =  get_tree().root.get_child(1)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

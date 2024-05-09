@@ -9,7 +9,7 @@ var armour_3 = preload("res://entities/player/health_temp/003.png")
 var no_armour_txt = preload("res://entities/player/health_temp/004.png")
 
 func get_game_manager():
-	game_manager =  get_tree().root.get_child(0)
+	game_manager =  get_tree().root.get_child(1)
 
 func _ready():
 	get_game_manager()
