@@ -57,7 +57,8 @@ var max_armour_health #could be altered over the course of the game if armour up
 var UI: CanvasLayer
 var current_game_scene: Node2D
 
-var damage_taken_amount
+var player_overall_health
+var player_starting_health = 100
 
 #resets all game values 
 func clear_game_values():
@@ -70,6 +71,7 @@ func clear_game_values():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	
 	clear_game_values()
 	load_scene(main_menu_instance)	
 	game_state = GameStates.MAIN_MENU
@@ -137,10 +139,11 @@ func tutorial_finished(from):
 	$UI.set_level_UI_visibility(false)
 
 
-func load_medic_report(player_health):
-	damage_taken_amount = player_health
-	var medic_report = medic_report_instance.instantiate()
-	add_child(medic_report)
+func load_medic_report(health,from):
+	player_overall_health = health
+	#var medic_report = medic_report_instance.instantiate()
+	fade_to(from, medic_report_instance)
+	#add_child(medic_report)
 	$UI.set_level_UI_visibility(false)
 	$Timer.stop()
 	
@@ -153,7 +156,7 @@ func load_map_select():
 	$UI.set_soul_visibility(true)
 	$UI.update_day_counter()
 	$UI.update_soul()
-	$UI.set_number_hits(100) 
+	 
 
 func start_timer():
 	$Timer.start()

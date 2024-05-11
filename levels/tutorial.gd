@@ -10,9 +10,14 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if Input.is_action_just_pressed("skip"):
+		end_level()
 	pass
 
 func player_died():
+	end_level()
+
+func end_level():
 	Engine.time_scale = 0.1
 	$Timer.start()
 	game_manager.tutorial_finished(self)

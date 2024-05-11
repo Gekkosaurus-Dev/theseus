@@ -17,16 +17,12 @@ func _process(_delta):
 func _on_area_2d_area_entered(area):
 	var object_type = area.owner.get_groups()
 	if (object_type.has("player")):
+		var total_health = player.get_total_health()
+		game_manager.load_medic_report(total_health,self)
 		#print("AAAAAAAAAAA")
-		#var damage_amount = player.get_damage_taken_amount()
-		
-		#print("damadmad" + str(damage_amount))
-		if !(player.armour_broken):
-			game_manager.load_medic_report(200)
-		else:
-			game_manager.load_medic_report(player.player_health)
-		queue_free()
+		#var damage_amount = player.get_damage_taken_amount(
+		#queue_free()
 
 func player_died():
-	game_manager.load_medic_report(0)
-	queue_free()
+	game_manager.load_medic_report(0,self)
+	

@@ -115,7 +115,7 @@ offset_bottom = 47.0
 value = 100.0
 texture_under = ExtResource("3_3mxl1")
 texture_progress = ExtResource("3_3mxl1")
-tint_progress = Color(0, 0.482353, 0.486275, 1)
+tint_progress = Color(0, 0.443137, 0.486275, 1)
 
 [node name="PlayerHealthBar" type="TextureProgressBar" parent="InLevelUI"]
 layout_mode = 0

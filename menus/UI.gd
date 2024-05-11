@@ -48,30 +48,51 @@ func update_day_counter():
 func update_soul():
 	$SoulUI/SoulBar.value = game_manager.soul_percent
 	
-func setup_armour_bar(max_health):
-	$InLevelUI/ArmourHealthBar.max_value = max_health
-	$InLevelUI/ArmourHealthBar.value = max_health
-	#$InLevelUI/ArmourHealthBar/ArmourHealthLabel.text = "Armour: 100%"
-	#$InLevelUI/UnprotectedHitsLabel.text = ""
+func set_armour_max(max):
+	$InLevelUI/ArmourHealthBar.max_value = max
+
+func set_health_max(max):
+	$InLevelUI/PlayerHealthBar.max_value = max
+
+func reset_health():
+	$InLevelUI/PlayerHealthBar.value = $InLevelUI/PlayerHealthBar.max_value
 	
-func set_armour_bar(health, max_health):
-	#print(health)
-	#print(max_health)
-	var armour_percent = (health*100)/max_health
-	#print(str(health) + "/" + str(max_health) + "*100 =" +str(armour_percent))
-	$InLevelUI/ArmourHealthBar.value = health
-	#$InLevelUI/ArmourHealthBar/ArmourHealthLabel.text = "Armour: " + str(armour_percent) + "%"
-	if (health >= 100):
+func reset_armour():
+	$InLevelUI/ArmourHealthBar.value = $InLevelUI/ArmourHealthBar.max_value
+	
+func set_health(value):
+	$InLevelUI/PlayerHealthBar.value = value
+	
+func set_armour(value):
+	$InLevelUI/ArmourHealthBar.value = value
+	
+	if (value >= 100):
 		$InLevelUI/Face.texture = (full_health_txt)
-	elif (health < 100) and (health > 50):
+	elif (value < 100) and (value > 50):
 		$InLevelUI/Face.texture = (armour_1)
-	elif (health <= 50) and (health > 25):
+	elif (value <= 50) and (value > 25):
 		$InLevelUI/Face.texture = (armour_2)
-	elif (health <= 25) and (health > 0):
+	elif (value <= 25) and (value > 0):
 		$InLevelUI/Face.texture = (armour_3)
 	else:
 		$InLevelUI/Face.texture = (no_armour_txt)
 	
-func set_number_hits(value):
-	$InLevelUI/PlayerHealthBar.value = value
-	#$InLevelUI/UnprotectedHitsLabel.text = "Unprotected hits taken: " + str(value)
+	#
+#func setup_armour_bar(max_health):
+	#$InLevelUI/ArmourHealthBar.max_value = max_health
+	#$InLevelUI/ArmourHealthBar.value = max_health
+	##$InLevelUI/ArmourHealthBar/ArmourHealthLabel.text = "Armour: 100%"
+	##$InLevelUI/UnprotectedHitsLabel.text = ""
+	#
+#func set_armour_bar(health, max_health):
+	##print(health)
+	##print(max_health)
+	#var armour_percent = (health*100)/max_health
+	##print(str(health) + "/" + str(max_health) + "*100 =" +str(armour_percent))
+	#$InLevelUI/ArmourHealthBar.value = health
+	##$InLevelUI/ArmourHealthBar/ArmourHealthLabel.text = "Armour: " + str(armour_percent) + "%"
+	#
+	#
+#func set_number_hits(value):
+	#$InLevelUI/PlayerHealthBar.value = value
+	##$InLevelUI/UnprotectedHitsLabel.text = "Unprotected hits taken: " + str(value)

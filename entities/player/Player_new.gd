@@ -30,12 +30,10 @@ var dash_direction
 var UI
 
 
-var armour_max_health: int #retrieved from game_manager
+var max_armour_health: int #retrieved from game_manager
+var player_starting_health: int #retrieved from game_manager
 const player_max_health = 100
 
-var player_health = 100
-
-var armour_broken = false
 
 @export var attack_move_cooldown: Timer
 @export var attack_cooldown: Timer
@@ -48,6 +46,9 @@ var armour_broken = false
 
 var hits_taken = 0 #specifically unprotected hits taken
 
+#used by enemies to find where to go for
+func get_target_position():
+	return enemy_target.global_position
 
 enum PlayerStates {ATTACKING, DASHING, DEAD, OTHER}
 var player_state
@@ -63,13 +64,20 @@ func _ready():
 	player_health_state = PlayerHealthStates.NO_HITS
 	get_game_manager()
 	get_game_manager_values()
+	setup_UI_bars()
+
+
+func setup_UI_bars():
 	UI = game_manager.UI
-	armour_max_health = health_component.max_health
-	UI.setup_armour_bar(armour_max_health)
-	UI.set_level_UI_visibility(true)
+	UI.set_armour_max(max_armour_health)
+	UI.set_health_max(player_max_health)
+	UI.set_level_UI_visibility(true)	
+	UI.reset_health()
+	UI.reset_armour()
 	
 func get_game_manager_values():
-	pass
+	max_armour_health = game_manager.max_armour_health
+	player_starting_health = game_manager.player_starting_health
 	
 func _physics_process(_delta):
 	get_input()
@@ -77,10 +85,7 @@ func _physics_process(_delta):
 	get_attack_direction()
 	
 	move_and_slide()
-	
-#returns the position for an enemy
-func get_target_position():
-	return enemy_target.global_position
+
 	
 func get_attack_direction():
 	if (game_manager.game_input == game_manager.GameInputs.KEYBOARD_MOUSE):
@@ -176,25 +181,16 @@ func try_dash():
 		set_collision_mask_value(4,false)
 
 func damage_taken():
-	if (!armour_broken):
-		if health_component.health > 0:
-			UI.set_armour_bar(health_component.health, armour_max_health)
-		else:
-			armour_broken = true
-			health_component.health = 100
-			UI.set_armour_bar(0, armour_max_health)
-	else:
-		player_health = health_component.health
-		#hits_taken = hits_taken + 1
-		print(player_health)
-		UI.set_number_hits(player_health)
-		if (player_health < 0):
-			$"..".player_died()
-			player_state = PlayerStates.DEAD
-			can_attack = false
-			can_dash = false
-			can_move = false
-			animation_player.play("death")
+	UI.set_armour(health_component.armour_health)
+	UI.set_health(health_component.health)
+	
+	if (health_component.health < 0):
+		$"..".player_died()
+		player_state = PlayerStates.DEAD
+		can_attack = false
+		can_dash = false
+		can_move = false
+		animation_player.play("death")
 		
 	health_component.invincible = true
 	play_damage_animation() #at the end of this, .invincible is set back to false
@@ -215,12 +211,12 @@ func play_damage_animation():
 	await get_tree().create_timer(0.5).timeout
 	health_component.invincible = false
 
-func get_damage_taken_amount():
-	#print ("returning " + str(damage_manager.damage_amount))
-	#return damage_manager.damage_amount
-	pass
+func get_total_health():
+	var total_health = health_component.get_total_health()
+	print("player returned returned" + str(total_health))
+	return total_health
 
-#-----timers-----#
+#region timers
 func _on_attack_move_timeout():
 	attack_dashing = false
 	can_move = false
@@ -251,3 +247,4 @@ func _on_animation_player_animation_finished(anim_name):
 		set_collision_mask_value(2,true)
 		health_component.invincible = false
 		
+#endregion

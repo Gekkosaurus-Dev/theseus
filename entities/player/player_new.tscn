@@ -994,6 +994,7 @@ shape = SubResource("CapsuleShape2D_0x4kl")
 debug_color = Color(1, 0, 0, 0.419608)
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_xy7er")]
+max_armour_health = 100
 max_health = 100
 
 [node name="DirectionPointer" type="Sprite2D" parent="."]
