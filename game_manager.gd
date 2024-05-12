@@ -35,7 +35,7 @@ const UI_instance = preload("res://menus/ui.tscn")
 
 #endregion
 
-enum GameStates {MAIN_MENU, MENU, GAMEPLAY, CUTSCENE}
+enum GameStates {MAIN_MENU, MENU, GAMEPLAY, NON_LEVEL_GAMEPLAY, CUTSCENE}
 var game_state
 
 enum GameInputs {CONTROLLER, KEYBOARD_MOUSE}
@@ -105,17 +105,14 @@ func pause_game():
 func start_game(menu):
 	clear_game_values()
 	UI = load_scene(UI_instance)
-	game_state = GameStates.GAMEPLAY
-	current_game_scene = await fade_to(menu,tutorial_instance)
+	current_game_scene = await fade_to(menu,tutorial_instance,GameStates.GAMEPLAY)
 	
 	#fade_to(menu,tutorial_instance)
 	
 #loads the fade transition and waits for the screen to be black before loading the next bit
 #also returns the scene incase we want to use it
-func fade_to(from,to):
-	#saves the game state that we want the game to be after the fade
+func fade_to(from,to,state):
 	#and then sets the current state to be a cutscene so you cant pause during the fade
-	var cur_game_state = game_state
 	game_state = GameStates.CUTSCENE
 	#loads the fade to black scene and then waits for the black to cover the screen before loading the next scene
 	var fade = fade_instance.instantiate()	
@@ -124,7 +121,7 @@ func fade_to(from,to):
 	from.queue_free()
 	var new_scene = (load_scene(to))
 	#sets the game state back to what we want it to be once the scene is loaded
-	game_state = cur_game_state
+	game_state = state
 	return (new_scene)
 
 #reusable code to load the scene we want
@@ -135,23 +132,21 @@ func load_scene(scene_path):
 	return (scene)
 
 func tutorial_finished(from):
-	fade_to(from,another_cutscene_instance)
+	fade_to(from,another_cutscene_instance,GameStates.CUTSCENE)
 	$UI.set_level_UI_visibility(false)
 
 
 func load_medic_report(health,from):
 	player_overall_health = health
 	#var medic_report = medic_report_instance.instantiate()
-	fade_to(from, medic_report_instance)
+	fade_to(from, medic_report_instance,GameStates.NON_LEVEL_GAMEPLAY)
 	#add_child(medic_report)
 	$UI.set_level_UI_visibility(false)
 	$Timer.stop()
 	
 
-func load_map_select():
-	var map = map_instance.instantiate()
-	add_child(map)
-	game_state = GameStates.GAMEPLAY
+func load_map_select(from):
+	fade_to(from, map_instance, GameStates.NON_LEVEL_GAMEPLAY)
 	$UI.set_day_counter_visibility(true)
 	$UI.set_soul_visibility(true)
 	$UI.update_day_counter()

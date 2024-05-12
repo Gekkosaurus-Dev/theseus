@@ -1,0 +1,63 @@
+[background arg="res://cutscenes/placeholders/000.png" fade="2.0"]
+[wait time="2.0"]
+[background arg="res://cutscenes/placeholders/001.png" fade="2.0"]
+[wait time="2.0"]
+[background arg="res://cutscenes/placeholders/002.png" fade="2.0"]
+[wait time="2.0"]
+[background arg="res://cutscenes/placeholders/Field Hospital.png" fade="1.5"]
+[wait time="1.5"]
+join medic 1
+medic: You're awake!
+medic: You passed out back there. You took a lot of damage in that fight.
+medic: Your face took some pretty bad hits as well and we...
+join mechanic 3
+mechanic: We saved it. Well, reconstructed it.
+mechanic: You'll... Have to see for yourself.
+leave medic [animation="Slide Out Left"]
+leave mechanic [animation="Slide Out Right"]
+[background fade="1.0"]
+join player 1
+player: ...
+[background arg="res://cutscenes/placeholders/Field Hospital.png" fade="1.0"]
+leave player
+join medic 1 [animation="Slide In Left"]
+join mechanic 3 [animation="Slide In Right"]
+medic: The king wants to see you.
+mechanic: It seems there is more to that attack than it first seems.
+- Talk to the king
+leave medic [animation="Slide Out Left"]
+leave mechanic [animation="Slide Out Right" wait="true"]
+[background fade="0.5"]
+join king 1
+join player 2
+king: Hey. Glad you could make it. Your bravery out there was most appreciated. I'm glad you survived.
+king: Or rather, most of you did.
+label Please repeat
+king: Those creatures... The enemy you fought... I believe they are the first of many. We are under attack, -but not imminently. Thankfully, I estimate we will have 100 days to prepare before we are in any serious danger.
+king: As such, I need you to go and bring this news to our neighbouring kingdoms. I need you to convince them to help us defend against this oncoming threat.
+king: After you have spoken to all of them, or alternatively, if you are delayed and 100 days have already passed, I need to you return here as soon as possible to assist us against this great threat.
+king: Do you understand what I am asking you to do?
+- Yes
+	jump i understand
+- No, please repeat
+	jump Please repeat
+label i understand
+king: Thank you. You best be on your way then.
+leave --All-- [animation="Slide Out Down" wait="true"]
+join mechanic 2
+mechanic: Hey, one more thing.
+update mechanic 1 [ move_time="0.5"]
+join item (sword) 2
+mechanic: I repaired your sword as well. It got shattered during the fight.
+mechanic: Had to forge a completeley new blade for you. The remnants of the old one weren't even worth melting down to try and reforge it. 
+mechanic: Poor quality materials.
+mechanic: I wasn't too pleased with the handle that you had either. The thing was so dented that I don't know how you've never lost any fingers. I figured we might as well replace all of that too. 
+mechanic: There ain't too many ways you can go wrong with a pommel though. That one is the same old trusty pommel.
+join player 2
+player: ...
+mechanic: What? It's still the same sword! I just replaced all the parts. Or, well, almost all the parts. The pommel is still the same.
+player: ...
+mechanic: Come on. We'd better set out.
+[signal arg="intro_cutscene_end"]
+leave --All-- [animation="Fade Out Down" wait="true"]
+[end_timeline]

@@ -12,6 +12,7 @@ bg_color = Color(1, 1, 1, 1)
 script = ExtResource("1_pt2t7")
 
 [node name="Panel" type="Panel" parent="."]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -20,16 +21,19 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_vc7cw")
 
 [node name="LionMan" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(438, 360)
 scale = Vector2(0.889136, 0.889136)
 texture = ExtResource("1_7h1b7")
 
 [node name="Lookin" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(743, 506)
 scale = Vector2(0.72, 0.72)
 texture = ExtResource("2_n30kw")
 
 [node name="MechanicPlaceholder" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(1033, 151)
 scale = Vector2(0.68, 0.68)
 texture = ExtResource("4_halrg")
@@ -50,6 +54,7 @@ The king has chosen you for your valiant bravery and has sent you on a mission t
 autowrap_mode = 2
 
 [node name="Label2" type="Label" parent="."]
+visible = false
 offset_left = 256.0
 offset_top = 69.0
 offset_right = 947.0
@@ -63,6 +68,7 @@ You received major injuries in combat with an unknown foe. Your armour was shatt
 autowrap_mode = 2
 
 [node name="Label3" type="Label" parent="."]
+visible = false
 offset_left = 302.0
 offset_top = 248.0
 offset_right = 993.0
@@ -75,6 +81,7 @@ text = "It is suspected that this was just a scouting party and only a fraction 
 autowrap_mode = 2
 
 [node name="Label4" type="Label" parent="."]
+visible = false
 offset_left = 403.0
 offset_top = 343.0
 offset_right = 865.0
@@ -85,6 +92,7 @@ text = "The king estimates that we have 100 days before the invading forces reac
 autowrap_mode = 2
 
 [node name="Button" type="Button" parent="."]
+visible = false
 offset_left = 554.0
 offset_top = 568.0
 offset_right = 636.0

@@ -66,6 +66,11 @@ func _ready():
 	get_game_manager_values()
 	setup_UI_bars()
 
+func freeze():
+	can_move = false
+	can_attack = false
+	can_dash = false
+	health_component.invincible = true
 
 func setup_UI_bars():
 	UI = game_manager.UI
@@ -187,9 +192,7 @@ func damage_taken():
 	if (health_component.health < 0):
 		$"..".player_died()
 		player_state = PlayerStates.DEAD
-		can_attack = false
-		can_dash = false
-		can_move = false
+		freeze()
 		animation_player.play("death")
 		
 	health_component.invincible = true

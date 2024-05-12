@@ -35,8 +35,8 @@ func load_map_select():
 	cybernetics_percentage_worth_weighted = cybernetics_percentage_worth_base * Dialogic.VAR.get('soul_worth_factor')
 	game_manager.soul_percent -= cybernetics_percentage_worth_weighted
 	
-	game_manager.load_map_select()
-	queue_free()
+	game_manager.load_map_select(self)
+	#queue_free()
 
 func _ready():
 	Dialogic.signal_event.connect(on_dialogic_text_signal)

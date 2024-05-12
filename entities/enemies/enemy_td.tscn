@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dkaeprjt76pfv"]
+[gd_scene load_steps=16 format=3 uid="uid://dkaeprjt76pfv"]
 
 [ext_resource type="Script" path="res://entities/enemies/enemy_td.gd" id="1_b0w67"]
 [ext_resource type="PackedScene" uid="uid://skotr71q1hpn" path="res://entities/hitbox_component.tscn" id="2_a6hsi"]
@@ -6,9 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://dllpdiawylsqk" path="res://icon.svg" id="4_mhoog"]
 [ext_resource type="PackedScene" uid="uid://t5d300schnbx" path="res://entities/velocity_component.tscn" id="5_h1xpw"]
 [ext_resource type="PackedScene" uid="uid://cfm8wr35elasl" path="res://entities/health_component.tscn" id="6_hekfl"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xc6nk"]
-size = Vector2(76, 80)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q4e7m"]
 size = Vector2(87, 90)
@@ -18,6 +15,101 @@ size = Vector2(83, 76)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_otgu3"]
 radius = 586.085
+
+[sub_resource type="Animation" id="Animation_qvobp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.64, 0.64)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HitboxComponent/CollisionShape2D:shape")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+
+[sub_resource type="Animation" id="Animation_thtl8"]
+resource_name = "attack_telegraph"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.64, 0.64), Vector2(1.08, 0.36)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HitboxComponent/CollisionShape2D:shape")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dyyoa"]
+radius = 63.1269
+
+[sub_resource type="Animation" id="Animation_f7dht"]
+resource_name = "attack"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1.08, 0.36), Vector2(0.6, 0.6), Vector2(0.48, 1.08), Vector2(0.6, 0.6)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HitboxComponent/CollisionShape2D:shape")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [null, SubResource("CircleShape2D_dyyoa"), null]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0ssvh"]
+_data = {
+"RESET": SubResource("Animation_qvobp"),
+"attack": SubResource("Animation_f7dht"),
+"attack_telegraph": SubResource("Animation_thtl8")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q8qg1"]
+radius = 235.934
 
 [node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("velocity_component", "health_component", "hitbox_collider") groups=["enemy"]]
 y_sort_enabled = true
@@ -33,7 +125,7 @@ hitbox_collider = NodePath("HitboxComponent/CollisionShape2D")
 damage_amount = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
-shape = SubResource("RectangleShape2D_xc6nk")
+debug_color = Color(0.968627, 0, 0.47451, 0.419608)
 
 [node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_vfhig")]
 health_component = NodePath("../HealthComponent")
@@ -43,19 +135,14 @@ damage_from_player = true
 position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_q4e7m")
 
-[node name="Sprite" type="Sprite2D" parent="."]
-modulate = Color(0.945098, 0, 0.141176, 1)
-scale = Vector2(0.64, 0.64)
-texture = ExtResource("4_mhoog")
-
 [node name="VelocityComponent" parent="." instance=ExtResource("5_h1xpw")]
 max_speed = 300
+attack_move_speed = 900
 
 [node name="HealthComponent" parent="." instance=ExtResource("6_hekfl")]
 max_health = 100
 
 [node name="PhysicsCollider" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, 3)
 shape = SubResource("RectangleShape2D_a4j47")
 
 [node name="AggressionArea" type="Area2D" parent="."]
@@ -63,4 +150,29 @@ shape = SubResource("RectangleShape2D_a4j47")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AggressionArea"]
 shape = SubResource("CircleShape2D_otgu3")
 
+[node name="Sprite" type="Sprite2D" parent="."]
+modulate = Color(0.945098, 0, 0.141176, 1)
+scale = Vector2(0.64, 0.64)
+texture = ExtResource("4_mhoog")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_0ssvh")
+}
+
+[node name="Timers" type="Node2D" parent="."]
+
+[node name="AttackCooldown" type="Timer" parent="Timers"]
+one_shot = true
+autostart = true
+
+[node name="AttackArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+shape = SubResource("CircleShape2D_q8qg1")
+debug_color = Color(0, 0.631373, 0.470588, 0.419608)
+
 [connection signal="area_entered" from="AggressionArea" to="." method="_on_aggression_area_area_entered"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="timeout" from="Timers/AttackCooldown" to="." method="_on_attack_cooldown_timeout"]
+[connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]

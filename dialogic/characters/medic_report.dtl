@@ -1,6 +1,4 @@
 join medic 1
-
-
 set {rest_days} = 1
 set {soul_worth_factor} = 0
 set {do_heal} = true
@@ -8,6 +6,7 @@ if {player_health} == 200:
 	medic: Looks like you didn’t take any hits at all!
 	medic: There’s nothing that we need to do here. Rest up so you are ready to set out tomorrow.
 	- Rest until tomorrow morning
+		leave medic [animation="Slide Out Left" wait="true"]
 		jump no action needed
 elif {player_health} > 100:
 	medic: You took a few hits out there, but your armour held together.
@@ -15,6 +14,8 @@ elif {player_health} > 100:
 	join mechanic 3
 	mechanic: I’ll fix up your armour for you.
 	- Rest until tomorrow morning
+		leave mechanic [animation="Slide Out Right"]
+		leave medic [animation="Slide Out Left" wait="true"]
 		jump no action needed
 elif {player_health} == 100:
 	medic: Your armour broke out there but thankfully you didn’t take any other hits.
@@ -22,6 +23,8 @@ elif {player_health} == 100:
 	join mechanic 3
 	mechanic: I'll take that off your hands and fix it up.
 	- Rest until tomorrow morning
+		leave mechanic [animation="Slide Out Right"]
+		leave medic [animation="Slide Out Left" wait="true"]
 		jump no action needed
 label ARMOUR BROKEN
 elif {player_health} >= 90:
@@ -32,9 +35,13 @@ elif {player_health} >= 90:
 	mechanic: I'll repair your armour either way, don't worry.
 	- Rest for a day
 		set {rest_days} = 2
+		leave mechanic [animation="Slide Out Right"]
+		leave medic [animation="Slide Out Left" wait="true"]
 		jump rest
 	- Set out tomorrow morning (no health recovery)
 		set {do_heal} = false
+		leave mechanic [animation="Slide Out Right"]
+		leave medic [animation="Slide Out Left" wait="true"]
 		jump no health recovery
 elif {player_health} > 70:
 	medic: Your armour was broken and you've taken a few bad hits.
@@ -44,28 +51,36 @@ elif {player_health} > 70:
 	mechanic: You'd be ready to go by tomorrow morning. It'd be stronger too.
 	- Rest for a week
 		medic: Good choice.
+		leave mechanic [animation="Slide Out Right"]
+		leave medic [animation="Slide Out Left" wait="true"]
 		set {rest_days} = 7
 		jump rest
 	- Replace limb with robotics (set out tomorrow morning)
 		mechanic: Let's get started.
 		set {soul_worth_factor} = 1
+		leave mechanic [animation="Slide Out Right"]
+		leave medic [animation="Slide Out Left" wait="true"]
 		jump cybernetics
 elif {player_health} > 50:
 	medic: Your armour was broken and you've taken a few bad hits.
 	- Rest for two weeks (14 days)
 		set {rest_days} = 14
+		leave medic [animation="Slide Out Left" wait="true"]
 		jump rest
 	- Cybertnetics (set out tomorrow)
 		set {soul_worth_factor} = 2
+		leave medic [animation="Slide Out Left" wait="true"]
 		jump cybernetics
 elif {player_health} > 20:
 	medic: Great! You're still in one piece.
 	medic: Your armour was broken and you've taken a few bad hits.
 	- Rest for three weeks (21 days)
 		set {rest_days} = 21
+		leave medic [animation="Slide Out Left" wait="true"]
 		jump rest
 	- Cybernetics (set out tomorrow)
 		set {soul_worth_factor} = 3
+		leave medic [animation="Slide Out Left" wait="true"]
 		jump cybernetics
 elif {player_health} > 0:
 	medic: You made it!
@@ -75,9 +90,13 @@ elif {player_health} > 0:
 	mechanic: Alternatively, we could speed up your recovery tenfold if we just.. replace all your injuries with cybernetics.
 	- Rest for five weeks (35 days)
 		set {rest_days} = 35
+		leave mechanic [animation="Slide Out Right"]
+		leave medic [animation="Slide Out Left" wait="true"]
 		jump rest
 	- Repair with cybernetics
 		set {soul_worth_factor} = 4
+		leave mechanic [animation="Slide Out Right"]
+		leave medic [animation="Slide Out Left" wait="true"]
 		jump cybernetics
 else:
 	medic: You passed out back there. Are you alright?
@@ -87,6 +106,8 @@ else:
 	mechanic: Hopefully you don't miss what you've lost. You've got shiny new robotic parts now!
 	set {soul_worth_factor} = 5
 	- Rest until tomorrow
+		leave mechanic [animation="Slide Out Right"]
+		leave medic [animation="Slide Out Left" wait="true"]
 		jump died no action needed
 label no action needed
 [signal arg="no_action_needed"]
