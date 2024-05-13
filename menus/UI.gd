@@ -57,22 +57,29 @@ func set_health_max(max):
 func reset_health():
 	$InLevelUI/PlayerHealthBar.value = $InLevelUI/PlayerHealthBar.max_value
 	
+	
 func reset_armour():
 	$InLevelUI/ArmourHealthBar.value = $InLevelUI/ArmourHealthBar.max_value
+	update_icon($InLevelUI/PlayerHealthBar.max_value)
 	
 func set_health(value):
 	$InLevelUI/PlayerHealthBar.value = value
 	
 func set_armour(value):
 	$InLevelUI/ArmourHealthBar.value = value
+	update_icon(value)
 	
-	if (value >= 100):
+func update_icon(value):
+	var max = $InLevelUI/ArmourHealthBar.max_value
+	var percentage = ( value / max ) * 100
+	#print ("percentage:" + str(percentage))
+	if (percentage >= 100):
 		$InLevelUI/Face.texture = (full_health_txt)
-	elif (value < 100) and (value > 50):
+	elif (percentage < 100) and (percentage > 50):
 		$InLevelUI/Face.texture = (armour_1)
-	elif (value <= 50) and (value > 25):
+	elif (percentage <= 50) and (percentage > 25):
 		$InLevelUI/Face.texture = (armour_2)
-	elif (value <= 25) and (value > 0):
+	elif (percentage <= 25) and (percentage > 0):
 		$InLevelUI/Face.texture = (armour_3)
 	else:
 		$InLevelUI/Face.texture = (no_armour_txt)

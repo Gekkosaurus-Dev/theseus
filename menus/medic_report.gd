@@ -42,11 +42,11 @@ func _ready():
 	Dialogic.signal_event.connect(on_dialogic_text_signal)
 
 	get_game_manager()
-	print("game manager player health:" + str(game_manager.player_overall_health))
-	print("diaglogic player health:" + str(Dialogic.VAR.player_health))
+	#print("game manager player health:" + str(game_manager.player_overall_health))
+	#print("diaglogic player health:" + str(Dialogic.VAR.player_health))
 	Dialogic.VAR.set('player_health', game_manager.player_overall_health)
 	#Dialogic.VAR.player_health = game_manager.player_overall_health
-	print("diaglogic player health:" + str(Dialogic.VAR.player_health))
+	#print("diaglogic player health:" + str(Dialogic.VAR.player_health))
 	Dialogic.start("medic_report")
 	cybernetics_percentage_worth_base = game_manager.cybernetics_percentage_worth/5
 	#var damage_amount = game_manager.damage_taken_amount

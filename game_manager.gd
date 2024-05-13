@@ -90,11 +90,11 @@ func _input(event):
 	if (event is InputEventJoypadButton):
 	#if ((event is InputEventJoypadButton) or (event is InputEventJoypadMotion)):
 		if (game_input !=GameInputs.CONTROLLER):
-			print("controller detected")
+			#print("controller detected")
 			game_input = GameInputs.CONTROLLER
 	elif ((event is InputEventMouse) or (event is InputEventKey)):
 		if (game_input !=GameInputs.KEYBOARD_MOUSE):
-			print("keyboard/mouse detected")
+			#print("keyboard/mouse detected")
 			game_input = GameInputs.KEYBOARD_MOUSE
 	
 func pause_game():
@@ -139,7 +139,10 @@ func tutorial_finished(from):
 func load_medic_report(health,from):
 	player_overall_health = health
 	#var medic_report = medic_report_instance.instantiate()
-	fade_to(from, medic_report_instance,GameStates.NON_LEVEL_GAMEPLAY)
+	load_scene(medic_report_instance)
+	game_state = GameStates.NON_LEVEL_GAMEPLAY
+	from.queue_free()
+	#fade_to(from, medic_report_instance,GameStates.NON_LEVEL_GAMEPLAY)
 	#add_child(medic_report)
 	$UI.set_level_UI_visibility(false)
 	$Timer.stop()

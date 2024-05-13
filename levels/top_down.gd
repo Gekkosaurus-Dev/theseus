@@ -19,11 +19,18 @@ func _on_area_2d_area_entered(area):
 	if (object_type.has("player")):
 		var total_health = player.get_total_health()
 		player.freeze()
+		player.player_state = player.PlayerStates.END
 		game_manager.load_medic_report(total_health,self)
 		#print("AAAAAAAAAAA")
 		#var damage_amount = player.get_damage_taken_amount(
 		#queue_free()
 
 func player_died():
-	game_manager.load_medic_report(0,self)
+	Engine.time_scale = 0.1
+	$Timer.start()
 	
+
+
+func _on_timer_timeout():
+	Engine.time_scale = 1
+	game_manager.load_medic_report(0,self)

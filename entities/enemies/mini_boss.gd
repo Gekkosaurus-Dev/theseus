@@ -66,7 +66,7 @@ func _on_animation_player_animation_finished(anim_name):
 		enemy_state = EnemyStates.IDLE
 
 func _on_attack_cooldown_timeout():
-	print("timedout")
+	#print("timedout")
 	can_attack = true
 	enemy_state = prev_state
 	for x in attack_area.get_overlapping_bodies():

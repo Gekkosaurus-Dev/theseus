@@ -50,7 +50,7 @@ var hits_taken = 0 #specifically unprotected hits taken
 func get_target_position():
 	return enemy_target.global_position
 
-enum PlayerStates {ATTACKING, DASHING, DEAD, OTHER}
+enum PlayerStates {ATTACKING, DASHING, DEAD, OTHER, END}
 var player_state
 
 enum PlayerHealthStates {NO_HITS, ARMOUR_DAMAGED, ARMOUR_BROKEN, MINOR_INJURY, MAJOR_INJURY, EXTREME_INJURY}
@@ -77,8 +77,10 @@ func setup_UI_bars():
 	UI.set_armour_max(max_armour_health)
 	UI.set_health_max(player_max_health)
 	UI.set_level_UI_visibility(true)	
-	UI.reset_health()
 	UI.reset_armour()
+	#UI.reset_health()
+	UI.set_health(player_starting_health)
+	
 	
 func get_game_manager_values():
 	max_armour_health = game_manager.max_armour_health
@@ -216,7 +218,7 @@ func play_damage_animation():
 
 func get_total_health():
 	var total_health = health_component.get_total_health()
-	print("player returned returned" + str(total_health))
+	#print("player returned returned" + str(total_health))
 	return total_health
 
 #region timers
