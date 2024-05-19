@@ -250,6 +250,7 @@ theme_override_font_sizes/font_size = 90
 text = "to dash"
 
 [node name="MoveContainer" type="HBoxContainer" parent="Control"]
+layout_mode = 0
 offset_left = -1245.0
 offset_top = 973.0
 offset_right = -78.0
@@ -283,6 +284,7 @@ theme_override_font_sizes/font_size = 90
 text = "to move"
 
 [node name="AttackContainer" type="HBoxContainer" parent="Control"]
+layout_mode = 0
 offset_left = 4855.0
 offset_top = -2174.0
 offset_right = 5618.0

@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bnlug2camgqd3"]
+
+[ext_resource type="PackedScene" uid="uid://skotr71q1hpn" path="res://entities/hitbox_component.tscn" id="1_a13gu"]
+[ext_resource type="Texture2D" uid="uid://ccqsh4nhua5is" path="res://entities/enemies/phoenix/fireball.png" id="2_cc164"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3g0sy"]
+radius = 45.0
+height = 102.0
+
+[node name="Fire" type="Node2D"]
+
+[node name="HitboxComponent" parent="." instance=ExtResource("1_a13gu")]
+damage_amount = 20
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+position = Vector2(0, 47)
+shape = SubResource("CapsuleShape2D_3g0sy")
+debug_color = Color(1, 0, 0.12549, 0.419608)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_cc164")
