@@ -1,5 +1,17 @@
 extends CharacterBody2D
 
+const helmet = preload("res://entities/player/player_parts/023.png")
+const head = preload("res://entities/player/player_parts/head.png")
+const head_eyes_closed = preload("res://entities/player/player_parts/head_eyes_closed.png")
+const head_robot_partial = preload("res://entities/player/player_parts/head_robot_partial.png")
+const head_robot_partial_eyes_closed = preload("res://entities/player/player_parts/head_robot_partial_eyes_closed.png")
+
+const back_ear = preload("res://entities/player/player_parts/021.png")
+const back_ear_robot = preload("res://entities/player/player_parts/ear_back_robot.png")
+
+@export var player_head: Sprite2D
+@export var player_back_ear: Sprite2D
+
 @export var health_component: Node
 @export var hitbox: Area2D
 var attack_up = true
@@ -41,6 +53,7 @@ const player_max_health = 100
 @export var dash_timer: Timer
 @export var dash_cooldown: Timer
 
+var robot_head: bool
 
 @export var enemy_target: Marker2D
 
@@ -65,6 +78,11 @@ func _ready():
 	get_game_manager()
 	get_game_manager_values()
 	setup_UI_bars()
+	player_head.texture = helmet
+	if !robot_head:
+		player_back_ear.texture = back_ear
+	else:
+		player_back_ear.texture = back_ear_robot
 
 func freeze():
 	can_move = false
@@ -85,6 +103,9 @@ func setup_UI_bars():
 func get_game_manager_values():
 	max_armour_health = game_manager.max_armour_health
 	player_starting_health = game_manager.player_starting_health
+	
+	#for checking whether the player sprite head should be robotic or not
+	robot_head = game_manager.robot_head
 	
 func _physics_process(_delta):
 	get_input()
@@ -114,7 +135,12 @@ func get_dash_direction():
 
 func get_input():
 	var input_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
-
+	#
+	#if input_direction.x > 0:
+		#player_head.texture = head
+	#elif input_direction.x < 0:
+		#player_head.texture = head_robot_partial
+	#
 	if Input.is_action_just_pressed("attack_melee"):
 		try_attack()
 		#$Icon/GPUParticles2D.emitting = true
@@ -191,10 +217,21 @@ func damage_taken():
 	UI.set_armour(health_component.armour_health)
 	UI.set_health(health_component.health)
 	
-	if (health_component.health < 0):
+	if(health_component.armour_health) <= 0:
+		if !(robot_head):
+			player_head.texture = head
+		else:
+			player_head.texture = head_robot_partial
+	
+	if (health_component.health <= 0):
 		$"..".player_died()
 		player_state = PlayerStates.DEAD
 		freeze()
+		
+		if !(robot_head):
+			player_head.texture = head_eyes_closed
+		else:
+			player_head.texture = head_robot_partial_eyes_closed
 		animation_player.play("death")
 		
 	health_component.invincible = true

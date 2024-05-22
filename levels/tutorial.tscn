@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://4phgm6ab3385"]
+[gd_scene load_steps=13 format=3 uid="uid://4phgm6ab3385"]
 
 [ext_resource type="Script" path="res://levels/tutorial.gd" id="1_qeej4"]
 [ext_resource type="TileSet" uid="uid://dna5pqp0m2t01" path="res://levels/tileset4.tres" id="2_0bgad"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bm5mtluv053lw" path="res://menus/button prompts/xbox_stick_l.png" id="9_boeik"]
 [ext_resource type="Texture2D" uid="uid://dka2frenrp71f" path="res://menus/button prompts/xbox_dpad_round.png" id="10_3buya"]
 [ext_resource type="Texture2D" uid="uid://dm8mrvyi3qehw" path="res://menus/button prompts/switch_buttons_right_outline.png" id="11_mi7r7"]
+[ext_resource type="PackedScene" uid="uid://ctd5ydbkwvfsh" path="res://levels/environment_objects/portal.tscn" id="12_xf7fr"]
 
 [node name="Tutorial" type="Node2D"]
 y_sort_enabled = true
@@ -226,29 +227,6 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="DashContainer" type="HBoxContainer" parent="Control"]
-layout_mode = 0
-offset_left = 1404.0
-offset_top = -1704.0
-offset_right = 2167.0
-offset_bottom = -1434.0
-
-[node name="DashInstructions" type="Label" parent="Control/DashContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 90
-text = "Use"
-
-[node name="TextureRect" type="TextureRect" parent="Control/DashContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-texture = ExtResource("8_0ffhn")
-expand_mode = 3
-
-[node name="DashInstructions2" type="Label" parent="Control/DashContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 90
-text = "to dash"
-
 [node name="MoveContainer" type="HBoxContainer" parent="Control"]
 layout_mode = 0
 offset_left = -1245.0
@@ -283,6 +261,29 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 90
 text = "to move"
 
+[node name="DashContainer" type="HBoxContainer" parent="Control"]
+layout_mode = 0
+offset_left = 1404.0
+offset_top = -1704.0
+offset_right = 2167.0
+offset_bottom = -1434.0
+
+[node name="DashInstructions" type="Label" parent="Control/DashContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 90
+text = "Use"
+
+[node name="TextureRect" type="TextureRect" parent="Control/DashContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("8_0ffhn")
+expand_mode = 3
+
+[node name="DashInstructions2" type="Label" parent="Control/DashContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 90
+text = "to dash"
+
 [node name="AttackContainer" type="HBoxContainer" parent="Control"]
 layout_mode = 0
 offset_left = 4855.0
@@ -306,8 +307,24 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 90
 text = "to attack"
 
+[node name="PortalContainer" type="HBoxContainer" parent="Control"]
+layout_mode = 0
+offset_left = 9571.0
+offset_top = -1838.0
+offset_right = 10613.0
+offset_bottom = -1568.0
+
+[node name="PortalInstructions" type="Label" parent="Control/PortalContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 90
+text = "Destroy portals to stop 
+enemies from spawning"
+
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.3
 one_shot = true
+
+[node name="Portal" parent="." instance=ExtResource("12_xf7fr")]
+position = Vector2(9121, -1564)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

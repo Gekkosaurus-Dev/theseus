@@ -78,8 +78,8 @@ tracks/4/keys = {
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p0fto"]
-radius = 193.0
-height = 436.0
+radius = 218.0
+height = 524.061
 
 [sub_resource type="Animation" id="Animation_bru0k"]
 resource_name = "attack"
@@ -403,7 +403,8 @@ debug_color = Color(0, 1, 0, 0.419608)
 damage_amount = 100
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DirectionFlipper/HitboxComponent"]
-position = Vector2(187, 173)
+position = Vector2(216, 193)
+rotation = 1.55688
 debug_color = Color(1, 0, 0, 0.419608)
 
 [node name="HealthComponent" parent="." instance=ExtResource("8_oakl6")]

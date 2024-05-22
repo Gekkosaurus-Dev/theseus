@@ -53,6 +53,7 @@ var cybernetics_percentage_worth
 var gold
 var visited_areas: Array
 var max_armour_health #could be altered over the course of the game if armour upgraded
+var robot_head: bool
 
 var UI: CanvasLayer
 var current_game_scene: Node2D
@@ -68,6 +69,7 @@ func clear_game_values():
 	gold = starting_gold
 	max_armour_health = starting_max_armour_health
 	visited_areas.clear()
+	robot_head = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -134,6 +136,7 @@ func load_scene(scene_path):
 func tutorial_finished(from):
 	fade_to(from,another_cutscene_instance,GameStates.CUTSCENE)
 	$UI.set_level_UI_visibility(false)
+	robot_head = true
 
 
 func load_medic_report(health,from):
