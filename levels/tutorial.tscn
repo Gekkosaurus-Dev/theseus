@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://4phgm6ab3385"]
+[gd_scene load_steps=19 format=3 uid="uid://4phgm6ab3385"]
 
 [ext_resource type="Script" path="res://levels/tutorial.gd" id="1_qeej4"]
 [ext_resource type="TileSet" uid="uid://dna5pqp0m2t01" path="res://levels/tileset4.tres" id="2_0bgad"]
@@ -10,8 +10,14 @@
 [ext_resource type="Texture2D" uid="uid://bvmqarlygmc82" path="res://menus/button prompts/switch_buttons_down_outline.png" id="8_0ffhn"]
 [ext_resource type="Texture2D" uid="uid://bm5mtluv053lw" path="res://menus/button prompts/xbox_stick_l.png" id="9_boeik"]
 [ext_resource type="Texture2D" uid="uid://dka2frenrp71f" path="res://menus/button prompts/xbox_dpad_round.png" id="10_3buya"]
+[ext_resource type="Texture2D" uid="uid://6njyy23war5" path="res://menus/button prompts/keyboard_w.png" id="10_4l6h3"]
 [ext_resource type="Texture2D" uid="uid://dm8mrvyi3qehw" path="res://menus/button prompts/switch_buttons_right_outline.png" id="11_mi7r7"]
+[ext_resource type="Texture2D" uid="uid://doq5mcmgxgk8u" path="res://menus/button prompts/keyboard_a.png" id="11_vsotv"]
+[ext_resource type="Texture2D" uid="uid://byvvtcna86ucu" path="res://menus/button prompts/keyboard_s.png" id="12_115o7"]
 [ext_resource type="PackedScene" uid="uid://ctd5ydbkwvfsh" path="res://levels/environment_objects/portal.tscn" id="12_xf7fr"]
+[ext_resource type="Texture2D" uid="uid://jrgvbi88kteq" path="res://menus/button prompts/keyboard_d.png" id="13_qajkw"]
+[ext_resource type="Texture2D" uid="uid://d2rpuqmenytvh" path="res://menus/button prompts/keyboard_space.png" id="15_1c1qg"]
+[ext_resource type="Texture2D" uid="uid://by8psumx3kmbd" path="res://menus/button prompts/mouse_left_outline.png" id="17_v1xnu"]
 
 [node name="Tutorial" type="Node2D"]
 y_sort_enabled = true
@@ -227,94 +233,208 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="MoveContainer" type="HBoxContainer" parent="Control"]
+[node name="MoveInstructions" type="Control" parent="Control"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="C-MoveContainer" type="HBoxContainer" parent="Control/MoveInstructions"]
+visible = false
 layout_mode = 0
 offset_left = -1245.0
 offset_top = 973.0
 offset_right = -78.0
 offset_bottom = 1122.0
 
-[node name="MoveInstructions" type="Label" parent="Control/MoveContainer"]
+[node name="MoveInstructions" type="Label" parent="Control/MoveInstructions/C-MoveContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 90
 text = "Use"
 
-[node name="MovePrompt" type="TextureRect" parent="Control/MoveContainer"]
+[node name="MovePrompt" type="TextureRect" parent="Control/MoveInstructions/C-MoveContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 texture = ExtResource("9_boeik")
 expand_mode = 3
 
-[node name="MoveInstructions2" type="Label" parent="Control/MoveContainer"]
+[node name="MoveInstructions2" type="Label" parent="Control/MoveInstructions/C-MoveContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 90
 text = "or"
 
-[node name="MovePrompt2" type="TextureRect" parent="Control/MoveContainer"]
+[node name="MovePrompt2" type="TextureRect" parent="Control/MoveInstructions/C-MoveContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 texture = ExtResource("10_3buya")
 expand_mode = 3
 
-[node name="MoveInstructions3" type="Label" parent="Control/MoveContainer"]
+[node name="MoveInstructions3" type="Label" parent="Control/MoveInstructions/C-MoveContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 90
 text = "to move"
 
-[node name="DashContainer" type="HBoxContainer" parent="Control"]
+[node name="K-MoveContainer" type="HBoxContainer" parent="Control/MoveInstructions"]
+layout_mode = 0
+offset_left = -1245.0
+offset_top = 917.0
+offset_right = -78.0
+offset_bottom = 1177.0
+
+[node name="MoveInstructions" type="Label" parent="Control/MoveInstructions/K-MoveContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 90
+text = "Use"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MoveInstructions/K-MoveContainer"]
+layout_mode = 2
+
+[node name="MovePrompt" type="TextureRect" parent="Control/MoveInstructions/K-MoveContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("10_4l6h3")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MoveInstructions/K-MoveContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MovePrompt" type="TextureRect" parent="Control/MoveInstructions/K-MoveContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("11_vsotv")
+
+[node name="MovePrompt2" type="TextureRect" parent="Control/MoveInstructions/K-MoveContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("12_115o7")
+expand_mode = 3
+
+[node name="MovePrompt3" type="TextureRect" parent="Control/MoveInstructions/K-MoveContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("13_qajkw")
+expand_mode = 3
+
+[node name="MoveInstructions3" type="Label" parent="Control/MoveInstructions/K-MoveContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 90
+text = "to move"
+
+[node name="DashInstructions" type="Control" parent="Control"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="C-DashContainer" type="HBoxContainer" parent="Control/DashInstructions"]
+visible = false
 layout_mode = 0
 offset_left = 1404.0
 offset_top = -1704.0
 offset_right = 2167.0
 offset_bottom = -1434.0
 
-[node name="DashInstructions" type="Label" parent="Control/DashContainer"]
+[node name="DashInstructions" type="Label" parent="Control/DashInstructions/C-DashContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 90
 text = "Use"
 
-[node name="TextureRect" type="TextureRect" parent="Control/DashContainer"]
+[node name="TextureRect" type="TextureRect" parent="Control/DashInstructions/C-DashContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 texture = ExtResource("8_0ffhn")
 expand_mode = 3
 
-[node name="DashInstructions2" type="Label" parent="Control/DashContainer"]
+[node name="DashInstructions2" type="Label" parent="Control/DashInstructions/C-DashContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 90
 text = "to dash"
 
-[node name="AttackContainer" type="HBoxContainer" parent="Control"]
+[node name="K-DashContainer" type="HBoxContainer" parent="Control/DashInstructions"]
+layout_mode = 0
+offset_left = 1404.0
+offset_top = -1704.0
+offset_right = 2167.0
+offset_bottom = -1434.0
+
+[node name="DashInstructions" type="Label" parent="Control/DashInstructions/K-DashContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 90
+text = "Use"
+
+[node name="TextureRect" type="TextureRect" parent="Control/DashInstructions/K-DashContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("15_1c1qg")
+expand_mode = 3
+
+[node name="DashInstructions2" type="Label" parent="Control/DashInstructions/K-DashContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 90
+text = "to dash"
+
+[node name="AttackInstructions" type="Control" parent="Control"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="C-AttackContainer" type="HBoxContainer" parent="Control/AttackInstructions"]
+visible = false
 layout_mode = 0
 offset_left = 4855.0
 offset_top = -2174.0
 offset_right = 5618.0
 offset_bottom = -2006.0
 
-[node name="DashInstructions" type="Label" parent="Control/AttackContainer"]
+[node name="DashInstructions" type="Label" parent="Control/AttackInstructions/C-AttackContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 90
 text = "Use"
 
-[node name="TextureRect" type="TextureRect" parent="Control/AttackContainer"]
+[node name="TextureRect" type="TextureRect" parent="Control/AttackInstructions/C-AttackContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 texture = ExtResource("11_mi7r7")
 expand_mode = 3
 
-[node name="DashInstructions2" type="Label" parent="Control/AttackContainer"]
+[node name="DashInstructions2" type="Label" parent="Control/AttackInstructions/C-AttackContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 90
 text = "to attack"
 
-[node name="PortalContainer" type="HBoxContainer" parent="Control"]
+[node name="K-AttackContainer" type="HBoxContainer" parent="Control/AttackInstructions"]
+layout_mode = 0
+offset_left = 4855.0
+offset_top = -2174.0
+offset_right = 5618.0
+offset_bottom = -2006.0
+
+[node name="DashInstructions" type="Label" parent="Control/AttackInstructions/K-AttackContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 90
+text = "Use"
+
+[node name="TextureRect" type="TextureRect" parent="Control/AttackInstructions/K-AttackContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("17_v1xnu")
+expand_mode = 3
+
+[node name="DashInstructions2" type="Label" parent="Control/AttackInstructions/K-AttackContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 90
+text = "to attack"
+
+[node name="PortalInstructions" type="Control" parent="Control"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PortalContainer" type="HBoxContainer" parent="Control/PortalInstructions"]
 layout_mode = 0
 offset_left = 9571.0
 offset_top = -1838.0
 offset_right = 10613.0
 offset_bottom = -1568.0
 
-[node name="PortalInstructions" type="Label" parent="Control/PortalContainer"]
+[node name="PortalInstructions" type="Label" parent="Control/PortalInstructions/PortalContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 90
 text = "Destroy portals to stop 

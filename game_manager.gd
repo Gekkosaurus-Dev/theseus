@@ -61,6 +61,8 @@ var current_game_scene: Node2D
 var player_overall_health
 var player_starting_health = 100
 
+signal input_changed()
+
 #resets all game values 
 func clear_game_values():
 	days_left = max_days_left
@@ -94,10 +96,12 @@ func _input(event):
 		if (game_input !=GameInputs.CONTROLLER):
 			#print("controller detected")
 			game_input = GameInputs.CONTROLLER
+			input_changed.emit()
 	elif ((event is InputEventMouse) or (event is InputEventKey)):
 		if (game_input !=GameInputs.KEYBOARD_MOUSE):
 			#print("keyboard/mouse detected")
 			game_input = GameInputs.KEYBOARD_MOUSE
+			input_changed.emit()
 	
 func pause_game():
 	#load_pause_screen()
