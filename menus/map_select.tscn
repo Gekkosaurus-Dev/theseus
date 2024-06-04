@@ -1,10 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://db50iled5ohnq"]
+[gd_scene load_steps=6 format=3 uid="uid://db50iled5ohnq"]
 
 [ext_resource type="Texture2D" uid="uid://d5i1tq0p1y7n" path="res://menus/map-placeholder.png" id="1_2kxjm"]
 [ext_resource type="Script" path="res://menus/map_select.gd" id="1_ydwa2"]
+[ext_resource type="Texture2D" uid="uid://c0t72u8xhsa1k" path="res://menus/castle.png" id="2_nf6on"]
+[ext_resource type="Texture2D" uid="uid://dvrsvk8vtwrov" path="res://menus/dashed line.png" id="3_y67ty"]
 
-[node name="MapSelect" type="Node2D"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lah0o"]
+bg_color = Color(1, 1, 1, 1)
+
+[node name="MapSelect" type="Node2D" node_paths=PackedStringArray("area1_button", "area2_button", "area3_button", "linet1", "line12", "line23")]
 script = ExtResource("1_ydwa2")
+area1_button = NodePath("CanvasLayer/Panel/Area1Button")
+area2_button = NodePath("CanvasLayer/Panel/Area2Button")
+area3_button = NodePath("CanvasLayer/Panel/Area3Button")
+linet1 = NodePath("CanvasLayer/Panel/TextureRect2")
+line12 = NodePath("CanvasLayer/Panel/TextureRect3")
+line23 = NodePath("CanvasLayer/Panel/TextureRect4")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -14,29 +25,111 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_lah0o")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Panel"]
+layout_mode = 0
+offset_left = 45.0
+offset_top = 636.0
+offset_right = 527.0
+offset_bottom = 1201.0
+scale = Vector2(0.578181, 0.578181)
+texture = ExtResource("2_nf6on")
+
+[node name="Line2D" type="Line2D" parent="CanvasLayer/Panel"]
+position = Vector2(22, 0)
+points = PackedVector2Array(908, -10, 974, 28, 1044, 33, 1112, 28, 1186, 39, 1218, 73, 1278, 116, 1403, 209, 1446, 231, 1495, 263, 1529, 324, 1529, 396, 1558, 460, 1582, 512, 1598, 564, 1606, 608, 1612, 658, 1614, 734, 1612, 770, 1603, 813, 1582, 863, 1568, 915, 1571, 961, 1580, 997, 1566, 1028, 1571, 1066, 1542, 1094)
+default_color = Color(0, 0, 0, 1)
+
+[node name="TutorialButtonDisabled" type="Button" parent="CanvasLayer/Panel"]
+layout_mode = 0
+offset_left = 325.0
+offset_top = 785.0
+offset_right = 513.0
+offset_bottom = 973.0
+scale = Vector2(0.762291, 0.762291)
+disabled = true
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/Panel"]
+layout_mode = 0
+offset_left = 360.0
+offset_top = 748.0
+offset_right = 446.0
+offset_bottom = 767.0
+rotation = -0.897058
+scale = Vector2(3.23784, 3.23784)
+texture = ExtResource("3_y67ty")
+expand_mode = 2
+
+[node name="Area1Button" type="Button" parent="CanvasLayer/Panel"]
+layout_mode = 0
+offset_left = 549.0
+offset_top = 399.0
+offset_right = 702.0
+offset_bottom = 552.0
+
+[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/Panel"]
+layout_mode = 0
+offset_left = 712.0
+offset_top = 391.0
+offset_right = 802.0
+offset_bottom = 411.0
+rotation = -0.225334
+scale = Vector2(3.23784, 3.23784)
+texture = ExtResource("3_y67ty")
+expand_mode = 2
+
+[node name="Area2Button" type="Button" parent="CanvasLayer/Panel"]
+layout_mode = 0
+offset_left = 1014.0
+offset_top = 258.0
+offset_right = 1176.0
+offset_bottom = 420.0
+
+[node name="TextureRect4" type="TextureRect" parent="CanvasLayer/Panel"]
+layout_mode = 0
+offset_left = 1197.0
+offset_top = 317.0
+offset_right = 1311.0
+offset_bottom = 342.0
+rotation = 0.0700044
+scale = Vector2(3.23784, 3.23784)
+texture = ExtResource("3_y67ty")
+expand_mode = 2
+
+[node name="Area3Button" type="Button" parent="CanvasLayer/Panel"]
+layout_mode = 0
+offset_left = 1617.0
+offset_top = 327.0
+offset_right = 1774.0
+offset_bottom = 484.0
 
 [node name="Map-placeholder" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(576, 324)
+position = Vector2(-1010, 590)
+scale = Vector2(1.66493, 1.67284)
 texture = ExtResource("1_2kxjm")
 
 [node name="Area3" type="Button" parent="CanvasLayer"]
-offset_left = 916.0
-offset_top = 324.0
-offset_right = 1041.0
-offset_bottom = 448.0
+offset_left = -456.0
+offset_top = 644.0
+offset_right = -331.0
+offset_bottom = 768.0
 
 [node name="Area2" type="Button" parent="CanvasLayer"]
-offset_left = 541.0
-offset_top = 196.0
-offset_right = 666.0
-offset_bottom = 320.0
+offset_left = -1033.0
+offset_top = 417.0
+offset_right = -908.0
+offset_bottom = 541.0
 
 [node name="Area1" type="Button" parent="CanvasLayer"]
-offset_left = 156.0
-offset_top = 277.0
-offset_right = 281.0
-offset_bottom = 401.0
+offset_left = -1669.0
+offset_top = 567.0
+offset_right = -1544.0
+offset_bottom = 691.0
 
+[connection signal="pressed" from="CanvasLayer/Panel/Area1Button" to="." method="_on_area_1_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Panel/Area2Button" to="." method="_on_area_2_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Panel/Area3Button" to="." method="_on_area_3_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Area3" to="." method="_on_area_3_pressed"]
 [connection signal="pressed" from="CanvasLayer/Area2" to="." method="_on_area_2_pressed"]
 [connection signal="pressed" from="CanvasLayer/Area1" to="." method="_on_area_1_pressed"]

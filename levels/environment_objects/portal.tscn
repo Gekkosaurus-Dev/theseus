@@ -129,3 +129,7 @@ debug_color = Color(0, 0.635294, 0.415686, 0.419608)
 position = Vector2(0, 181)
 rotation = 1.59046
 shape = SubResource("CapsuleShape2D_o1bd1")
+
+[node name="SpawnTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

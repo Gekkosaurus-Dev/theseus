@@ -17,6 +17,10 @@ func _ready():
 	set_day_counter_visibility(false)
 	set_level_UI_visibility(false)
 	set_soul_visibility(false)
+	
+	set_day_counter_visibility(true)
+	set_level_UI_visibility(true)
+	set_soul_visibility(true)
 
 func set_day_counter_visibility(bool):
 	$DayCounterUI.visible = bool

@@ -97,6 +97,13 @@ func _input(event):
 			#print("controller detected")
 			game_input = GameInputs.CONTROLLER
 			input_changed.emit()
+	elif (event is InputEventJoypadMotion) and (abs(event.axis_value) > 0.5):
+		#print("axis = " + str(event.axis))
+		if (game_input !=GameInputs.CONTROLLER):
+			print("axis value = " + str(event.axis_value))
+			#print("controller detected")
+			game_input = GameInputs.CONTROLLER
+			input_changed.emit()
 	elif ((event is InputEventMouse) or (event is InputEventKey)):
 		if (game_input !=GameInputs.KEYBOARD_MOUSE):
 			#print("keyboard/mouse detected")

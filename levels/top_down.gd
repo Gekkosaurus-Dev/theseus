@@ -20,6 +20,7 @@ func _on_area_2d_area_entered(area):
 		var total_health = player.get_total_health()
 		player.freeze()
 		player.player_state = player.PlayerStates.END
+		game_manager.visited_areas.append("Area 1")
 		game_manager.load_medic_report(total_health,self)
 		#print("AAAAAAAAAAA")
 		#var damage_amount = player.get_damage_taken_amount(
