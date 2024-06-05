@@ -88,6 +88,7 @@ radius = 54.929
 height = 371.931
 
 [node name="Portal" type="StaticBody2D" node_paths=PackedStringArray("health_component")]
+use_parent_material = true
 collision_layer = 8
 collision_mask = 3
 script = ExtResource("1_8nplf")
@@ -95,6 +96,7 @@ health_component = NodePath("HealthComponent")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 y_sort_enabled = true
+use_parent_material = true
 position = Vector2(29, -29.92)
 scale = Vector2(1.84, 1.84)
 texture = ExtResource("2_gr6yr")

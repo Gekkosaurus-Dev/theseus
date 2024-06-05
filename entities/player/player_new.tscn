@@ -3597,6 +3597,7 @@ height = 222.0
 
 [node name="player_new" type="CharacterBody2D" node_paths=PackedStringArray("player_head", "player_back_ear", "health_component", "hitbox", "animation_player", "attack_move_cooldown", "attack_move", "enemy_target") groups=["player"]]
 y_sort_enabled = true
+use_parent_material = true
 collision_mask = 14
 script = ExtResource("1_5tyq2")
 player_head = NodePath("DirectionFlipper/PartsAndSkeleton/Parts2/Head")
@@ -3626,6 +3627,7 @@ wait_time = 0.1
 one_shot = true
 
 [node name="DirectionFlipper" type="Node2D" parent="."]
+use_parent_material = true
 position = Vector2(0, -161)
 script = ExtResource("2_plpgb")
 
@@ -3663,6 +3665,7 @@ texture = ExtResource("2_htvay")
 hframes = 8
 
 [node name="PartsAndSkeleton" type="Node2D" parent="DirectionFlipper"]
+use_parent_material = true
 position = Vector2(0, 161)
 
 [node name="Parts" type="Node2D" parent="DirectionFlipper/PartsAndSkeleton"]
@@ -3861,48 +3864,59 @@ uv = PackedVector2Array(28.0612, 29.0816, 60.7143, 21.9388, 102.551, 23.9796, 11
 bones = ["Hip", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0), "Hip/Torso", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0), "Hip/Torso/Neck", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0), "Hip/Torso/Neck/Head", PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1), "Hip/Torso/Neck/Head/FrontEar", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0), "Hip/Torso/Neck/Head/BackEar", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0), "Hip/Torso/Neck/Head/Fur", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0), "Hip/Torso/FrontShoulder", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0), "Hip/Torso/FrontShoulder/FrontUpperarm", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0), "Hip/Torso/FrontShoulder/FrontUpperarm/FrontForearm", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0), "Hip/Torso/FrontShoulder/FrontUpperarm/FrontForearm/FrontHand", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0), "Hip/Torso/BackShoulder", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0), "Hip/Torso/BackShoulder/BackUpperarm", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0), "Hip/Torso/BackShoulder/BackUpperarm/BackForearm", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0), "Hip/Torso/BackShoulder/BackUpperarm/BackForearm/BackHand", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0), "Hip/BackThigh", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0), "Hip/BackThigh/BackShin", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0), "Hip/BackThigh/BackShin/BackFoot", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0), "Hip/FrontThigh", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0), "Hip/FrontThigh/FrontShin", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0), "Hip/FrontThigh/FrontShin/FrontFoot", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)]
 
 [node name="Parts2" type="Node2D" parent="DirectionFlipper/PartsAndSkeleton"]
+use_parent_material = true
 
 [node name="BackUpperArm" type="Sprite2D" parent="DirectionFlipper/PartsAndSkeleton/Parts2"]
+use_parent_material = true
 position = Vector2(47, -162)
 rotation = 0.794321
 texture = ExtResource("11_eab0u")
 
 [node name="BackShoulder" type="Sprite2D" parent="DirectionFlipper/PartsAndSkeleton/Parts2"]
+use_parent_material = true
 position = Vector2(48, -193)
 rotation = 0.185871
 texture = ExtResource("12_004by")
 
 [node name="BackForeArm" type="Sprite2D" parent="DirectionFlipper/PartsAndSkeleton/Parts2"]
+use_parent_material = true
 position = Vector2(52, -126)
 rotation = 1.76226
 texture = ExtResource("13_ykpsa")
 
 [node name="BackHand" type="Sprite2D" parent="DirectionFlipper/PartsAndSkeleton/Parts2"]
+use_parent_material = true
 position = Vector2(66, -98)
 rotation = 1.22447
 texture = ExtResource("14_bi67a")
 
 [node name="BackShin" type="Sprite2D" parent="DirectionFlipper/PartsAndSkeleton/Parts2"]
+use_parent_material = true
 position = Vector2(46, -33)
 rotation = -1.46987
+scale = Vector2(1, 1)
 texture = ExtResource("15_vpyt6")
 
 [node name="BackThigh" type="Sprite2D" parent="DirectionFlipper/PartsAndSkeleton/Parts2"]
+use_parent_material = true
 position = Vector2(24, -89)
 rotation = -1.79862
 texture = ExtResource("16_lw1ty")
 
 [node name="BackKnee" type="Sprite2D" parent="DirectionFlipper/PartsAndSkeleton/Parts2"]
+use_parent_material = true
 position = Vector2(59, -65)
 rotation = -1.57255
 texture = ExtResource("17_420l0")
 
 [node name="BackFoot" type="Sprite2D" parent="DirectionFlipper/PartsAndSkeleton/Parts2"]
+use_parent_material = true
 position = Vector2(69, -10)
 rotation = -1.61256
 texture = ExtResource("18_mc7rp")
 
 [node name="Tail" type="Polygon2D" parent="DirectionFlipper/PartsAndSkeleton/Parts2"]
+use_parent_material = true
 position = Vector2(-285, -182)
 texture = ExtResource("34_lun82")
 skeleton = NodePath("../../Skeleton2D")
@@ -3913,80 +3927,98 @@ bones = ["Hip", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
 internal_vertex_count = 15
 
 [node name="Torso" type="Sprite2D" parent="DirectionFlipper/PartsAndSkeleton/Parts2"]
+use_parent_material = true
 position = Vector2(5, -159)
 rotation = -0.217732
 texture = ExtResource("19_l2nnm")
 
 [node name="FrontThigh" type="Sprite2D" parent="DirectionFlipper/PartsAndSkeleton/Parts2"]
+use_parent_material = true
 position = Vector2(-33, -94)
 rotation = 2.06964
 scale = Vector2(0.826384, 0.873486)
 texture = ExtResource("20_cgmrb")
 
 [node name="FrontShin" type="Sprite2D" parent="DirectionFlipper/PartsAndSkeleton/Parts2"]
+use_parent_material = true
 position = Vector2(-66, -35)
 rotation = 0.917406
 texture = ExtResource("21_2hrlm")
 
 [node name="FrontFoot" type="Sprite2D" parent="DirectionFlipper/PartsAndSkeleton/Parts2"]
+use_parent_material = true
 position = Vector2(-55.3654, -4.23535)
 rotation = 0.662958
 texture = ExtResource("22_gsg74")
 
 [node name="FrontKnee" type="Sprite2D" parent="DirectionFlipper/PartsAndSkeleton/Parts2"]
+use_parent_material = true
 position = Vector2(-40, -58)
 rotation = 1.49626
+scale = Vector2(1, 1)
 texture = ExtResource("23_hg7vf")
 
 [node name="Neck" type="Sprite2D" parent="DirectionFlipper/PartsAndSkeleton/Parts2"]
+use_parent_material = true
 position = Vector2(16, -214)
 rotation = -0.309935
 texture = ExtResource("30_5bh0c")
 
 [node name="Fur" type="Sprite2D" parent="DirectionFlipper/PartsAndSkeleton/Parts2"]
+use_parent_material = true
 position = Vector2(-21, -249)
 texture = ExtResource("31_3yif3")
 
 [node name="BackEar" type="Sprite2D" parent="DirectionFlipper/PartsAndSkeleton/Parts2"]
+use_parent_material = true
 position = Vector2(3, -308)
 rotation = 0.148138
 texture = ExtResource("32_uvqkt")
 
 [node name="FrontEar" type="Sprite2D" parent="DirectionFlipper/PartsAndSkeleton/Parts2"]
+use_parent_material = true
 position = Vector2(-30, -298)
 rotation = 0.0493686
 texture = ExtResource("33_ibkuc")
 
 [node name="Head" type="Sprite2D" parent="DirectionFlipper/PartsAndSkeleton/Parts2"]
+use_parent_material = true
 position = Vector2(26, -266)
 texture = ExtResource("35_vyrbb")
 
 [node name="FrontForeArm" type="Sprite2D" parent="DirectionFlipper/PartsAndSkeleton/Parts2"]
+use_parent_material = true
 position = Vector2(-51, -132)
 rotation = -0.824705
 texture = ExtResource("26_y05xr")
 
 [node name="FrontUpperArm" type="Sprite2D" parent="DirectionFlipper/PartsAndSkeleton/Parts2"]
+use_parent_material = true
 position = Vector2(-48, -181)
 rotation = -1.56171
+scale = Vector2(1, 1)
 texture = ExtResource("24_qycew")
 
 [node name="FrontShoulder" type="Sprite2D" parent="DirectionFlipper/PartsAndSkeleton/Parts2"]
+use_parent_material = true
 position = Vector2(-39, -208)
 rotation = -0.572878
 texture = ExtResource("28_cwmfw")
 
 [node name="SwordHandle" type="Sprite2D" parent="DirectionFlipper/PartsAndSkeleton/Parts2"]
+use_parent_material = true
 position = Vector2(-57, -98)
 rotation = -1.57361
 texture = ExtResource("25_wr40y")
 
 [node name="FrontHand" type="Sprite2D" parent="DirectionFlipper/PartsAndSkeleton/Parts2"]
+use_parent_material = true
 position = Vector2(-45, -98)
 rotation = -1.65161
 texture = ExtResource("27_ownf2")
 
 [node name="SwordBlade" type="Sprite2D" parent="DirectionFlipper/PartsAndSkeleton/Parts2"]
+use_parent_material = true
 position = Vector2(51, -96)
 rotation = -1.56729
 texture = ExtResource("29_1kriv")

@@ -256,6 +256,7 @@ turbulence_noise_scale = 0.386
 
 [node name="Phoenix" type="CharacterBody2D" groups=["enemy"]]
 y_sort_enabled = true
+use_parent_material = true
 position = Vector2(598, 382)
 script = ExtResource("1_yjggy")
 
@@ -267,6 +268,7 @@ libraries = {
 autoplay = "idle"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+use_parent_material = true
 position = Vector2(-32, -43)
 texture = ExtResource("1_2n03k")
 hframes = 7
