@@ -1,12 +1,13 @@
-[gd_scene load_steps=21 format=3 uid="uid://hx0ff17h75bt"]
+[gd_scene load_steps=22 format=3 uid="uid://hx0ff17h75bt"]
 
 [ext_resource type="Script" path="res://entities/enemies/mini_boss.gd" id="1_g4alc"]
 [ext_resource type="Texture2D" uid="uid://cndw6p1pyroeq" path="res://entities/player/base_spritesheets/Player Sword Idle 48x48.png" id="1_tk2gr"]
 [ext_resource type="Script" path="res://entities/DirectionFlipper.gd" id="2_cxkc5"]
 [ext_resource type="Texture2D" uid="uid://4roewycywcv4" path="res://entities/player/base_spritesheets/Player Sword Run 48x48.png" id="2_qokim"]
-[ext_resource type="Texture2D" uid="uid://dwe5druijkq1q" path="res://entities/player/base_spritesheets/player sword atk 64x64.png" id="3_y0r3d"]
-[ext_resource type="Texture2D" uid="uid://1fi1fymvcs2q" path="res://entities/player/base_spritesheets/PlayerWalk 48x48.png" id="6_6yoy4"]
+[ext_resource type="Texture2D" uid="uid://b6a87o0p6uvaj" path="res://entities/enemies/minotaur/minotaur_attack.png" id="4_3m4mc"]
+[ext_resource type="Texture2D" uid="uid://d30vulr1mk4ts" path="res://entities/enemies/minotaur/minotaur_idle.png" id="5_qcjbs"]
 [ext_resource type="PackedScene" uid="uid://fg3eiqc5q8pi" path="res://entities/hurtbox_component.tscn" id="6_xniqn"]
+[ext_resource type="Texture2D" uid="uid://xslgg48gg0wg" path="res://entities/enemies/minotaur/minotaur_walk.png" id="7_6m1w4"]
 [ext_resource type="PackedScene" uid="uid://skotr71q1hpn" path="res://entities/hitbox_component.tscn" id="7_dqhgp"]
 [ext_resource type="PackedScene" uid="uid://cfm8wr35elasl" path="res://entities/health_component.tscn" id="8_oakl6"]
 
@@ -94,7 +95,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("3_y0r3d")]
+"values": [ExtResource("4_3m4mc")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -147,7 +148,7 @@ tracks/4/keys = {
 
 [sub_resource type="Animation" id="Animation_rx8lv"]
 resource_name = "idle"
-length = 1.5
+length = 1.7
 loop_mode = 1
 step = 0.15
 tracks/0/type = "value"
@@ -160,7 +161,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("1_tk2gr")]
+"values": [ExtResource("5_qcjbs")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -172,7 +173,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [10]
+"values": [4]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -193,10 +194,10 @@ tracks/3/path = NodePath("DirectionFlipper/Sprite:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1.05, 1.2, 1.35),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.45, 0.9, 1.35),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+"values": [0, 1, 2, 3]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -291,7 +292,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("6_6yoy4")]
+"values": [ExtResource("7_6m1w4")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
