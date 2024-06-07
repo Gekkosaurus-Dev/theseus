@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://capi6uluh7cjl"]
+[gd_scene load_steps=6 format=3 uid="uid://capi6uluh7cjl"]
 
 [ext_resource type="TileSet" uid="uid://dna5pqp0m2t01" path="res://levels/tileset4.tres" id="1_2ggi4"]
 [ext_resource type="Script" path="res://levels/boss_arena.gd" id="1_xhrv0"]
 [ext_resource type="PackedScene" uid="uid://ca3il8qfcg5fv" path="res://entities/player/player_new.tscn" id="2_tevop"]
 [ext_resource type="PackedScene" uid="uid://hx0ff17h75bt" path="res://entities/enemies/mini_boss.tscn" id="3_oexnq"]
+[ext_resource type="Texture2D" uid="uid://d30vulr1mk4ts" path="res://entities/enemies/minotaur/minotaur_idle.png" id="5_8qt3s"]
 
 [node name="Boss_Arena" type="Node2D"]
 y_sort_enabled = true
@@ -33,6 +34,10 @@ position_smoothing_speed = 10.0
 
 [node name="MiniBoss" parent="." instance=ExtResource("3_oexnq")]
 position = Vector2(1445, 632)
+
+[node name="Sprite" parent="MiniBoss/DirectionFlipper" index="0"]
+texture = ExtResource("5_8qt3s")
+hframes = 4
 
 [node name="HealthComponent" parent="MiniBoss" index="2"]
 max_health = 500
