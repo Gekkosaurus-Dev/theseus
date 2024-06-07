@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://dgf6emqrsvrd2"]
+[gd_scene load_steps=5 format=3 uid="uid://dgf6emqrsvrd2"]
 
 [ext_resource type="Script" path="res://menus/main_menu.gd" id="1_n40k6"]
 [ext_resource type="Theme" uid="uid://6pdtpatqujo6" path="res://menus/menu_theme.tres" id="2_rrsp1"]
+[ext_resource type="Texture2D" uid="uid://bflwiigvws4sn" path="res://menus/THUMBNAIL.png" id="3_p3ya0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c138k"]
+bg_color = Color(0.109804, 0.537255, 0.482353, 1)
 
 [node name="Main Menu" type="CanvasLayer"]
 script = ExtResource("1_n40k6")
@@ -13,6 +17,25 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_rrsp1")
+
+[node name="Panel2" type="Panel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_c138k")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 487.0
+offset_right = 487.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_p3ya0")
+stretch_mode = 4
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 15
@@ -29,7 +52,17 @@ theme_override_constants/separation = 100
 [node name="Separator" type="Control" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 
+[node name="Separator2" type="Control" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Separator3" type="Control" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Separator4" type="Control" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 100
 text = "THESEUS"

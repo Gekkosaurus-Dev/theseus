@@ -8,14 +8,16 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lah0o"]
 bg_color = Color(1, 1, 1, 1)
 
-[node name="MapSelect" type="Node2D" node_paths=PackedStringArray("area1_button", "area2_button", "area3_button", "linet1", "line12", "line23")]
+[node name="MapSelect" type="Node2D" node_paths=PackedStringArray("area1_button", "area2_button", "area3_button", "boss_button", "linet1", "line12", "line23", "line3b")]
 script = ExtResource("1_ydwa2")
 area1_button = NodePath("CanvasLayer/Panel/Area1Button")
 area2_button = NodePath("CanvasLayer/Panel/Area2Button")
 area3_button = NodePath("CanvasLayer/Panel/Area3Button")
+boss_button = NodePath("CanvasLayer/Panel/BossButton")
 linet1 = NodePath("CanvasLayer/Panel/TextureRect2")
 line12 = NodePath("CanvasLayer/Panel/TextureRect3")
 line23 = NodePath("CanvasLayer/Panel/TextureRect4")
+line3b = NodePath("CanvasLayer/Panel/TextureRect5")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -104,6 +106,24 @@ offset_top = 327.0
 offset_right = 1774.0
 offset_bottom = 484.0
 
+[node name="TextureRect5" type="TextureRect" parent="CanvasLayer/Panel"]
+layout_mode = 0
+offset_left = 691.0
+offset_top = 818.0
+offset_right = 1010.0
+offset_bottom = 843.0
+rotation = -0.390782
+scale = Vector2(3.23784, 3.23784)
+texture = ExtResource("3_y67ty")
+expand_mode = 2
+
+[node name="BossButton" type="Button" parent="CanvasLayer/Panel"]
+layout_mode = 0
+offset_left = 594.0
+offset_top = 786.0
+offset_right = 748.0
+offset_bottom = 926.0
+
 [node name="Map-placeholder" type="Sprite2D" parent="CanvasLayer"]
 position = Vector2(-1010, 590)
 scale = Vector2(1.66493, 1.67284)
@@ -130,6 +150,7 @@ offset_bottom = 691.0
 [connection signal="pressed" from="CanvasLayer/Panel/Area1Button" to="." method="_on_area_1_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Panel/Area2Button" to="." method="_on_area_2_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Panel/Area3Button" to="." method="_on_area_3_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Panel/BossButton" to="." method="_on_boss_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Area3" to="." method="_on_area_3_pressed"]
 [connection signal="pressed" from="CanvasLayer/Area2" to="." method="_on_area_2_pressed"]
 [connection signal="pressed" from="CanvasLayer/Area1" to="." method="_on_area_1_pressed"]

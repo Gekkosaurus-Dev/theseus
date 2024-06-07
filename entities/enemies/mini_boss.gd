@@ -6,8 +6,11 @@ extends CharacterBody2D
 
 enum EnemyStates {ATTACKING, MOVING, IDLE}
 var enemy_state
+var enemy_state_holder
 var can_attack = true
 var prev_state
+
+@export var health_component: Node
 
 var player
 
@@ -20,6 +23,7 @@ var player
 func _ready():
 	player = $"../player_new"
 	enemy_state = EnemyStates.IDLE
+	enemy_state_holder = enemy_state
 
 func _physics_process(_delta):
 	
@@ -33,6 +37,9 @@ func _physics_process(_delta):
 	
 func damage_taken():
 	play_damage_animation()
+	print (health_component.health)
+	if (health_component.health <= 0):
+		$"..".boss_died()
 
 func play_damage_animation():
 	var sprite = $DirectionFlipper/Sprite
@@ -63,7 +70,7 @@ func attack():
 
 func _on_animation_player_animation_finished(anim_name):
 	if (anim_name == "attack"):
-		enemy_state = EnemyStates.IDLE
+		enemy_state = enemy_state_holder
 
 func _on_attack_cooldown_timeout():
 	#print("timedout")
@@ -76,9 +83,15 @@ func _on_attack_cooldown_timeout():
 func _on_detection_area_body_entered(body):
 	var type = body.get_groups()
 	if (type.has("player")):
-		enemy_state = EnemyStates.MOVING
+		if enemy_state != EnemyStates.ATTACKING:
+			enemy_state = EnemyStates.MOVING
+		else:
+			enemy_state_holder = EnemyStates.MOVING
 
 func _on_detection_area_body_exited(body):
 	var type = body.get_groups()
 	if (type.has("player")):
-		enemy_state = EnemyStates.IDLE
+		if enemy_state != EnemyStates.ATTACKING:
+			enemy_state = EnemyStates.IDLE
+		else:
+			enemy_state_holder = EnemyStates.IDLE

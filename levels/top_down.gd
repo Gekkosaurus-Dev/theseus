@@ -1,6 +1,7 @@
 extends Node2D
 
 var game_manager
+@export var enemies_group: Node2D
 @export var player: CharacterBody2D
 
 func get_game_manager():
@@ -13,14 +14,28 @@ func _ready():
 func _process(_delta):
 	pass
 
+func count_enemies():
+	var enemies_array = enemies_group.get_children()
+	var num_enemies = enemies_array.size()
+	#print(num_enemies)
+	return num_enemies
 
 func _on_area_2d_area_entered(area):
 	var object_type = area.owner.get_groups()
-	if (object_type.has("player")):
+	if (object_type.has("player")): #and (count_enemies() <=0):
 		var total_health = player.get_total_health()
 		player.freeze()
 		player.player_state = player.PlayerStates.END
-		game_manager.visited_areas.append("Area 1")
+		if !(game_manager.visited_areas.has("Area 1")):
+			game_manager.visited_areas.append("Area 1")
+			print (game_manager.visited_areas)
+		elif !(game_manager.visited_areas.has("Area 2")):
+			game_manager.visited_areas.append("Area 2")
+			print (game_manager.visited_areas)
+		elif !(game_manager.visited_areas.has("Area 3")):
+			game_manager.visited_areas.append("Area 3")
+			print (game_manager.visited_areas)
+			
 		game_manager.load_medic_report(total_health,self)
 		#print("AAAAAAAAAAA")
 		#var damage_amount = player.get_damage_taken_amount(

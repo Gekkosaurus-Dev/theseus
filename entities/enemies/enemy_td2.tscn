@@ -53,7 +53,7 @@ texture = ExtResource("4_f3rv4")
 max_speed = 150
 
 [node name="HealthComponent" parent="." instance=ExtResource("6_gcqy5")]
-max_health = 300
+max_health = 200
 
 [node name="PhysicsCollider" type="CollisionShape2D" parent="."]
 position = Vector2(4.76837e-07, 16.5)

@@ -1,8 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://bp3e75fnqgk6w"]
+[gd_scene load_steps=5 format=3 uid="uid://bp3e75fnqgk6w"]
 
+[ext_resource type="Shader" path="res://gradient_map.gdshader" id="1_cr7vl"]
 [ext_resource type="Script" path="res://game_manager.gd" id="1_hmg5f"]
+[ext_resource type="Texture2D" uid="uid://bh7dwsal8ncsm" path="res://gradient.tres" id="2_faxny"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3yrqw"]
+shader = ExtResource("1_cr7vl")
+shader_parameter/gradient = ExtResource("2_faxny")
 
 [node name="GameManager" type="Node2D"]
+material = SubResource("ShaderMaterial_3yrqw")
 script = ExtResource("1_hmg5f")
 max_days_left = 100
 starting_soul_percent = 90.0

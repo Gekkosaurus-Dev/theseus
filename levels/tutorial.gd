@@ -45,3 +45,6 @@ func _on_input_changed():
 		
 		$"Control/AttackInstructions/C-AttackContainer".visible = true
 		$"Control/AttackInstructions/K-AttackContainer".visible = false
+
+func boss_died():
+	pass

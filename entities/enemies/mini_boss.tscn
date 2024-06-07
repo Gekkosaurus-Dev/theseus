@@ -79,8 +79,8 @@ tracks/4/keys = {
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p0fto"]
-radius = 218.0
-height = 524.061
+radius = 201.036
+height = 470.01
 
 [sub_resource type="Animation" id="Animation_bru0k"]
 resource_name = "attack"
@@ -356,20 +356,22 @@ _data = {
 radius = 98.0
 height = 404.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_v0yua"]
-radius = 197.023
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xqw25"]
+radius = 233.0
+height = 466.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jjaa0"]
 radius = 782.612
 
-[node name="MiniBoss" type="CharacterBody2D" node_paths=PackedStringArray("animation_player", "attack_area", "attack_cooldown_timer") groups=["enemy"]]
+[node name="MiniBoss" type="CharacterBody2D" node_paths=PackedStringArray("animation_player", "health_component", "attack_area", "attack_cooldown_timer") groups=["enemy"]]
 y_sort_enabled = true
 use_parent_material = true
 collision_layer = 2
 collision_mask = 15
 script = ExtResource("1_g4alc")
 animation_player = NodePath("DirectionFlipper/AnimationPlayer")
-attack_area = NodePath("AttackArea")
+health_component = NodePath("HealthComponent")
+attack_area = NodePath("DirectionFlipper/AttackArea")
 attack_cooldown_timer = NodePath("AttackCooldown")
 
 [node name="CollisionBox" type="CollisionShape2D" parent="."]
@@ -381,7 +383,6 @@ position = Vector2(0, -240)
 script = ExtResource("2_cxkc5")
 
 [node name="Sprite" type="Sprite2D" parent="DirectionFlipper"]
-modulate = Color(0.384314, 0.27451, 0.352941, 1)
 use_parent_material = true
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("1_tk2gr")
@@ -404,25 +405,21 @@ shape = SubResource("CapsuleShape2D_wutof")
 debug_color = Color(0, 1, 0, 0.419608)
 
 [node name="HitboxComponent" parent="DirectionFlipper" instance=ExtResource("7_dqhgp")]
-damage_amount = 100
+damage_amount = 90
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DirectionFlipper/HitboxComponent"]
-position = Vector2(216, 193)
+position = Vector2(201, 82)
 rotation = 1.55688
 debug_color = Color(1, 0, 0, 0.419608)
 
+[node name="AttackArea" type="Area2D" parent="DirectionFlipper"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DirectionFlipper/AttackArea"]
+position = Vector2(189, 114)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_xqw25")
+
 [node name="HealthComponent" parent="." instance=ExtResource("8_oakl6")]
-
-[node name="AttackArea" type="Area2D" parent="."]
-position = Vector2(0, -240)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
-position = Vector2(188, 195)
-shape = SubResource("CircleShape2D_v0yua")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="AttackArea"]
-position = Vector2(-196, 195)
-shape = SubResource("CircleShape2D_v0yua")
 
 [node name="DetectionArea" type="Area2D" parent="."]
 
@@ -434,7 +431,7 @@ wait_time = 1.5
 one_shot = true
 
 [connection signal="animation_finished" from="DirectionFlipper/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
-[connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]
+[connection signal="body_entered" from="DirectionFlipper/AttackArea" to="." method="_on_attack_area_body_entered"]
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
 [connection signal="timeout" from="AttackCooldown" to="." method="_on_attack_cooldown_timeout"]
