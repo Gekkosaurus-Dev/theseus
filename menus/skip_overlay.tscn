@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxpkn3qfcdwx"]
+
+[ext_resource type="Script" path="res://SKIP_OVERLAY.gd" id="1_hj86g"]
+
+[node name="SKIP_OVERLAY" type="CanvasLayer"]
+layer = 3
+script = ExtResource("1_hj86g")
+
+[node name="Button" type="Button" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -192.0
+offset_top = -119.0
+offset_right = -74.0
+offset_bottom = -70.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "SKIP"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

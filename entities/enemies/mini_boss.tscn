@@ -19,12 +19,12 @@ height = 208.0
 offsets = PackedFloat32Array(0, 0.989362)
 colors = PackedColorArray(0.0196078, 0.176471, 0.219608, 1, 0.0666667, 0.411765, 0.360784, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_bjfii"]
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_bc6af"]
 gradient = SubResource("Gradient_u01pc")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uqnp8"]
 shader = ExtResource("3_o2cwv")
-shader_parameter/gradient = SubResource("GradientTexture2D_bjfii")
+shader_parameter/gradient = SubResource("GradientTexture2D_bc6af")
 
 [sub_resource type="Animation" id="Animation_t554i"]
 length = 0.001

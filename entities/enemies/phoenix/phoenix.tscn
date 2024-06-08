@@ -1,8 +1,9 @@
-[gd_scene load_steps=19 format=3 uid="uid://2b0o4qatcrmv"]
+[gd_scene load_steps=22 format=3 uid="uid://2b0o4qatcrmv"]
 
 [ext_resource type="Texture2D" uid="uid://qyqgvl0ft250" path="res://entities/enemies/phoenix/phoenix_idle.png" id="1_2n03k"]
 [ext_resource type="Script" path="res://entities/enemies/phoenix/phoenix.gd" id="1_yjggy"]
 [ext_resource type="Texture2D" uid="uid://bmdk75jdmu02w" path="res://entities/enemies/phoenix/phoenix_attack.png" id="2_2cw4x"]
+[ext_resource type="Script" path="res://entities/DirectionFlipper.gd" id="3_i04k7"]
 [ext_resource type="PackedScene" uid="uid://fg3eiqc5q8pi" path="res://entities/hurtbox_component.tscn" id="3_kkb1q"]
 [ext_resource type="PackedScene" uid="uid://skotr71q1hpn" path="res://entities/hitbox_component.tscn" id="4_gt3sf"]
 [ext_resource type="PackedScene" uid="uid://cfm8wr35elasl" path="res://entities/health_component.tscn" id="5_bl7d6"]
@@ -125,13 +126,25 @@ tracks/3/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 4, 5, 6, 7, 8]
 }
-tracks/4/type = "method"
+tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("..")
+tracks/4/path = NodePath("../HitboxComponent/CollisionShape2D:shape")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.8, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [null, SubResource("CapsuleShape2D_ughm5"), null]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../..")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
 "times": PackedFloat32Array(0.4, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
@@ -141,18 +154,6 @@ tracks/4/keys = {
 "args": [],
 "method": &"end_particles"
 }]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("../HitboxComponent/CollisionShape2D:shape")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.8, 1.1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [null, SubResource("CapsuleShape2D_ughm5"), null]
 }
 
 [sub_resource type="Animation" id="Animation_tn0u5"]
@@ -219,9 +220,6 @@ _data = {
 radius = 102.0
 height = 368.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_s41w6"]
-radius = 65.6201
-
 [sub_resource type="Gradient" id="Gradient_q8axo"]
 offsets = PackedFloat32Array(0, 0.245136, 0.599222, 1)
 colors = PackedColorArray(0.918038, 0.883773, 0.697335, 1, 0.976545, 0.876417, 0.49035, 1, 0.963409, 0.370755, 0.1701, 1, 0.576471, 0.0745098, 0.00392157, 0.301961)
@@ -239,10 +237,10 @@ curve = SubResource("Curve_ovumd")
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pryti"]
 particle_flag_disable_z = true
 inherit_velocity_ratio = 1.0
-direction = Vector3(6.32, 0, 0)
+direction = Vector3(0, 0, 0)
 spread = 42.758
 angular_velocity_max = 61.71
-gravity = Vector3(-96.895, 98, 0)
+gravity = Vector3(96.895, 98, 0)
 linear_accel_min = 27.14
 linear_accel_max = 67.14
 radial_accel_min = 14.6
@@ -254,59 +252,89 @@ color_ramp = SubResource("GradientTexture1D_vapra")
 turbulence_noise_strength = 0.86
 turbulence_noise_scale = 0.386
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_y42tl"]
+radius = 778.091
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c0485"]
+radius = 260.094
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s41w6"]
+radius = 65.6201
+
 [node name="Phoenix" type="CharacterBody2D" groups=["enemy"]]
 y_sort_enabled = true
 use_parent_material = true
-position = Vector2(598, 382)
+position = Vector2(767, 646)
 script = ExtResource("1_yjggy")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-root_node = NodePath("../Sprite2D")
-libraries = {
-"": SubResource("AnimationLibrary_vkk75")
-}
-autoplay = "idle"
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-use_parent_material = true
-position = Vector2(-32, -43)
-texture = ExtResource("1_2n03k")
-hframes = 7
-
-[node name="HurtboxComponent" parent="." instance=ExtResource("3_kkb1q")]
-visible = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
-position = Vector2(0, -49)
-shape = SubResource("CapsuleShape2D_rp5ch")
-debug_color = Color(0, 0.635294, 0.419608, 0.419608)
-
 [node name="HealthComponent" parent="." instance=ExtResource("5_bl7d6")]
-
-[node name="CollisionBox" type="CollisionShape2D" parent="."]
-position = Vector2(0, 71)
-shape = SubResource("CircleShape2D_s41w6")
-
-[node name="HitboxComponent" parent="." instance=ExtResource("4_gt3sf")]
-damage_amount = 20
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
-position = Vector2(-239, -25)
-rotation = 0.806342
-debug_color = Color(0.984314, 0, 0.345098, 0.419608)
-
-[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
-position = Vector2(-147, -117)
-emitting = false
-amount = 50
-process_material = SubResource("ParticleProcessMaterial_pryti")
-lifetime = 1.2
-speed_scale = 2.0
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
 autostart = true
 
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[node name="DirectionFlipper" type="Node2D" parent="."]
+position = Vector2(0, -240)
+script = ExtResource("3_i04k7")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DirectionFlipper"]
+root_node = NodePath("../Sprite2D")
+libraries = {
+"": SubResource("AnimationLibrary_vkk75")
+}
+autoplay = "idle"
+
+[node name="Sprite2D" type="Sprite2D" parent="DirectionFlipper"]
+use_parent_material = true
+position = Vector2(51, 197)
+scale = Vector2(-1, 1)
+texture = ExtResource("1_2n03k")
+hframes = 7
+
+[node name="HurtboxComponent" parent="DirectionFlipper" instance=ExtResource("3_kkb1q")]
+position = Vector2(0, 240)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DirectionFlipper/HurtboxComponent"]
+position = Vector2(0, -49)
+shape = SubResource("CapsuleShape2D_rp5ch")
+debug_color = Color(0, 0.635294, 0.419608, 0.419608)
+
+[node name="HitboxComponent" parent="DirectionFlipper" instance=ExtResource("4_gt3sf")]
+position = Vector2(0, 240)
+damage_amount = 20
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DirectionFlipper/HitboxComponent"]
+position = Vector2(269, -12)
+rotation = -0.785398
+debug_color = Color(0.984314, 0, 0.345098, 0.419608)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="DirectionFlipper"]
+position = Vector2(178, 130)
+emitting = false
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_pryti")
+lifetime = 1.2
+speed_scale = 2.0
+
+[node name="DetectionArea" type="Area2D" parent="DirectionFlipper"]
+position = Vector2(0, 240)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DirectionFlipper/DetectionArea"]
+shape = SubResource("CircleShape2D_y42tl")
+
+[node name="AttackArea" type="Area2D" parent="DirectionFlipper"]
+position = Vector2(514, 262)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DirectionFlipper/AttackArea"]
+position = Vector2(-261, -1)
+shape = SubResource("CircleShape2D_c0485")
+
+[node name="CollisionBox" type="CollisionShape2D" parent="."]
+position = Vector2(0, 71)
+shape = SubResource("CircleShape2D_s41w6")
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="animation_finished" from="DirectionFlipper/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="body_entered" from="DirectionFlipper/DetectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_entered" from="DirectionFlipper/AttackArea" to="." method="_on_attack_area_body_entered"]

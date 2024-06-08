@@ -3894,6 +3894,7 @@ texture = ExtResource("14_bi67a")
 use_parent_material = true
 position = Vector2(46, -33)
 rotation = -1.46987
+scale = Vector2(1, 1)
 texture = ExtResource("15_vpyt6")
 
 [node name="BackThigh" type="Sprite2D" parent="DirectionFlipper/PartsAndSkeleton/Parts2"]
@@ -3954,6 +3955,7 @@ texture = ExtResource("22_gsg74")
 use_parent_material = true
 position = Vector2(-40, -58)
 rotation = 1.49626
+scale = Vector2(1, 1)
 texture = ExtResource("23_hg7vf")
 
 [node name="Neck" type="Sprite2D" parent="DirectionFlipper/PartsAndSkeleton/Parts2"]
@@ -3994,6 +3996,7 @@ texture = ExtResource("26_y05xr")
 use_parent_material = true
 position = Vector2(-48, -181)
 rotation = -1.56171
+scale = Vector2(1, 1)
 texture = ExtResource("24_qycew")
 
 [node name="FrontShoulder" type="Sprite2D" parent="DirectionFlipper/PartsAndSkeleton/Parts2"]
