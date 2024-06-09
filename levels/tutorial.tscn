@@ -1,11 +1,10 @@
-[gd_scene load_steps=21 format=3 uid="uid://4phgm6ab3385"]
+[gd_scene load_steps=20 format=3 uid="uid://4phgm6ab3385"]
 
 [ext_resource type="Script" path="res://levels/tutorial.gd" id="1_qeej4"]
 [ext_resource type="TileSet" uid="uid://dna5pqp0m2t01" path="res://levels/tileset4.tres" id="2_0bgad"]
 [ext_resource type="PackedScene" uid="uid://ca3il8qfcg5fv" path="res://entities/player/player_new.tscn" id="2_1x2v7"]
 [ext_resource type="PackedScene" uid="uid://dvu7wdo35wlgd" path="res://entities/other/dummy.tscn" id="3_4oqkb"]
 [ext_resource type="PackedScene" uid="uid://c2hsao0svpn4v" path="res://entities/other/grass.tscn" id="4_xbwb1"]
-[ext_resource type="PackedScene" uid="uid://dkaeprjt76pfv" path="res://entities/enemies/enemy_td.tscn" id="5_r0mi1"]
 [ext_resource type="PackedScene" uid="uid://hx0ff17h75bt" path="res://entities/enemies/mini_boss.tscn" id="6_glvaw"]
 [ext_resource type="Texture2D" uid="uid://bvmqarlygmc82" path="res://menus/button prompts/switch_buttons_down_outline.png" id="8_0ffhn"]
 [ext_resource type="Texture2D" uid="uid://bm5mtluv053lw" path="res://menus/button prompts/xbox_stick_l.png" id="9_boeik"]
@@ -18,7 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://jrgvbi88kteq" path="res://menus/button prompts/keyboard_d.png" id="13_qajkw"]
 [ext_resource type="Texture2D" uid="uid://d2rpuqmenytvh" path="res://menus/button prompts/keyboard_space.png" id="15_1c1qg"]
 [ext_resource type="Texture2D" uid="uid://by8psumx3kmbd" path="res://menus/button prompts/mouse_left_outline.png" id="17_v1xnu"]
-[ext_resource type="PackedScene" uid="uid://2b0o4qatcrmv" path="res://entities/enemies/phoenix/phoenix.tscn" id="19_m6lo2"]
+[ext_resource type="PackedScene" uid="uid://bkpnyjeeqovvq" path="res://entities/enemies/snake.tscn" id="20_4ufki"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_86nk8"]
 bg_color = Color(0.101961, 0.431373, 0.396078, 1)
@@ -55,180 +54,130 @@ position_smoothing_speed = 10.0
 position = Vector2(5200, -2229)
 
 [node name="GrassGroup" type="Node2D" parent="."]
+modulate = Color(0.454902, 0.631373, 0.509804, 1)
 z_index = -1
 use_parent_material = true
 position = Vector2(5200, -2229)
 
 [node name="Grass" parent="GrassGroup" instance=ExtResource("4_xbwb1")]
-modulate = Color(0.345098, 0.427451, 0.0980392, 1)
 position = Vector2(-6294, 2585)
 
 [node name="Grass2" parent="GrassGroup" instance=ExtResource("4_xbwb1")]
-modulate = Color(0.345098, 0.427451, 0.0980392, 1)
 position = Vector2(-4377, 2706)
 
 [node name="Grass3" parent="GrassGroup" instance=ExtResource("4_xbwb1")]
-modulate = Color(0.345098, 0.427451, 0.0980392, 1)
 position = Vector2(-4661, 2383)
 
 [node name="Grass4" parent="GrassGroup" instance=ExtResource("4_xbwb1")]
-modulate = Color(0.345098, 0.427451, 0.0980392, 1)
 position = Vector2(-3440, 2264)
 
 [node name="Grass5" parent="GrassGroup" instance=ExtResource("4_xbwb1")]
-modulate = Color(0.345098, 0.427451, 0.0980392, 1)
 position = Vector2(-4238, 1358)
 
 [node name="Grass6" parent="GrassGroup" instance=ExtResource("4_xbwb1")]
-modulate = Color(0.345098, 0.427451, 0.0980392, 1)
 position = Vector2(-3957, 1455)
 
 [node name="Grass7" parent="GrassGroup" instance=ExtResource("4_xbwb1")]
-modulate = Color(0.345098, 0.427451, 0.0980392, 1)
 position = Vector2(-4114, 1557)
 
 [node name="Grass8" parent="GrassGroup" instance=ExtResource("4_xbwb1")]
-modulate = Color(0.345098, 0.427451, 0.0980392, 1)
 position = Vector2(-1228, 1124)
 
 [node name="Grass9" parent="GrassGroup" instance=ExtResource("4_xbwb1")]
-modulate = Color(0.345098, 0.427451, 0.0980392, 1)
 position = Vector2(-2683, 244)
 
 [node name="Grass10" parent="GrassGroup" instance=ExtResource("4_xbwb1")]
-modulate = Color(0.345098, 0.427451, 0.0980392, 1)
 position = Vector2(-1621, 1066)
 
 [node name="Grass11" parent="GrassGroup" instance=ExtResource("4_xbwb1")]
-modulate = Color(0.345098, 0.427451, 0.0980392, 1)
 position = Vector2(-1546, 52)
 
 [node name="Grass12" parent="GrassGroup" instance=ExtResource("4_xbwb1")]
-modulate = Color(0.345098, 0.427451, 0.0980392, 1)
 position = Vector2(-1321, 40)
 
 [node name="Grass13" parent="GrassGroup" instance=ExtResource("4_xbwb1")]
-modulate = Color(0.345098, 0.427451, 0.0980392, 1)
 position = Vector2(-2505, 85)
 
 [node name="Grass14" parent="GrassGroup" instance=ExtResource("4_xbwb1")]
-modulate = Color(0.345098, 0.427451, 0.0980392, 1)
 position = Vector2(-556, -529)
 
 [node name="Grass15" parent="GrassGroup" instance=ExtResource("4_xbwb1")]
-modulate = Color(0.345098, 0.427451, 0.0980392, 1)
 position = Vector2(4163, 3421)
 
 [node name="Grass16" parent="GrassGroup" instance=ExtResource("4_xbwb1")]
-modulate = Color(0.345098, 0.427451, 0.0980392, 1)
 position = Vector2(3756, 3769)
 
 [node name="Grass17" parent="GrassGroup" instance=ExtResource("4_xbwb1")]
-modulate = Color(0.345098, 0.427451, 0.0980392, 1)
 position = Vector2(3226, 2875)
 
 [node name="Grass18" parent="GrassGroup" instance=ExtResource("4_xbwb1")]
-modulate = Color(0.345098, 0.427451, 0.0980392, 1)
 position = Vector2(2768, 3032)
 
 [node name="Grass19" parent="GrassGroup" instance=ExtResource("4_xbwb1")]
-modulate = Color(0.345098, 0.427451, 0.0980392, 1)
 position = Vector2(2168, 2648)
 
 [node name="Grass20" parent="GrassGroup" instance=ExtResource("4_xbwb1")]
-modulate = Color(0.345098, 0.427451, 0.0980392, 1)
 position = Vector2(1878, 2616)
 
 [node name="Grass21" parent="GrassGroup" instance=ExtResource("4_xbwb1")]
-modulate = Color(0.345098, 0.427451, 0.0980392, 1)
 position = Vector2(4031, 1735)
 
 [node name="Grass22" parent="GrassGroup" instance=ExtResource("4_xbwb1")]
-modulate = Color(0.345098, 0.427451, 0.0980392, 1)
 position = Vector2(4985, 2040)
 
 [node name="Grass23" parent="GrassGroup" instance=ExtResource("4_xbwb1")]
-modulate = Color(0.345098, 0.427451, 0.0980392, 1)
 position = Vector2(5705, 2332)
 
 [node name="Grass24" parent="GrassGroup" instance=ExtResource("4_xbwb1")]
-modulate = Color(0.345098, 0.427451, 0.0980392, 1)
 position = Vector2(5570, 2464)
 
 [node name="Grass25" parent="GrassGroup" instance=ExtResource("4_xbwb1")]
-modulate = Color(0.345098, 0.427451, 0.0980392, 1)
 position = Vector2(6115, 2521)
 
 [node name="Grass26" parent="GrassGroup" instance=ExtResource("4_xbwb1")]
-modulate = Color(0.345098, 0.427451, 0.0980392, 1)
 position = Vector2(4425, 2603)
 
 [node name="Grass27" parent="GrassGroup" instance=ExtResource("4_xbwb1")]
-modulate = Color(0.345098, 0.427451, 0.0980392, 1)
 position = Vector2(2993, 1866)
 
 [node name="Grass28" parent="GrassGroup" instance=ExtResource("4_xbwb1")]
-modulate = Color(0.345098, 0.427451, 0.0980392, 1)
 position = Vector2(3681, 1004)
 
 [node name="Grass29" parent="GrassGroup" instance=ExtResource("4_xbwb1")]
-modulate = Color(0.345098, 0.427451, 0.0980392, 1)
 position = Vector2(2944, 1256)
 
 [node name="Grass30" parent="GrassGroup" instance=ExtResource("4_xbwb1")]
-modulate = Color(0.345098, 0.427451, 0.0980392, 1)
 position = Vector2(1264, 426)
 
 [node name="Grass31" parent="GrassGroup" instance=ExtResource("4_xbwb1")]
-modulate = Color(0.345098, 0.427451, 0.0980392, 1)
 position = Vector2(1578, 515)
 
 [node name="Grass32" parent="GrassGroup" instance=ExtResource("4_xbwb1")]
-modulate = Color(0.345098, 0.427451, 0.0980392, 1)
 position = Vector2(2429, 383)
 
 [node name="Grass33" parent="GrassGroup" instance=ExtResource("4_xbwb1")]
-modulate = Color(0.345098, 0.427451, 0.0980392, 1)
 position = Vector2(1514, 6)
 
 [node name="Grass34" parent="GrassGroup" instance=ExtResource("4_xbwb1")]
-modulate = Color(0.345098, 0.427451, 0.0980392, 1)
 position = Vector2(895, -673)
 
 [node name="Grass35" parent="GrassGroup" instance=ExtResource("4_xbwb1")]
-modulate = Color(0.345098, 0.427451, 0.0980392, 1)
 position = Vector2(-101, -600)
 
 [node name="Grass36" parent="GrassGroup" instance=ExtResource("4_xbwb1")]
-modulate = Color(0.345098, 0.427451, 0.0980392, 1)
 position = Vector2(175, 10)
 
 [node name="Grass37" parent="GrassGroup" instance=ExtResource("4_xbwb1")]
-modulate = Color(0.345098, 0.427451, 0.0980392, 1)
 position = Vector2(-1770, 557)
 
 [node name="Grass38" parent="GrassGroup" instance=ExtResource("4_xbwb1")]
-modulate = Color(0.345098, 0.427451, 0.0980392, 1)
 position = Vector2(-5822, 2921)
 
 [node name="Grass39" parent="GrassGroup" instance=ExtResource("4_xbwb1")]
-modulate = Color(0.345098, 0.427451, 0.0980392, 1)
 position = Vector2(-2474, 1747)
 
 [node name="Grass40" parent="GrassGroup" instance=ExtResource("4_xbwb1")]
-modulate = Color(0.345098, 0.427451, 0.0980392, 1)
 position = Vector2(-1028, 401)
-
-[node name="EnemyGroup" type="Node2D" parent="."]
-
-[node name="Enemy" parent="EnemyGroup" instance=ExtResource("5_r0mi1")]
-position = Vector2(8230, -572)
-
-[node name="Enemy2" parent="EnemyGroup" instance=ExtResource("5_r0mi1")]
-position = Vector2(9239, -385)
-
-[node name="Enemy3" parent="EnemyGroup" instance=ExtResource("5_r0mi1")]
-position = Vector2(9690, -1027)
 
 [node name="MiniBoss" parent="." instance=ExtResource("6_glvaw")]
 position = Vector2(9111, 1496)
@@ -429,6 +378,7 @@ theme_override_font_sizes/font_size = 90
 text = "to attack"
 
 [node name="PortalInstructions" type="Control" parent="Control"]
+visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -451,6 +401,7 @@ wait_time = 0.3
 one_shot = true
 
 [node name="Portal" parent="." node_paths=PackedStringArray("spawn_area") instance=ExtResource("12_xf7fr")]
+visible = false
 position = Vector2(9121, -1564)
 spawn_area = NodePath("Polygon2D")
 
@@ -468,7 +419,9 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_86nk8")
 
-[node name="Phoenix" parent="." instance=ExtResource("19_m6lo2")]
-position = Vector2(365, 327)
+[node name="Enemies" type="Node2D" parent="."]
+position = Vector2(106, 163)
+
+[node name="Snake" parent="Enemies" instance=ExtResource("20_4ufki")]
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

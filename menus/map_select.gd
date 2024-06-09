@@ -72,14 +72,14 @@ func _on_area_1_button_pressed():
 
 
 func _on_area_2_button_pressed():
-	game_manager.load_scene(game_manager.area1_instance)
+	game_manager.load_scene(game_manager.area2_instance)
 	
 	game_manager.start_timer()
 	queue_free()
 
 
 func _on_area_3_button_pressed():
-	game_manager.load_scene(game_manager.area1_instance)
+	game_manager.load_scene(game_manager.area3_instance)
 	
 	game_manager.start_timer()
 	queue_free()

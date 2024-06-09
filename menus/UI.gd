@@ -22,17 +22,17 @@ func _ready():
 	#set_level_UI_visibility(true)
 	#set_soul_visibility(true)
 
-func set_day_counter_visibility(bool):
-	$DayCounterUI.visible = bool
+func set_day_counter_visibility(booll):
+	$DayCounterUI.visible = booll
 	
-func set_level_UI_visibility(bool):
-	$InLevelUI.visible = bool
+func set_level_UI_visibility(booll):
+	$InLevelUI.visible = booll
 	
-func set_soul_visibility(bool):
-	$SoulUI.visible = bool
+func set_soul_visibility(booll):
+	$SoulUI.visible = booll
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
 	
 
@@ -52,11 +52,11 @@ func update_day_counter():
 func update_soul():
 	$SoulUI/SoulBar.value = game_manager.soul_percent
 	
-func set_armour_max(max):
-	$InLevelUI/ArmourHealthBar.max_value = max
+func set_armour_max(maxx):
+	$InLevelUI/ArmourHealthBar.max_value = maxx
 
-func set_health_max(max):
-	$InLevelUI/PlayerHealthBar.max_value = max
+func set_health_max(maxx):
+	$InLevelUI/PlayerHealthBar.max_value = maxx
 
 func reset_health():
 	$InLevelUI/PlayerHealthBar.value = $InLevelUI/PlayerHealthBar.max_value
@@ -74,8 +74,8 @@ func set_armour(value):
 	update_icon(value)
 	
 func update_icon(value):
-	var max = $InLevelUI/ArmourHealthBar.max_value
-	var percentage = ( value / max ) * 100
+	var maxx = $InLevelUI/ArmourHealthBar.max_value
+	var percentage = ( value / maxx ) * 100
 	#print ("percentage:" + str(percentage))
 	if (percentage >= 100):
 		$InLevelUI/Face.texture = (full_health_txt)

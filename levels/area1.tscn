@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://b7ap371plye3y"]
+[gd_scene load_steps=5 format=3 uid="uid://b7ap371plye3y"]
 
 [ext_resource type="Script" path="res://levels/top_down.gd" id="1_y1w57"]
 [ext_resource type="TileSet" uid="uid://dna5pqp0m2t01" path="res://levels/tileset4.tres" id="2_524ce"]
 [ext_resource type="PackedScene" uid="uid://ca3il8qfcg5fv" path="res://entities/player/player_new.tscn" id="3_kf1fb"]
-[ext_resource type="PackedScene" uid="uid://dkaeprjt76pfv" path="res://entities/enemies/enemy_td.tscn" id="4_oifpu"]
-[ext_resource type="PackedScene" uid="uid://dk3nilfr0e6vl" path="res://entities/enemies/enemy_td2.tscn" id="5_oluym"]
+[ext_resource type="PackedScene" uid="uid://bkpnyjeeqovvq" path="res://entities/enemies/snake.tscn" id="4_lp0cu"]
 
 [node name="TopDown" type="Node2D" node_paths=PackedStringArray("enemies_group", "player")]
 y_sort_enabled = true
@@ -39,52 +38,26 @@ position_smoothing_speed = 10.0
 
 [node name="Enemies" type="Node2D" parent="."]
 y_sort_enabled = true
+use_parent_material = true
 position = Vector2(472, 1290)
 
-[node name="Enemy" parent="Enemies" instance=ExtResource("4_oifpu")]
-position = Vector2(542, -577)
+[node name="Snake2" parent="Enemies" instance=ExtResource("4_lp0cu")]
+position = Vector2(-1665, -853)
 
-[node name="Enemy3" parent="Enemies" instance=ExtResource("4_oifpu")]
-position = Vector2(1152, -966)
+[node name="Snake4" parent="Enemies" instance=ExtResource("4_lp0cu")]
+position = Vector2(2970, -2326)
 
-[node name="Enemy4" parent="Enemies" instance=ExtResource("4_oifpu")]
-position = Vector2(-1458, -780)
+[node name="Snake5" parent="Enemies" instance=ExtResource("4_lp0cu")]
+position = Vector2(544, -980)
 
-[node name="Enemy7" parent="Enemies" instance=ExtResource("4_oifpu")]
-position = Vector2(-280, -1705)
+[node name="Snake6" parent="Enemies" instance=ExtResource("4_lp0cu")]
+position = Vector2(1891, -4002)
 
-[node name="Enemy8" parent="Enemies" instance=ExtResource("4_oifpu")]
-position = Vector2(144, -1858)
+[node name="Snake7" parent="Enemies" instance=ExtResource("4_lp0cu")]
+position = Vector2(4761, -5920)
 
-[node name="Enemy10" parent="Enemies" instance=ExtResource("4_oifpu")]
-position = Vector2(4176, -2282)
-
-[node name="Enemy11" parent="Enemies" instance=ExtResource("4_oifpu")]
-position = Vector2(3600, -2808)
-
-[node name="Enemy12" parent="Enemies" instance=ExtResource("4_oifpu")]
-position = Vector2(3380, -2452)
-
-[node name="Enemy17" parent="Enemies" instance=ExtResource("4_oifpu")]
-position = Vector2(2205, -3759)
-
-[node name="Enemy19" parent="Enemies" instance=ExtResource("4_oifpu")]
-position = Vector2(6809, -5350)
-
-[node name="Enemy20" parent="Enemies" instance=ExtResource("4_oifpu")]
-position = Vector2(4846, -5620)
-
-[node name="Enemy23" parent="Enemies" instance=ExtResource("5_oluym")]
-position = Vector2(1619, -908)
-
-[node name="Enemy27" parent="Enemies" instance=ExtResource("5_oluym")]
-position = Vector2(7012, -5943)
-
-[node name="Enemy28" parent="Enemies" instance=ExtResource("5_oluym")]
-position = Vector2(4303, -6010)
-
-[node name="Enemy29" parent="Enemies" instance=ExtResource("5_oluym")]
-position = Vector2(1913, -4004)
+[node name="Snake9" parent="Enemies" instance=ExtResource("4_lp0cu")]
+position = Vector2(6310, -5158)
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 0

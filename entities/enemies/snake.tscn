@@ -1,0 +1,231 @@
+[gd_scene load_steps=20 format=3 uid="uid://bkpnyjeeqovvq"]
+
+[ext_resource type="Script" path="res://CharacterBody2D.gd" id="1_sdxxm"]
+[ext_resource type="Script" path="res://entities/DirectionFlipper.gd" id="2_gw01c"]
+[ext_resource type="Texture2D" uid="uid://ccui80cyejaxv" path="res://entities/enemies/snake.png" id="3_ltr06"]
+[ext_resource type="PackedScene" uid="uid://fg3eiqc5q8pi" path="res://entities/hurtbox_component.tscn" id="4_cjctq"]
+[ext_resource type="PackedScene" uid="uid://skotr71q1hpn" path="res://entities/hitbox_component.tscn" id="5_7phvs"]
+[ext_resource type="PackedScene" uid="uid://cfm8wr35elasl" path="res://entities/health_component.tscn" id="6_4acrt"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1dynf"]
+radius = 106.777
+height = 264.856
+
+[sub_resource type="Animation" id="Animation_t7msy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [7]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../HitboxComponent/CollisionShape2D:shape")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("CapsuleShape2D_1dynf")]
+}
+
+[sub_resource type="Animation" id="Animation_j0fv6"]
+resource_name = "moving"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [7, 0, 1, 0]
+}
+
+[sub_resource type="Animation" id="Animation_hv1j1"]
+resource_name = "idle"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_vnjtq"]
+resource_name = "attack"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../HitboxComponent/CollisionShape2D:shape")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [null, SubResource("CapsuleShape2D_1dynf"), null]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gsn4t"]
+_data = {
+"RESET": SubResource("Animation_t7msy"),
+"attack": SubResource("Animation_vnjtq"),
+"idle": SubResource("Animation_hv1j1"),
+"moving": SubResource("Animation_j0fv6")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lgc65"]
+radius = 176.045
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rgs87"]
+radius = 59.2265
+height = 229.516
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jeujn"]
+radius = 64.0
+height = 154.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wvyyr"]
+radius = 48.2912
+height = 178.029
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hruh0"]
+radius = 37.4424
+height = 118.59
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o2jly"]
+radius = 1777.26
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6onml"]
+radius = 159.05
+
+[node name="Snake" type="CharacterBody2D" node_paths=PackedStringArray("health_component", "attack_area") groups=["enemy"]]
+y_sort_enabled = true
+use_parent_material = true
+collision_layer = 2
+collision_mask = 15
+script = ExtResource("1_sdxxm")
+health_component = NodePath("HealthComponent")
+attack_area = NodePath("DirectionFlipper/AttackArea")
+
+[node name="AttackTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../DirectionFlipper/Sprite")
+libraries = {
+"": SubResource("AnimationLibrary_gsn4t")
+}
+autoplay = "idle"
+
+[node name="CollisionBox" type="CollisionShape2D" parent="."]
+position = Vector2(28, -43)
+shape = SubResource("CircleShape2D_lgc65")
+
+[node name="DirectionFlipper" type="Node2D" parent="."]
+use_parent_material = true
+position = Vector2(0, -240)
+script = ExtResource("2_gw01c")
+
+[node name="Sprite" type="Sprite2D" parent="DirectionFlipper"]
+use_parent_material = true
+position = Vector2(37, 188)
+scale = Vector2(-1, 1)
+texture = ExtResource("3_ltr06")
+hframes = 8
+frame = 7
+
+[node name="HurtboxComponent" parent="DirectionFlipper" node_paths=PackedStringArray("health_component") instance=ExtResource("4_cjctq")]
+position = Vector2(71, 0)
+scale = Vector2(-1, 1)
+health_component = NodePath("../../HealthComponent")
+damage_from_player = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DirectionFlipper/HurtboxComponent"]
+position = Vector2(-29, 209)
+rotation = 0.861187
+shape = SubResource("CapsuleShape2D_rgs87")
+debug_color = Color(0, 0.635294, 0.427451, 0.419608)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="DirectionFlipper/HurtboxComponent"]
+position = Vector2(-69, 131)
+shape = SubResource("CapsuleShape2D_jeujn")
+debug_color = Color(0, 0.635294, 0.427451, 0.419608)
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="DirectionFlipper/HurtboxComponent"]
+position = Vector2(74, 232)
+rotation = -0.891519
+shape = SubResource("CapsuleShape2D_wvyyr")
+debug_color = Color(0, 0.635294, 0.427451, 0.419608)
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="DirectionFlipper/HurtboxComponent"]
+position = Vector2(171, 210)
+rotation = -2.3283
+shape = SubResource("CapsuleShape2D_hruh0")
+debug_color = Color(0, 0.635294, 0.427451, 0.419608)
+
+[node name="HitboxComponent" parent="DirectionFlipper" instance=ExtResource("5_7phvs")]
+damage_amount = 25
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DirectionFlipper/HitboxComponent"]
+position = Vector2(268, 245)
+rotation = -0.747732
+shape = SubResource("CapsuleShape2D_1dynf")
+debug_color = Color(0.909804, 0.239216, 0.443137, 0.419608)
+
+[node name="DetectionArea" type="Area2D" parent="DirectionFlipper"]
+position = Vector2(0, 237)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DirectionFlipper/DetectionArea"]
+shape = SubResource("CircleShape2D_o2jly")
+debug_color = Color(0.847059, 0.376471, 0, 0.419608)
+
+[node name="AttackArea" type="Area2D" parent="DirectionFlipper"]
+position = Vector2(464, -13)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DirectionFlipper/AttackArea"]
+position = Vector2(-196, 226)
+shape = SubResource("CircleShape2D_6onml")
+debug_color = Color(0.564706, 0.556863, 0, 0.419608)
+
+[node name="HealthComponent" parent="." instance=ExtResource("6_4acrt")]
+max_health = 150
+
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="body_entered" from="DirectionFlipper/DetectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="DirectionFlipper/DetectionArea" to="." method="_on_detection_area_body_exited"]
+[connection signal="body_entered" from="DirectionFlipper/AttackArea" to="." method="_on_attack_area_body_entered"]

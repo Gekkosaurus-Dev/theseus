@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://2b0o4qatcrmv"]
+[gd_scene load_steps=23 format=3 uid="uid://2b0o4qatcrmv"]
 
 [ext_resource type="Texture2D" uid="uid://qyqgvl0ft250" path="res://entities/enemies/phoenix/phoenix_idle.png" id="1_2n03k"]
 [ext_resource type="Script" path="res://entities/enemies/phoenix/phoenix.gd" id="1_yjggy"]
@@ -7,6 +7,56 @@
 [ext_resource type="PackedScene" uid="uid://fg3eiqc5q8pi" path="res://entities/hurtbox_component.tscn" id="3_kkb1q"]
 [ext_resource type="PackedScene" uid="uid://skotr71q1hpn" path="res://entities/hitbox_component.tscn" id="4_gt3sf"]
 [ext_resource type="PackedScene" uid="uid://cfm8wr35elasl" path="res://entities/health_component.tscn" id="5_bl7d6"]
+
+[sub_resource type="Gradient" id="Gradient_q8axo"]
+offsets = PackedFloat32Array(0, 0.245136, 0.599222, 1)
+colors = PackedColorArray(0.918038, 0.883773, 0.697335, 1, 0.976545, 0.876417, 0.49035, 1, 0.963409, 0.370755, 0.1701, 1, 0.576471, 0.0745098, 0.00392157, 0.301961)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_vapra"]
+gradient = SubResource("Gradient_q8axo")
+
+[sub_resource type="Curve" id="Curve_ovumd"]
+_data = [Vector2(0, 0.128388), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_g68ay"]
+curve = SubResource("Curve_ovumd")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pryti"]
+particle_flag_disable_z = true
+inherit_velocity_ratio = 1.0
+direction = Vector3(0, 0, 0)
+spread = 42.758
+angular_velocity_max = 61.71
+gravity = Vector3(96.895, 98, 0)
+linear_accel_min = 27.14
+linear_accel_max = 67.14
+radial_accel_min = 14.6
+radial_accel_max = 210.85
+scale_min = 17.15
+scale_max = 60.0
+scale_curve = SubResource("CurveTexture_g68ay")
+color_ramp = SubResource("GradientTexture1D_vapra")
+turbulence_noise_strength = 0.86
+turbulence_noise_scale = 0.386
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_dnhm4"]
+particle_flag_disable_z = true
+inherit_velocity_ratio = 1.0
+direction = Vector3(0, 0, 0)
+spread = 42.758
+angular_velocity_max = 61.71
+gravity = Vector3(-96.895, 98, 0)
+linear_accel_min = 27.14
+linear_accel_max = 67.14
+radial_accel_min = 14.6
+radial_accel_max = 210.85
+scale_min = 17.15
+scale_max = 60.0
+scale_curve = SubResource("CurveTexture_g68ay")
+color_ramp = SubResource("GradientTexture1D_vapra")
+turbulence_noise_strength = 0.86
+turbulence_noise_scale = 0.386
 
 [sub_resource type="Animation" id="Animation_iihgl"]
 length = 0.001
@@ -216,65 +266,50 @@ _data = {
 "idle": SubResource("Animation_tn0u5")
 }
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rp5ch"]
-radius = 102.0
-height = 368.0
-
-[sub_resource type="Gradient" id="Gradient_q8axo"]
-offsets = PackedFloat32Array(0, 0.245136, 0.599222, 1)
-colors = PackedColorArray(0.918038, 0.883773, 0.697335, 1, 0.976545, 0.876417, 0.49035, 1, 0.963409, 0.370755, 0.1701, 1, 0.576471, 0.0745098, 0.00392157, 0.301961)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_vapra"]
-gradient = SubResource("Gradient_q8axo")
-
-[sub_resource type="Curve" id="Curve_ovumd"]
-_data = [Vector2(0, 0.128388), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_g68ay"]
-curve = SubResource("Curve_ovumd")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pryti"]
-particle_flag_disable_z = true
-inherit_velocity_ratio = 1.0
-direction = Vector3(0, 0, 0)
-spread = 42.758
-angular_velocity_max = 61.71
-gravity = Vector3(96.895, 98, 0)
-linear_accel_min = 27.14
-linear_accel_max = 67.14
-radial_accel_min = 14.6
-radial_accel_max = 210.85
-scale_min = 17.15
-scale_max = 60.0
-scale_curve = SubResource("CurveTexture_g68ay")
-color_ramp = SubResource("GradientTexture1D_vapra")
-turbulence_noise_strength = 0.86
-turbulence_noise_scale = 0.386
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_y42tl"]
-radius = 778.091
+radius = 1124.25
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_c0485"]
 radius = 260.094
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rp5ch"]
+radius = 102.0
+height = 368.0
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_s41w6"]
 radius = 65.6201
 
-[node name="Phoenix" type="CharacterBody2D" groups=["enemy"]]
+[node name="Phoenix" type="CharacterBody2D" node_paths=PackedStringArray("attack_area", "health_component") groups=["enemy"]]
 y_sort_enabled = true
 use_parent_material = true
-position = Vector2(767, 646)
+position = Vector2(-3, -148)
+collision_layer = 2
+collision_mask = 15
 script = ExtResource("1_yjggy")
+attack_area = NodePath("DirectionFlipper/AttackArea")
+health_component = NodePath("HealthComponent")
 
 [node name="HealthComponent" parent="." instance=ExtResource("5_bl7d6")]
+max_health = 100
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 2.0
-one_shot = true
-autostart = true
+[node name="FireRight" type="GPUParticles2D" parent="."]
+position = Vector2(180, -110)
+emitting = false
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_pryti")
+lifetime = 1.2
+speed_scale = 2.0
+
+[node name="FireLeft" type="GPUParticles2D" parent="."]
+position = Vector2(-140, -108)
+emitting = false
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_dnhm4")
+lifetime = 1.2
+speed_scale = 2.0
 
 [node name="DirectionFlipper" type="Node2D" parent="."]
+use_parent_material = true
 position = Vector2(0, -240)
 script = ExtResource("3_i04k7")
 
@@ -292,14 +327,6 @@ scale = Vector2(-1, 1)
 texture = ExtResource("1_2n03k")
 hframes = 7
 
-[node name="HurtboxComponent" parent="DirectionFlipper" instance=ExtResource("3_kkb1q")]
-position = Vector2(0, 240)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DirectionFlipper/HurtboxComponent"]
-position = Vector2(0, -49)
-shape = SubResource("CapsuleShape2D_rp5ch")
-debug_color = Color(0, 0.635294, 0.419608, 0.419608)
-
 [node name="HitboxComponent" parent="DirectionFlipper" instance=ExtResource("4_gt3sf")]
 position = Vector2(0, 240)
 damage_amount = 20
@@ -308,14 +335,6 @@ damage_amount = 20
 position = Vector2(269, -12)
 rotation = -0.785398
 debug_color = Color(0.984314, 0, 0.345098, 0.419608)
-
-[node name="GPUParticles2D" type="GPUParticles2D" parent="DirectionFlipper"]
-position = Vector2(178, 130)
-emitting = false
-amount = 50
-process_material = SubResource("ParticleProcessMaterial_pryti")
-lifetime = 1.2
-speed_scale = 2.0
 
 [node name="DetectionArea" type="Area2D" parent="DirectionFlipper"]
 position = Vector2(0, 240)
@@ -330,11 +349,25 @@ position = Vector2(514, 262)
 position = Vector2(-261, -1)
 shape = SubResource("CircleShape2D_c0485")
 
+[node name="HurtboxComponent" parent="DirectionFlipper" node_paths=PackedStringArray("health_component") instance=ExtResource("3_kkb1q")]
+position = Vector2(0, 240)
+health_component = NodePath("../../HealthComponent")
+damage_from_player = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DirectionFlipper/HurtboxComponent"]
+position = Vector2(0, -49)
+shape = SubResource("CapsuleShape2D_rp5ch")
+debug_color = Color(0, 0.635294, 0.419608, 0.419608)
+
 [node name="CollisionBox" type="CollisionShape2D" parent="."]
 position = Vector2(0, 71)
 shape = SubResource("CircleShape2D_s41w6")
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[node name="AttackTimer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="animation_finished" from="DirectionFlipper/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="body_entered" from="DirectionFlipper/DetectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="DirectionFlipper/DetectionArea" to="." method="_on_detection_area_body_exited"]
 [connection signal="body_entered" from="DirectionFlipper/AttackArea" to="." method="_on_attack_area_body_entered"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

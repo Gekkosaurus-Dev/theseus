@@ -8,7 +8,6 @@
 radius = 24.1868
 
 [node name="Grass" type="Node2D"]
-modulate = Color(0.333333, 0.501961, 0.388235, 1)
 
 [node name="GrassPlaceholder" type="Sprite2D" parent="."]
 position = Vector2(4, -16)
