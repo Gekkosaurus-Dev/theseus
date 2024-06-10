@@ -3571,57 +3571,53 @@ use_parent_material = true
 
 [node name="BackUpperArm" type="Sprite2D" parent="DirectionFlipper/PartsAndSkeleton/Parts2"]
 use_parent_material = true
-position = Vector2(47, -158.956)
+position = Vector2(47, -162)
 rotation = 0.794321
-scale = Vector2(1, 1)
 texture = ExtResource("11_eab0u")
 
 [node name="BackShoulder" type="Sprite2D" parent="DirectionFlipper/PartsAndSkeleton/Parts2"]
 use_parent_material = true
-position = Vector2(48, -189.956)
+position = Vector2(48, -193)
 rotation = 0.185871
-scale = Vector2(1, 1)
 texture = ExtResource("12_004by")
 
 [node name="BackForeArm" type="Sprite2D" parent="DirectionFlipper/PartsAndSkeleton/Parts2"]
 use_parent_material = true
-position = Vector2(52, -122.956)
+position = Vector2(52, -126)
 rotation = 1.76226
-scale = Vector2(1, 1)
 texture = ExtResource("13_ykpsa")
 
 [node name="BackHand" type="Sprite2D" parent="DirectionFlipper/PartsAndSkeleton/Parts2"]
 use_parent_material = true
-position = Vector2(66, -94.9564)
+position = Vector2(66, -98)
 rotation = 1.22447
-scale = Vector2(1, 1)
 texture = ExtResource("14_bi67a")
 
 [node name="BackShin" type="Sprite2D" parent="DirectionFlipper/PartsAndSkeleton/Parts2"]
 use_parent_material = true
-position = Vector2(48.8389, -33.1175)
-rotation = -1.40877
+position = Vector2(46, -33.0001)
+rotation = -1.46987
 scale = Vector2(0.999999, 0.999999)
 texture = ExtResource("15_vpyt6")
 
 [node name="BackThigh" type="Sprite2D" parent="DirectionFlipper/PartsAndSkeleton/Parts2"]
 use_parent_material = true
-position = Vector2(26.1294, -86.938)
-rotation = -1.86839
+position = Vector2(24, -89)
+rotation = -1.79862
 scale = Vector2(0.999999, 0.999999)
 texture = ExtResource("16_lw1ty")
 
 [node name="BackKnee" type="Sprite2D" parent="DirectionFlipper/PartsAndSkeleton/Parts2"]
 use_parent_material = true
-position = Vector2(62.7173, -65.4364)
-rotation = -1.64232
+position = Vector2(59, -65.0001)
+rotation = -1.57255
 scale = Vector2(0.999999, 0.999999)
 texture = ExtResource("17_420l0")
 
 [node name="BackFoot" type="Sprite2D" parent="DirectionFlipper/PartsAndSkeleton/Parts2"]
 use_parent_material = true
-position = Vector2(70.0433, -9.61569)
-rotation = -1.58984
+position = Vector2(68.9999, -10.0001)
+rotation = -1.61256
 scale = Vector2(0.999999, 0.999999)
 texture = ExtResource("18_mc7rp")
 
@@ -3638,114 +3634,108 @@ internal_vertex_count = 15
 
 [node name="Torso" type="Sprite2D" parent="DirectionFlipper/PartsAndSkeleton/Parts2"]
 use_parent_material = true
-position = Vector2(5, -155.956)
+position = Vector2(5, -159)
 rotation = -0.217732
-scale = Vector2(1, 1)
 texture = ExtResource("19_l2nnm")
 
 [node name="FrontThigh" type="Sprite2D" parent="DirectionFlipper/PartsAndSkeleton/Parts2"]
 use_parent_material = true
-position = Vector2(-31.9769, -90.4319)
-rotation = 2.03344
+position = Vector2(-33, -94)
+rotation = 2.06964
 scale = Vector2(0.826384, 0.873486)
 texture = ExtResource("20_cgmrb")
 
 [node name="FrontShin" type="Sprite2D" parent="DirectionFlipper/PartsAndSkeleton/Parts2"]
 use_parent_material = true
-position = Vector2(-66.9776, -32.3543)
-rotation = 1.05159
+position = Vector2(-66, -35)
+rotation = 0.917406
 scale = Vector2(0.999999, 0.999999)
 texture = ExtResource("21_2hrlm")
 
 [node name="FrontFoot" type="Sprite2D" parent="DirectionFlipper/PartsAndSkeleton/Parts2"]
 use_parent_material = true
-position = Vector2(-60.8507, -3.14945)
-rotation = 0.697131
+position = Vector2(-55.3654, -4.2354)
+rotation = 0.662958
 scale = Vector2(0.999998, 0.999998)
 texture = ExtResource("22_gsg74")
 
 [node name="FrontKnee" type="Sprite2D" parent="DirectionFlipper/PartsAndSkeleton/Parts2"]
 use_parent_material = true
-position = Vector2(-37.6696, -54.2022)
-rotation = 1.46006
-scale = Vector2(0.999999, 0.999999)
+position = Vector2(-40, -58)
+rotation = 1.49626
+scale = Vector2(1, 1)
 texture = ExtResource("23_hg7vf")
 
 [node name="Neck" type="Sprite2D" parent="DirectionFlipper/PartsAndSkeleton/Parts2"]
 use_parent_material = true
-position = Vector2(16, -210.956)
+position = Vector2(16, -214)
 rotation = -0.309935
-scale = Vector2(1, 1)
 texture = ExtResource("30_5bh0c")
 
 [node name="Fur" type="Sprite2D" parent="DirectionFlipper/PartsAndSkeleton/Parts2"]
 use_parent_material = true
-position = Vector2(-20.6613, -246.778)
-rotation = 0.0359887
+position = Vector2(-21, -249)
 scale = Vector2(0.999999, 0.999999)
 texture = ExtResource("31_3yif3")
 
 [node name="BackEar" type="Sprite2D" parent="DirectionFlipper/PartsAndSkeleton/Parts2"]
 use_parent_material = true
-position = Vector2(5.44605, -304.876)
-rotation = 0.184127
+position = Vector2(3, -308)
+rotation = 0.148138
 scale = Vector2(0.999999, 0.999999)
 texture = ExtResource("32_uvqkt")
 
 [node name="FrontEar" type="Sprite2D" parent="DirectionFlipper/PartsAndSkeleton/Parts2"]
 use_parent_material = true
-position = Vector2(-27.8924, -296.07)
-rotation = 0.0853573
+position = Vector2(-30, -298)
+rotation = 0.0493686
 scale = Vector2(0.999999, 0.999999)
 texture = ExtResource("33_ibkuc")
 
 [node name="Head" type="Sprite2D" parent="DirectionFlipper/PartsAndSkeleton/Parts2"]
 use_parent_material = true
-position = Vector2(26.9199, -262.076)
-rotation = 0.0359887
+position = Vector2(26, -266)
 scale = Vector2(0.999999, 0.999999)
 texture = ExtResource("34_8u2i5")
 
 [node name="FrontForeArm" type="Sprite2D" parent="DirectionFlipper/PartsAndSkeleton/Parts2"]
 use_parent_material = true
-position = Vector2(-51, -128.956)
+position = Vector2(-51, -132)
 rotation = -0.824705
-scale = Vector2(1, 1)
 texture = ExtResource("26_y05xr")
 
 [node name="FrontUpperArm" type="Sprite2D" parent="DirectionFlipper/PartsAndSkeleton/Parts2"]
 use_parent_material = true
-position = Vector2(-48, -177.956)
+position = Vector2(-48, -181)
 rotation = -1.56171
 scale = Vector2(1, 1)
 texture = ExtResource("24_qycew")
 
 [node name="FrontShoulder" type="Sprite2D" parent="DirectionFlipper/PartsAndSkeleton/Parts2"]
 use_parent_material = true
-position = Vector2(-39, -204.956)
+position = Vector2(-39, -208)
 rotation = -0.572878
-scale = Vector2(1, 1)
 texture = ExtResource("28_cwmfw")
 
 [node name="SwordHandle" type="Sprite2D" parent="DirectionFlipper/PartsAndSkeleton/Parts2"]
 use_parent_material = true
-position = Vector2(-56.9853, -95.6201)
-rotation = -1.52935
-scale = Vector2(1, 1)
+position = Vector2(-57, -98)
+rotation = -1.57361
+scale = Vector2(0.999999, 0.999999)
 texture = ExtResource("25_wr40y")
 
 [node name="FrontHand" type="Sprite2D" parent="DirectionFlipper/PartsAndSkeleton/Parts2"]
 use_parent_material = true
-position = Vector2(-44.9971, -95.0891)
-rotation = -1.60735
-scale = Vector2(1, 1)
+position = Vector2(-45, -98)
+rotation = -1.65161
+scale = Vector2(0.999999, 0.999999)
 texture = ExtResource("27_ownf2")
 
 [node name="SwordBlade" type="Sprite2D" parent="DirectionFlipper/PartsAndSkeleton/Parts2"]
 use_parent_material = true
-position = Vector2(50.8204, -88.8433)
-rotation = -1.52303
-scale = Vector2(1, 1)
+position = Vector2(50.9999, -96)
+rotation = -1.56729
+scale = Vector2(0.999999, 0.999999)
 texture = ExtResource("29_1kriv")
 
 [node name="Skeleton2D" type="Skeleton2D" parent="DirectionFlipper/PartsAndSkeleton"]
@@ -3753,7 +3743,6 @@ position = Vector2(8, 0)
 
 [node name="Hip" type="Bone2D" parent="DirectionFlipper/PartsAndSkeleton/Skeleton2D"]
 position = Vector2(-8, -105)
-scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, -8, -105)
 
 [node name="Torso" type="Bone2D" parent="DirectionFlipper/PartsAndSkeleton/Skeleton2D/Hip"]
@@ -3888,7 +3877,6 @@ remote_path = NodePath("../../../../../../Parts2/BackUpperArm")
 
 [node name="BackForearm" type="Bone2D" parent="DirectionFlipper/PartsAndSkeleton/Skeleton2D/Hip/Torso/BackShoulder/BackUpperarm"]
 position = Vector2(10, 37)
-scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 10, 37)
 
 [node name="RemoteBackForearm" type="RemoteTransform2D" parent="DirectionFlipper/PartsAndSkeleton/Skeleton2D/Hip/Torso/BackShoulder/BackUpperarm/BackForearm"]
@@ -3925,7 +3913,6 @@ remote_path = NodePath("../../../../Parts2/BackKnee")
 
 [node name="BackShin" type="Bone2D" parent="DirectionFlipper/PartsAndSkeleton/Skeleton2D/Hip/BackThigh"]
 position = Vector2(39, 63)
-scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 39, 63)
 
 [node name="RemoteBackShin" type="RemoteTransform2D" parent="DirectionFlipper/PartsAndSkeleton/Skeleton2D/Hip/BackThigh/BackShin"]
@@ -3935,7 +3922,6 @@ remote_path = NodePath("../../../../../Parts2/BackShin")
 
 [node name="BackFoot" type="Bone2D" parent="DirectionFlipper/PartsAndSkeleton/Skeleton2D/Hip/BackThigh/BackShin"]
 position = Vector2(-3, 57)
-scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, -3, 57)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -3948,7 +3934,6 @@ remote_path = NodePath("../../../../../../Parts2/BackFoot")
 
 [node name="FrontThigh" type="Bone2D" parent="DirectionFlipper/PartsAndSkeleton/Skeleton2D/Hip"]
 position = Vector2(-18, -17)
-scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, -18, -17)
 
 [node name="RemoteFrontThigh" type="RemoteTransform2D" parent="DirectionFlipper/PartsAndSkeleton/Skeleton2D/Hip/FrontThigh"]
@@ -3987,7 +3972,6 @@ remote_path = NodePath("../../../../../../Parts2/FrontFoot")
 
 [node name="Tail1" type="Bone2D" parent="DirectionFlipper/PartsAndSkeleton/Skeleton2D/Hip"]
 position = Vector2(-25, -2)
-scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, -25, -2)
 
 [node name="Tail2" type="Bone2D" parent="DirectionFlipper/PartsAndSkeleton/Skeleton2D/Hip/Tail1"]
@@ -3997,7 +3981,6 @@ rest = Transform2D(1, 0, 0, 1, -26, 0)
 
 [node name="Tail3" type="Bone2D" parent="DirectionFlipper/PartsAndSkeleton/Skeleton2D/Hip/Tail1/Tail2"]
 position = Vector2(-21, 0)
-scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, -21, 0)
 
 [node name="Tail4" type="Bone2D" parent="DirectionFlipper/PartsAndSkeleton/Skeleton2D/Hip/Tail1/Tail2/Tail3"]
@@ -4028,7 +4011,6 @@ bone_angle = -179.139
 
 [node name="Tail8" type="Bone2D" parent="DirectionFlipper/PartsAndSkeleton/Skeleton2D/Hip/Tail1/Tail2/Tail3/Tail4/Tail5/Tail6/Tail7"]
 position = Vector2(-27, 0)
-scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, -27, 0)
 auto_calculate_length_and_angle = false
 length = 16.0

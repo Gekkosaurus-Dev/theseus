@@ -410,6 +410,7 @@ color = Color(1, 1, 1, 0)
 polygon = PackedVector2Array(-177, 265, -449, 38, -1733, 762, -1376, 989, -1716, 1170, -13, 1481, 1695, 875, 468, 168, 66, 344)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+visible = false
 
 [node name="Panel" type="Panel" parent="ParallaxBackground"]
 anchors_preset = 15
@@ -421,7 +422,8 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_86nk8")
 
 [node name="Enemies" type="Node2D" parent="."]
 y_sort_enabled = true
-position = Vector2(113, -111)
+use_parent_material = true
+position = Vector2(-4297, -3373)
 
 [node name="Snake" parent="Enemies" instance=ExtResource("20_4ufki")]
 

@@ -108,9 +108,10 @@ func get_game_manager_values():
 	robot_head = game_manager.robot_head
 	
 func _physics_process(_delta):
+	get_attack_direction()
 	get_input()
 	#print("player velocity = " + str(velocity))
-	get_attack_direction()
+	
 	
 	move_and_slide()
 

@@ -97,7 +97,7 @@ func _on_detection_area_body_entered(body):
 			enemy_state_holder = EnemyStates.MOVING
 
 
-func _on_detection_area_body_exited(body):
+func _on_detection_area_body_exited(_body):
 	pass
 	#var type = body.get_groups()
 	#if (type.has("player")):

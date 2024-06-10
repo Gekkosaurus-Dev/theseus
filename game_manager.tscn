@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bp3e75fnqgk6w"]
+[gd_scene load_steps=6 format=3 uid="uid://bp3e75fnqgk6w"]
 
 [ext_resource type="Shader" path="res://gradient_map.gdshader" id="1_cr7vl"]
 [ext_resource type="Script" path="res://game_manager.gd" id="1_hmg5f"]
@@ -7,6 +7,9 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3yrqw"]
 shader = ExtResource("1_cr7vl")
 shader_parameter/gradient = ExtResource("2_faxny")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_trlb3"]
+bg_color = Color(0.101961, 0.431373, 0.396078, 1)
 
 [node name="GameManager" type="Node2D"]
 material = SubResource("ShaderMaterial_3yrqw")
@@ -18,5 +21,15 @@ starting_max_armour_health = 50
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="Panel" type="Panel" parent="ParallaxBackground"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_trlb3")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
