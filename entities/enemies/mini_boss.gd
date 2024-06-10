@@ -40,6 +40,18 @@ func damage_taken():
 	print (health_component.health)
 	if (health_component.health <= 0):
 		$"..".boss_died()
+	var sprite = $DirectionFlipper/Sprite
+	sprite.visible = false
+	await get_tree().create_timer(0.05).timeout
+	sprite.visible = true
+	await get_tree().create_timer(0.05).timeout
+	sprite.visible = false
+	await get_tree().create_timer(0.05).timeout
+	sprite.visible = true
+	await get_tree().create_timer(0.05).timeout
+	sprite.visible = false
+	await get_tree().create_timer(0.05).timeout
+	sprite.visible = true
 
 func play_damage_animation():
 	var sprite = $DirectionFlipper/Sprite

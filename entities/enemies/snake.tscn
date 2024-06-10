@@ -7,10 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://skotr71q1hpn" path="res://entities/hitbox_component.tscn" id="5_7phvs"]
 [ext_resource type="PackedScene" uid="uid://cfm8wr35elasl" path="res://entities/health_component.tscn" id="6_4acrt"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1dynf"]
-radius = 106.777
-height = 264.856
-
 [sub_resource type="Animation" id="Animation_t7msy"]
 length = 0.001
 tracks/0/type = "value"
@@ -35,42 +31,12 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [SubResource("CapsuleShape2D_1dynf")]
+"values": [null]
 }
 
-[sub_resource type="Animation" id="Animation_j0fv6"]
-resource_name = "moving"
-length = 0.8
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [7, 0, 1, 0]
-}
-
-[sub_resource type="Animation" id="Animation_hv1j1"]
-resource_name = "idle"
-length = 0.4
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [1, 2]
-}
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1dynf"]
+radius = 42.9165
+height = 237.018
 
 [sub_resource type="Animation" id="Animation_vnjtq"]
 resource_name = "attack"
@@ -99,6 +65,40 @@ tracks/1/keys = {
 "values": [null, SubResource("CapsuleShape2D_1dynf"), null]
 }
 
+[sub_resource type="Animation" id="Animation_hv1j1"]
+resource_name = "idle"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_j0fv6"]
+resource_name = "moving"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [7, 0, 1, 0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gsn4t"]
 _data = {
 "RESET": SubResource("Animation_t7msy"),
@@ -107,8 +107,9 @@ _data = {
 "moving": SubResource("Animation_j0fv6")
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_lgc65"]
-radius = 176.045
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bqf64"]
+radius = 64.0685
+height = 293.981
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rgs87"]
 radius = 59.2265
@@ -132,7 +133,7 @@ radius = 1777.26
 [sub_resource type="CircleShape2D" id="CircleShape2D_6onml"]
 radius = 159.05
 
-[node name="Snake" type="CharacterBody2D" node_paths=PackedStringArray("health_component", "attack_area") groups=["enemy"]]
+[node name="Snake" type="CharacterBody2D" node_paths=PackedStringArray("health_component", "attack_area", "detection_area") groups=["enemy"]]
 y_sort_enabled = true
 use_parent_material = true
 collision_layer = 2
@@ -140,8 +141,10 @@ collision_mask = 15
 script = ExtResource("1_sdxxm")
 health_component = NodePath("HealthComponent")
 attack_area = NodePath("DirectionFlipper/AttackArea")
+detection_area = NodePath("DirectionFlipper/DetectionArea")
 
 [node name="AttackTimer" type="Timer" parent="."]
+wait_time = 0.1
 one_shot = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -152,8 +155,9 @@ libraries = {
 autoplay = "idle"
 
 [node name="CollisionBox" type="CollisionShape2D" parent="."]
-position = Vector2(28, -43)
-shape = SubResource("CircleShape2D_lgc65")
+position = Vector2(0, -44)
+rotation = 1.56674
+shape = SubResource("CapsuleShape2D_bqf64")
 
 [node name="DirectionFlipper" type="Node2D" parent="."]
 use_parent_material = true
@@ -162,14 +166,14 @@ script = ExtResource("2_gw01c")
 
 [node name="Sprite" type="Sprite2D" parent="DirectionFlipper"]
 use_parent_material = true
-position = Vector2(37, 188)
+position = Vector2(-18.5, 172)
 scale = Vector2(-1, 1)
 texture = ExtResource("3_ltr06")
 hframes = 8
 frame = 7
 
 [node name="HurtboxComponent" parent="DirectionFlipper" node_paths=PackedStringArray("health_component") instance=ExtResource("4_cjctq")]
-position = Vector2(71, 0)
+position = Vector2(15.5, -16)
 scale = Vector2(-1, 1)
 health_component = NodePath("../../HealthComponent")
 damage_from_player = true
@@ -198,23 +202,23 @@ shape = SubResource("CapsuleShape2D_hruh0")
 debug_color = Color(0, 0.635294, 0.427451, 0.419608)
 
 [node name="HitboxComponent" parent="DirectionFlipper" instance=ExtResource("5_7phvs")]
+position = Vector2(-55.5, -16)
 damage_amount = 25
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DirectionFlipper/HitboxComponent"]
-position = Vector2(268, 245)
+position = Vector2(239.5, 164)
 rotation = -0.747732
-shape = SubResource("CapsuleShape2D_1dynf")
 debug_color = Color(0.909804, 0.239216, 0.443137, 0.419608)
 
 [node name="DetectionArea" type="Area2D" parent="DirectionFlipper"]
-position = Vector2(0, 237)
+position = Vector2(-55.5, 221)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DirectionFlipper/DetectionArea"]
 shape = SubResource("CircleShape2D_o2jly")
 debug_color = Color(0.847059, 0.376471, 0, 0.419608)
 
 [node name="AttackArea" type="Area2D" parent="DirectionFlipper"]
-position = Vector2(464, -13)
+position = Vector2(408.5, -29)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DirectionFlipper/AttackArea"]
 position = Vector2(-196, 226)

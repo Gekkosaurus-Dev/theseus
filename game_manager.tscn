@@ -14,7 +14,7 @@ script = ExtResource("1_hmg5f")
 max_days_left = 100
 starting_soul_percent = 90.0
 number_of_levels = 3
-starting_max_armour_health = 100
+starting_max_armour_health = 50
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0

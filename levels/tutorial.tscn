@@ -420,8 +420,21 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_86nk8")
 
 [node name="Enemies" type="Node2D" parent="."]
-position = Vector2(106, 163)
+y_sort_enabled = true
+position = Vector2(113, -111)
 
 [node name="Snake" parent="Enemies" instance=ExtResource("20_4ufki")]
+
+[node name="Snake2" parent="Enemies" instance=ExtResource("20_4ufki")]
+position = Vector2(3611, -1214)
+
+[node name="Snake3" parent="Enemies" instance=ExtResource("20_4ufki")]
+position = Vector2(7191, -2222)
+
+[node name="Snake4" parent="Enemies" instance=ExtResource("20_4ufki")]
+position = Vector2(-769, 219)
+
+[node name="Snake5" parent="Enemies" instance=ExtResource("20_4ufki")]
+position = Vector2(1738, -385)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -22,7 +22,7 @@ func count_enemies():
 
 func _on_area_2d_area_entered(area):
 	var object_type = area.owner.get_groups()
-	if (object_type.has("player")): #and (count_enemies() <=0):
+	if (object_type.has("player")) and (count_enemies() <=0):
 		var total_health = player.get_total_health()
 		player.freeze()
 		player.player_state = player.PlayerStates.END

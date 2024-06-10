@@ -59,6 +59,27 @@ position = Vector2(4761, -5920)
 [node name="Snake9" parent="Enemies" instance=ExtResource("4_lp0cu")]
 position = Vector2(6310, -5158)
 
+[node name="Snake" parent="Enemies" instance=ExtResource("4_lp0cu")]
+position = Vector2(-746, -1193)
+
+[node name="Snake3" parent="Enemies" instance=ExtResource("4_lp0cu")]
+position = Vector2(3782, -2334)
+
+[node name="Snake8" parent="Enemies" instance=ExtResource("4_lp0cu")]
+position = Vector2(2432, -4922)
+
+[node name="Snake10" parent="Enemies" instance=ExtResource("4_lp0cu")]
+position = Vector2(1918, -4617)
+
+[node name="Snake11" parent="Enemies" instance=ExtResource("4_lp0cu")]
+position = Vector2(5552, -5664)
+
+[node name="Snake12" parent="Enemies" instance=ExtResource("4_lp0cu")]
+position = Vector2(6599, -5854)
+
+[node name="Snake13" parent="Enemies" instance=ExtResource("4_lp0cu")]
+position = Vector2(6827, -5379)
+
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 0
 
