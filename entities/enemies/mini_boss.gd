@@ -6,7 +6,7 @@ extends CharacterBody2D
 
 enum EnemyStates {ATTACKING, MOVING, IDLE}
 var enemy_state
-var enemy_state_holder
+#var enemy_state_holder
 var can_attack = true
 var prev_state
 
@@ -23,7 +23,9 @@ var player
 func _ready():
 	player = $"../player_new"
 	enemy_state = EnemyStates.IDLE
-	enemy_state_holder = enemy_state
+	$"../CanvasLayer/ProgressBar".max_value = health_component.max_health
+	$"../CanvasLayer/ProgressBar".value = health_component.health
+	#enemy_state_holder = enemy_state
 
 func _physics_process(_delta):
 	
@@ -36,8 +38,9 @@ func _physics_process(_delta):
 		move_and_slide()
 	
 func damage_taken():
+	$"../CanvasLayer/ProgressBar".value = health_component.health
 	play_damage_animation()
-	print (health_component.health)
+	#print (health_component.health)
 	if (health_component.health <= 0):
 		$"..".boss_died()
 	var sprite = $DirectionFlipper/Sprite
@@ -82,7 +85,7 @@ func attack():
 
 func _on_animation_player_animation_finished(anim_name):
 	if (anim_name == "attack"):
-		enemy_state = enemy_state_holder
+		enemy_state = EnemyStates.MOVING
 
 func _on_attack_cooldown_timeout():
 	#print("timedout")
@@ -98,12 +101,14 @@ func _on_detection_area_body_entered(body):
 		if enemy_state != EnemyStates.ATTACKING:
 			enemy_state = EnemyStates.MOVING
 		else:
-			enemy_state_holder = EnemyStates.MOVING
+			pass
+			#enemy_state_holder = EnemyStates.MOVING
 
-func _on_detection_area_body_exited(body):
-	var type = body.get_groups()
-	if (type.has("player")):
-		if enemy_state != EnemyStates.ATTACKING:
-			enemy_state = EnemyStates.IDLE
-		else:
-			enemy_state_holder = EnemyStates.IDLE
+func _on_detection_area_body_exited(_body):
+	pass
+	#var type = body.get_groups()
+	#if (type.has("player")):
+		#if enemy_state != EnemyStates.ATTACKING:
+			#enemy_state = EnemyStates.IDLE
+		#else:
+			#enemy_state_holder = EnemyStates.IDLE

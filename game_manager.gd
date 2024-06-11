@@ -27,6 +27,7 @@ const map_instance = preload("res://menus/map_select.tscn")
 #region cutscenes
 const intro_cutscene_instance = preload("res://cutscenes/intro_cutscene.tscn")
 const another_cutscene_instance = preload("res://cutscenes/placeholders/another_cutscene.tscn")
+const end_cutscene_instance = preload("res://cutscenes/end_cutscene.tscn")
 #endregion
 
 #region UI related
@@ -55,6 +56,8 @@ var gold
 var visited_areas: Array
 var max_armour_health #could be altered over the course of the game if armour upgraded
 var robot_head: bool
+var player_invincible_on_attack
+
 
 var UI: CanvasLayer
 var current_game_scene: Node2D
@@ -73,6 +76,8 @@ func clear_game_values():
 	max_armour_health = starting_max_armour_health
 	visited_areas.clear()
 	robot_head = false
+	player_invincible_on_attack = false
+	
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -150,6 +155,11 @@ func tutorial_finished(from):
 	$UI.set_level_UI_visibility(false)
 	robot_head = true
 
+func end_game():
+	clear_game_values()
+	$UI.queue_free()
+	load_scene(main_menu_instance)	
+	game_state = GameStates.MAIN_MENU
 
 func load_medic_report(health,from):
 	player_overall_health = health
@@ -178,3 +188,8 @@ func start_timer():
 func _on_timer_timeout():
 	days_left = days_left - 1
 	$UI.update_day_counter()
+	
+func load_boss_arena():
+	#player_invincible_on_attack = true
+	load_scene(boss_area_instance)
+	

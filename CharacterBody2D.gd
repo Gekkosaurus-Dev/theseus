@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 enum EnemyStates {ATTACKING, MOVING, IDLE, HIT}
 var enemy_state
-var enemy_state_holder
+#var enemy_state_holder
 var player
 var max_speed = 350
 
@@ -17,7 +17,7 @@ var can_attack = true
 
 func _ready():
 	enemy_state = EnemyStates.IDLE
-	enemy_state_holder = EnemyStates.MOVING
+	#enemy_state_holder = EnemyStates.MOVING
 	player = $"../../player_new"
 	
 
@@ -47,12 +47,12 @@ func _physics_process(_delta):
 func damage_taken():
 	$DirectionFlipper.enabled = false
 	can_attack = false
-	print("snake:" + str(health_component.health))
+	#print("snake:" + str(health_component.health))
 	#enemy_state = enemy_state_holder
 	var direction = global_position.direction_to(player.global_position)
-	print (direction)
+	#print (direction)
 	knockback = direction * knockback_strength * -1
-	print (knockback)
+	#print (knockback)
 	health_component.invincible = true
 	if health_component.health <= 0:
 		health_component.invincible = true
@@ -78,7 +78,7 @@ func damage_taken():
 func try_attack():
 	if (can_attack):
 		$DirectionFlipper.enabled = false
-		enemy_state_holder = enemy_state
+		#enemy_state_holder = enemy_state
 		enemy_state = EnemyStates.ATTACKING
 		$AnimationPlayer.play("attack")
 
@@ -94,7 +94,8 @@ func _on_detection_area_body_entered(body):
 		if enemy_state != EnemyStates.ATTACKING:
 			enemy_state = EnemyStates.MOVING
 		else:
-			enemy_state_holder = EnemyStates.MOVING
+			pass
+			#enemy_state_holder = EnemyStates.MOVING
 
 
 func _on_detection_area_body_exited(_body):
@@ -110,7 +111,7 @@ func _on_detection_area_body_exited(_body):
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "attack":
 		#print(enemy_state_holder)
-		enemy_state = enemy_state_holder
+		enemy_state = EnemyStates.MOVING
 		#print (enemy_state)
 		$AttackTimer.start()
 		can_attack = false

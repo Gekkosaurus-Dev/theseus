@@ -39,6 +39,8 @@ var game_manager
 var attack_direction
 var dash_direction
 
+var player_invincible_on_attack
+
 var UI
 
 
@@ -104,6 +106,7 @@ func get_game_manager_values():
 	max_armour_health = game_manager.max_armour_health
 	player_starting_health = game_manager.player_starting_health
 	
+	player_invincible_on_attack = game_manager.player_invincible_on_attack
 	#for checking whether the player sprite head should be robotic or not
 	robot_head = game_manager.robot_head
 	
@@ -117,6 +120,10 @@ func _physics_process(_delta):
 
 	
 func get_attack_direction():
+	#prevent it from crashing
+	attack_direction = global_position.direction_to(get_global_mouse_position())
+	$DirectionPointer.rotation = atan2(attack_direction.y, attack_direction.x)
+	
 	if (game_manager.game_input == game_manager.GameInputs.KEYBOARD_MOUSE):
 		attack_direction = global_position.direction_to(get_global_mouse_position())
 		$DirectionPointer.rotation = atan2(attack_direction.y, attack_direction.x)
@@ -178,7 +185,8 @@ func try_attack():
 		attack_move.start()
 		can_attack = false
 		can_dash = false
-		health_component.invincible = true
+		if player_invincible_on_attack:
+			health_component.invincible = true
 		set_collision_mask_value(2,false)
 		##
 		
@@ -275,7 +283,7 @@ func _on_animation_player_animation_finished(anim_name):
 	if (anim_name == "attack"):
 		can_attack = true
 		can_dash = true
-		health_component.invincible = false
+		#health_component.invincible = false
 		player_state = PlayerStates.OTHER
 	elif (anim_name == "dash"):
 		dashing = false

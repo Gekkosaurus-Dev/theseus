@@ -29,6 +29,7 @@ directories/dch_directory={
 "player": "res://dialogic/characters/player.dch"
 }
 directories/dtl_directory={
+"end_cutscene": "res://dialogic/timelines/end_cutscene.dtl",
 "intro_cutscene": "res://dialogic/timelines/intro_cutscene.dtl",
 "medic_report": "res://dialogic/characters/medic_report.dtl"
 }
@@ -36,6 +37,7 @@ variables={
 "do_heal": true,
 "player_health": 0.0,
 "rest_days": 1.0,
+"soul_percent": 100,
 "soul_worth_factor": 0.0
 }
 layout/style_list=[]

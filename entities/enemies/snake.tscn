@@ -203,7 +203,7 @@ debug_color = Color(0, 0.635294, 0.427451, 0.419608)
 
 [node name="HitboxComponent" parent="DirectionFlipper" instance=ExtResource("5_7phvs")]
 position = Vector2(-55.5, -16)
-damage_amount = 15
+damage_amount = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DirectionFlipper/HitboxComponent"]
 position = Vector2(239.5, 164)
@@ -226,7 +226,7 @@ shape = SubResource("CircleShape2D_6onml")
 debug_color = Color(0.564706, 0.556863, 0, 0.419608)
 
 [node name="HealthComponent" parent="." instance=ExtResource("6_4acrt")]
-max_health = 150
+max_health = 100
 
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

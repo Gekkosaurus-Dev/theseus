@@ -20,7 +20,7 @@ func _ready():
 	linet1.visible = true
 	area2_button.visible = false
 	area3_button.visible = false
-	boss_button.visible = false
+	#boss_button.visible = false
 	line12.visible = false
 	line23.visible = false
 	line3b.visible = false
@@ -28,14 +28,17 @@ func _ready():
 	print (game_manager.visited_areas)
 	if game_manager.visited_areas.has("Area 1"):
 		area1_button.disabled = true
+		#$CanvasLayer/Panel/Area1Button.set_focus_mode = 0
 		area2_button.visible = true
 		line12.visible = true
 	if game_manager.visited_areas.has("Area 2"):
 		area2_button.disabled = true
 		area3_button.visible = true	
+		#$CanvasLayer/Panel/Area2Button.set_focus_mode = 0
 		line23.visible = true
 	if game_manager.visited_areas.has("Area 3"):
 		area3_button.disabled = true
+		#$CanvasLayer/Panel/Area3Button.set_focus_mode = 0
 		boss_button.visible = true
 		line3b.visible = true
 
@@ -86,6 +89,6 @@ func _on_area_3_button_pressed():
 
 
 func _on_boss_button_pressed():
-	game_manager.load_scene(game_manager.boss_area_instance)
+	game_manager.load_boss_arena()
 	
 	queue_free()

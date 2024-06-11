@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://4phgm6ab3385"]
+[gd_scene load_steps=21 format=3 uid="uid://4phgm6ab3385"]
 
 [ext_resource type="Script" path="res://levels/tutorial.gd" id="1_qeej4"]
 [ext_resource type="TileSet" uid="uid://dna5pqp0m2t01" path="res://levels/tileset4.tres" id="2_0bgad"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://jrgvbi88kteq" path="res://menus/button prompts/keyboard_d.png" id="13_qajkw"]
 [ext_resource type="Texture2D" uid="uid://d2rpuqmenytvh" path="res://menus/button prompts/keyboard_space.png" id="15_1c1qg"]
 [ext_resource type="Texture2D" uid="uid://by8psumx3kmbd" path="res://menus/button prompts/mouse_left_outline.png" id="17_v1xnu"]
+[ext_resource type="PackedScene" uid="uid://2b0o4qatcrmv" path="res://entities/enemies/phoenix/phoenix.tscn" id="19_15i5p"]
 [ext_resource type="PackedScene" uid="uid://bkpnyjeeqovvq" path="res://entities/enemies/snake.tscn" id="20_4ufki"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_86nk8"]
@@ -423,7 +424,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_86nk8")
 [node name="Enemies" type="Node2D" parent="."]
 y_sort_enabled = true
 use_parent_material = true
-position = Vector2(-4297, -3373)
+position = Vector2(-7095, -5338)
 
 [node name="Snake" parent="Enemies" instance=ExtResource("20_4ufki")]
 
@@ -438,5 +439,23 @@ position = Vector2(-769, 219)
 
 [node name="Snake5" parent="Enemies" instance=ExtResource("20_4ufki")]
 position = Vector2(1738, -385)
+
+[node name="Phoenix" parent="Enemies" instance=ExtResource("19_15i5p")]
+position = Vector2(3891, 3863)
+
+[node name="Phoenix2" parent="Enemies" instance=ExtResource("19_15i5p")]
+position = Vector2(4873, 3628)
+
+[node name="Phoenix3" parent="Enemies" instance=ExtResource("19_15i5p")]
+position = Vector2(6048, 2282)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer"]
+offset_left = -13337.0
+offset_top = -3764.0
+offset_right = -12574.0
+offset_bottom = -3720.0
+value = 100.0
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

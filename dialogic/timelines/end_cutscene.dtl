@@ -1,0 +1,17 @@
+join king 1
+join player 2
+king: Congratulations, the kingdom is safe, thanks to you. I'm glad to see you're still in one piece.
+if {soul_percent} > 80:
+	king: Or at least, you haven't lost much more of yourself since I last saw you.
+elif {soul_percent} > 50:
+	king: Or at least, it's good to see you're mostly still here.
+elif {soul_percent} > 10:
+	king: Or at least, I'm glad you haven't lost yourself entirely.
+else:
+	king: ...Even if that piece is not exactly you anymore.
+[wait time="1.0"]
+leave king [animation="Slide Out Left"]
+leave player [animation="Slide Out Right"]
+[wait time="1.0"]
+[signal arg="ENDGAME"]
+[end_timeline]

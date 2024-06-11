@@ -276,8 +276,9 @@ radius = 260.094
 radius = 102.0
 height = 368.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_s41w6"]
-radius = 65.6201
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uho8x"]
+radius = 81.0
+height = 336.0
 
 [node name="Phoenix" type="CharacterBody2D" node_paths=PackedStringArray("attack_area", "health_component") groups=["enemy"]]
 y_sort_enabled = true
@@ -290,7 +291,7 @@ attack_area = NodePath("DirectionFlipper/AttackArea")
 health_component = NodePath("HealthComponent")
 
 [node name="HealthComponent" parent="." instance=ExtResource("5_bl7d6")]
-max_health = 100
+max_health = 150
 
 [node name="FireRight" type="GPUParticles2D" parent="."]
 position = Vector2(180, -110)
@@ -360,8 +361,9 @@ shape = SubResource("CapsuleShape2D_rp5ch")
 debug_color = Color(0, 0.635294, 0.419608, 0.419608)
 
 [node name="CollisionBox" type="CollisionShape2D" parent="."]
-position = Vector2(0, 71)
-shape = SubResource("CircleShape2D_s41w6")
+y_sort_enabled = true
+position = Vector2(-1, -45)
+shape = SubResource("CapsuleShape2D_uho8x")
 
 [node name="AttackTimer" type="Timer" parent="."]
 one_shot = true

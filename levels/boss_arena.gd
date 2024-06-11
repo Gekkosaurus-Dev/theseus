@@ -15,7 +15,9 @@ func player_died():
 	$Timer.start()
 
 func boss_died():
-	print ("boss out of hp")
+	game_manager.load_scene(game_manager.end_cutscene_instance)
+	
+	queue_free()
 
 func _on_timer_timeout():
 	Engine.time_scale = 1

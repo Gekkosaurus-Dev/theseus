@@ -438,7 +438,6 @@ shape = SubResource("CapsuleShape2D_xqw25")
 shape = SubResource("CircleShape2D_jjaa0")
 
 [node name="AttackCooldown" type="Timer" parent="."]
-wait_time = 1.5
 one_shot = true
 
 [connection signal="animation_finished" from="DirectionFlipper/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

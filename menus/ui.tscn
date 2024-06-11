@@ -1,13 +1,19 @@
-[gd_scene load_steps=9 format=3 uid="uid://bpp2yno1b40mt"]
+[gd_scene load_steps=12 format=3 uid="uid://bpp2yno1b40mt"]
 
 [ext_resource type="Script" path="res://menus/UI.gd" id="1_4yscg"]
 [ext_resource type="Texture2D" uid="uid://cfj4mef1krbl0" path="res://menus/bars/timer_top.png" id="2_716hd"]
+[ext_resource type="Shader" path="res://gradient_map.gdshader" id="2_f1ft1"]
 [ext_resource type="Texture2D" uid="uid://bcyybgmun2kji" path="res://entities/player/health_temp/000.png" id="2_lrfa3"]
 [ext_resource type="Texture2D" uid="uid://dyruq4j5gjxvp" path="res://menus/bar.png" id="3_3mxl1"]
 [ext_resource type="Texture2D" uid="uid://cvqc0o54la8kc" path="res://menus/bars/timer_over.png" id="3_nyejh"]
+[ext_resource type="Texture2D" uid="uid://bh7dwsal8ncsm" path="res://gradient.tres" id="3_opcl4"]
 [ext_resource type="Texture2D" uid="uid://ce78d1aoo1vvc" path="res://menus/bars/timer_under.png" id="3_vwys6"]
 [ext_resource type="Texture2D" uid="uid://cdndbnysjpcy0" path="res://menus/bars/timer_bottom.png" id="4_7xpkh"]
 [ext_resource type="Texture2D" uid="uid://lbwsx0krlvxw" path="res://menus/cirlce.png" id="4_flg3n"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mkc6r"]
+shader = ExtResource("2_f1ft1")
+shader_parameter/gradient = ExtResource("3_opcl4")
 
 [node name="UI" type="CanvasLayer"]
 layer = 2
@@ -48,6 +54,7 @@ theme_override_font_sizes/font_size = 25
 text = "Unprotected hits taken:"
 
 [node name="Face" type="TextureRect" parent="InLevelUI"]
+material = SubResource("ShaderMaterial_mkc6r")
 layout_mode = 0
 offset_left = 88.0
 offset_top = 66.0
@@ -99,12 +106,11 @@ offset_top = 15.0
 offset_right = 228.0
 offset_bottom = 39.0
 value = 90.0
-show_percentage = false
 
 [node name="SoulLabel" type="Label" parent="SoulUI/SoulBar"]
 layout_mode = 0
-offset_left = 180.0
-offset_right = 252.0
+offset_left = 66.0
+offset_right = 138.0
 offset_bottom = 23.0
 text = "soul"
 

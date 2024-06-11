@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 var game_manager
-
+var robot_head
 var full_health_txt = preload("res://entities/player/health_temp/000.png")
 var armour_1 =preload("res://entities/player/health_temp/001.png")
 var armour_2 =preload("res://entities/player/health_temp/002.png")
@@ -13,6 +13,7 @@ func get_game_manager():
 
 func _ready():
 	get_game_manager()
+	
 	#setup_day_counter()
 	set_day_counter_visibility(false)
 	set_level_UI_visibility(false)
@@ -74,6 +75,13 @@ func set_armour(value):
 	update_icon(value)
 	
 func update_icon(value):
+	robot_head = game_manager.robot_head
+	if robot_head:
+		full_health_txt = preload("res://entities/player/health_temp2/000.png")
+		armour_1 =preload("res://entities/player/health_temp2/001.png")
+		armour_2 =preload("res://entities/player/health_temp2/002.png")
+		armour_3 = preload("res://entities/player/health_temp2/003.png")
+		no_armour_txt = preload("res://entities/player/health_temp2/004.png")
 	var maxx = $InLevelUI/ArmourHealthBar.max_value
 	var percentage = ( value / maxx ) * 100
 	#print ("percentage:" + str(percentage))

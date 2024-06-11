@@ -1,13 +1,24 @@
-[gd_scene load_steps=7 format=3 uid="uid://db50iled5ohnq"]
+[gd_scene load_steps=12 format=3 uid="uid://db50iled5ohnq"]
 
 [ext_resource type="Texture2D" uid="uid://d5i1tq0p1y7n" path="res://menus/map-placeholder.png" id="1_2kxjm"]
 [ext_resource type="Script" path="res://menus/map_select.gd" id="1_ydwa2"]
+[ext_resource type="Shader" path="res://gradient_map.gdshader" id="2_goh26"]
 [ext_resource type="Texture2D" uid="uid://c0t72u8xhsa1k" path="res://menus/castle.png" id="2_nf6on"]
+[ext_resource type="Texture2D" uid="uid://bh7dwsal8ncsm" path="res://gradient.tres" id="3_4xg34"]
 [ext_resource type="Texture2D" uid="uid://dvrsvk8vtwrov" path="res://menus/dashed line.png" id="3_y67ty"]
 [ext_resource type="Script" path="res://menus/Area1Button.gd" id="4_pu70p"]
+[ext_resource type="Theme" uid="uid://6pdtpatqujo6" path="res://menus/menu_theme.tres" id="5_j1c23"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lah0o"]
-bg_color = Color(1, 1, 1, 1)
+bg_color = Color(0.454902, 0.631373, 0.509804, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_blqr6"]
+shader = ExtResource("2_goh26")
+shader_parameter/gradient = ExtResource("3_4xg34")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_133su"]
+shader = ExtResource("2_goh26")
+shader_parameter/gradient = ExtResource("3_4xg34")
 
 [node name="MapSelect" type="Node2D" node_paths=PackedStringArray("area1_button", "area2_button", "area3_button", "boss_button", "linet1", "line12", "line23", "line3b")]
 script = ExtResource("1_ydwa2")
@@ -31,6 +42,7 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_lah0o")
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Panel"]
+material = SubResource("ShaderMaterial_blqr6")
 layout_mode = 0
 offset_left = 45.0
 offset_top = 636.0
@@ -40,9 +52,10 @@ scale = Vector2(0.578181, 0.578181)
 texture = ExtResource("2_nf6on")
 
 [node name="Line2D" type="Line2D" parent="CanvasLayer/Panel"]
+use_parent_material = true
 position = Vector2(22, 0)
 points = PackedVector2Array(908, -10, 974, 28, 1044, 33, 1112, 28, 1186, 39, 1218, 73, 1278, 116, 1403, 209, 1446, 231, 1495, 263, 1529, 324, 1529, 396, 1558, 460, 1582, 512, 1598, 564, 1606, 608, 1612, 658, 1614, 734, 1612, 770, 1603, 813, 1582, 863, 1568, 915, 1571, 961, 1580, 997, 1566, 1028, 1571, 1066, 1542, 1094)
-default_color = Color(0, 0, 0, 1)
+default_color = Color(0.0196078, 0.176471, 0.219608, 1)
 
 [node name="TutorialButtonDisabled" type="Button" parent="CanvasLayer/Panel"]
 layout_mode = 0
@@ -51,9 +64,11 @@ offset_top = 785.0
 offset_right = 513.0
 offset_bottom = 973.0
 scale = Vector2(0.762291, 0.762291)
+theme = ExtResource("5_j1c23")
 disabled = true
 
 [node name="TextureRect2" type="TextureRect" parent="CanvasLayer/Panel"]
+material = SubResource("ShaderMaterial_133su")
 layout_mode = 0
 offset_left = 360.0
 offset_top = 748.0
@@ -70,9 +85,11 @@ offset_left = 549.0
 offset_top = 399.0
 offset_right = 702.0
 offset_bottom = 552.0
+theme = ExtResource("5_j1c23")
 script = ExtResource("4_pu70p")
 
 [node name="TextureRect3" type="TextureRect" parent="CanvasLayer/Panel"]
+material = SubResource("ShaderMaterial_133su")
 layout_mode = 0
 offset_left = 712.0
 offset_top = 391.0
@@ -89,8 +106,10 @@ offset_left = 1014.0
 offset_top = 258.0
 offset_right = 1176.0
 offset_bottom = 420.0
+theme = ExtResource("5_j1c23")
 
 [node name="TextureRect4" type="TextureRect" parent="CanvasLayer/Panel"]
+material = SubResource("ShaderMaterial_133su")
 layout_mode = 0
 offset_left = 1197.0
 offset_top = 317.0
@@ -107,8 +126,10 @@ offset_left = 1617.0
 offset_top = 327.0
 offset_right = 1774.0
 offset_bottom = 484.0
+theme = ExtResource("5_j1c23")
 
 [node name="TextureRect5" type="TextureRect" parent="CanvasLayer/Panel"]
+material = SubResource("ShaderMaterial_133su")
 layout_mode = 0
 offset_left = 1122.0
 offset_top = 640.0
@@ -125,6 +146,7 @@ offset_left = 989.0
 offset_top = 669.0
 offset_right = 1143.0
 offset_bottom = 809.0
+theme = ExtResource("5_j1c23")
 
 [node name="Map-placeholder" type="Sprite2D" parent="CanvasLayer"]
 position = Vector2(-1010, 590)
