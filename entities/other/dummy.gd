@@ -17,15 +17,15 @@ func damage_taken():
 	play_damage_animation()
 
 func play_damage_animation():
-	sprite.modulate = "ff0000"
-	await get_tree().create_timer(0.1).timeout
-	sprite.modulate = "ffffff"
-	await get_tree().create_timer(0.1).timeout
-	sprite.modulate = "ff0000"
-	await get_tree().create_timer(0.1).timeout
-	sprite.modulate = "ffffff"
-	await get_tree().create_timer(0.1).timeout
-	sprite.modulate = "ff0000"
-	await get_tree().create_timer(0.1).timeout
-	sprite.modulate = "ffffff"
-	await get_tree().create_timer(0.5).timeout
+	sprite.visible = false
+	await get_tree().create_timer(0.05).timeout
+	sprite.visible = true
+	await get_tree().create_timer(0.05).timeout
+	sprite.visible = false
+	await get_tree().create_timer(0.05).timeout
+	sprite.visible = true
+	await get_tree().create_timer(0.05).timeout
+	sprite.visible = false
+	await get_tree().create_timer(0.05).timeout
+	sprite.visible = true
+	

@@ -1,0 +1,15 @@
+join croc 1
+if {soul_percent} > 0:
+	join player 2
+else:
+	join player2 2
+croc: What is the meaning of this?!
+croc: You bring word of an imminent attack, you say?
+croc: We musn't let our neighbours be brought to ruin by such a threat. I will bring word to my forces at once!
+croc: Now go see a doctor, I don't want you bleeding out on my floors!
+croc: Now go!
+leave king [animation="Slide Out Left"]
+leave player [animation="Slide Out Right"]
+[wait time="1.0"]
+[signal arg="end_chat"]
+[end_timeline]

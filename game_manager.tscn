@@ -20,7 +20,7 @@ number_of_levels = 3
 starting_max_armour_health = 50
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 3.0
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 

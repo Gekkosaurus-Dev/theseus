@@ -20,7 +20,7 @@ func _ready():
 	linet1.visible = true
 	area2_button.visible = false
 	area3_button.visible = false
-	#boss_button.visible = false
+	boss_button.visible = false
 	line12.visible = false
 	line23.visible = false
 	line3b.visible = false

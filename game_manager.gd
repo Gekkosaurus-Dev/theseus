@@ -28,6 +28,7 @@ const map_instance = preload("res://menus/map_select.tscn")
 const intro_cutscene_instance = preload("res://cutscenes/intro_cutscene.tscn")
 const another_cutscene_instance = preload("res://cutscenes/placeholders/another_cutscene.tscn")
 const end_cutscene_instance = preload("res://cutscenes/end_cutscene.tscn")
+const ally_chat_instance = preload("res://ally_chat.tscn")
 #endregion
 
 #region UI related
@@ -160,6 +161,11 @@ func end_game():
 	$UI.queue_free()
 	load_scene(main_menu_instance)	
 	game_state = GameStates.MAIN_MENU
+	
+func hide_ui():
+	$UI.set_level_UI_visibility(false)
+	$UI.set_day_counter_visibility(false)
+	$UI.set_soul_visibility(false)
 
 func load_medic_report(health,from):
 	player_overall_health = health
@@ -172,6 +178,12 @@ func load_medic_report(health,from):
 	$UI.set_level_UI_visibility(false)
 	$Timer.stop()
 	
+func load_ally_chat(total_health):
+	player_overall_health = total_health
+	game_state = GameStates.NON_LEVEL_GAMEPLAY
+	load_scene(ally_chat_instance)
+	$UI.set_level_UI_visibility(false)
+	$Timer.stop()
 
 func load_map_select(from):
 	fade_to(from, map_instance, GameStates.NON_LEVEL_GAMEPLAY)

@@ -5,6 +5,7 @@ const head = preload("res://entities/player/player_parts/head.png")
 const head_eyes_closed = preload("res://entities/player/player_parts/head_eyes_closed.png")
 const head_robot_partial = preload("res://entities/player/player_parts/head_robot_partial.png")
 const head_robot_partial_eyes_closed = preload("res://entities/player/player_parts/head_robot_partial_eyes_closed.png")
+const robot_robot_head = preload("res://entities/player/player_parts/head_robot_full.png")
 
 const back_ear = preload("res://entities/player/player_parts/021.png")
 const back_ear_robot = preload("res://entities/player/player_parts/ear_back_robot.png")
@@ -223,44 +224,52 @@ func try_dash():
 		set_collision_mask_value(4,false)
 
 func damage_taken():
-	UI.set_armour(health_component.armour_health)
-	UI.set_health(health_component.health)
-	
-	if(health_component.armour_health) <= 0:
-		if !(robot_head):
-			player_head.texture = head
-		else:
-			player_head.texture = head_robot_partial
-	
-	if (health_component.health <= 0):
-		$"..".player_died()
-		player_state = PlayerStates.DEAD
-		freeze()
+	if (!health_component.invincible):
+		UI.set_armour(health_component.armour_health)
+		UI.set_health(health_component.health)
 		
-		if !(robot_head):
-			player_head.texture = head_eyes_closed
-		else:
-			player_head.texture = head_robot_partial_eyes_closed
-		animation_player.play("death")
+		if(health_component.armour_health) <= 0:
+			if game_manager.soul_percent < 0:
+				player_head.texture = robot_robot_head
+			elif !(robot_head):
+				player_head.texture = head
+			else:
+				player_head.texture = head_robot_partial
 		
-	health_component.invincible = true
-	play_damage_animation() #at the end of this, .invincible is set back to false
+		if (health_component.health <= 0):
+			$"..".player_died()
+			print("dumb")
+			player_state = PlayerStates.DEAD
+			health_component.invincible = true
+			freeze()
+			health_component.invincible = true
+			
+			if game_manager.soul_percent > 0:
+				if !(robot_head):
+					player_head.texture = head_eyes_closed
+				else:
+					player_head.texture = head_robot_partial_eyes_closed
+			animation_player.play("death")
+			
+		health_component.invincible = true
+		play_damage_animation() #at the end of this, .invincible is set back to false
 
 func play_damage_animation():
-	var sprite = $DirectionFlipper/Sprite
-	sprite.modulate = "000000"
-	await get_tree().create_timer(0.1).timeout
-	sprite.modulate = "ffffff"
-	await get_tree().create_timer(0.1).timeout
-	sprite.modulate = "000000"
-	await get_tree().create_timer(0.1).timeout
-	sprite.modulate = "ffffff"
-	await get_tree().create_timer(0.1).timeout
-	sprite.modulate = "000000"
-	await get_tree().create_timer(0.1).timeout
-	sprite.modulate = "ffffff"
+	var sprite = $DirectionFlipper/PartsAndSkeleton/Parts2
+	sprite.visible = false
+	await get_tree().create_timer(0.05).timeout
+	sprite.visible = true
+	await get_tree().create_timer(0.05).timeout
+	sprite.visible = false
+	await get_tree().create_timer(0.05).timeout
+	sprite.visible = true
+	await get_tree().create_timer(0.05).timeout
+	sprite.visible = false
+	await get_tree().create_timer(0.05).timeout
+	sprite.visible = true
 	await get_tree().create_timer(0.5).timeout
-	health_component.invincible = false
+	if health_component.health > 0:
+		health_component.invincible = false
 
 func get_total_health():
 	var total_health = health_component.get_total_health()

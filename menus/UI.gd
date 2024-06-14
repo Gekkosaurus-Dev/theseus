@@ -40,7 +40,10 @@ func _process(_delta):
 func setup_day_counter():
 	$DayCounterUI/DayCounterBar.max_value = game_manager.max_days_left
 	$DayCounterUI/DayCounterBar.value = game_manager.max_days_left
-	$DayCounterUI/DayCounterBar/DayCounterLabel.text = "Days left until attack: " + str(game_manager.max_days_left)
+	var daysleft = game_manager.max_days_left
+	if (daysleft < 0):
+		daysleft = 0
+	$DayCounterUI/DayCounterBar/DayCounterLabel.text = "Days left until attack: " + str(daysleft)
 
 func update_day_counter():
 	#$DayCounterUI/DayCounterBar.value = game_manager.days_left

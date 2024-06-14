@@ -85,6 +85,7 @@ script = ExtResource("4_mmgwh")
 
 [node name="Options" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
+disabled = true
 text = "Options"
 
 [node name="Quit" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]

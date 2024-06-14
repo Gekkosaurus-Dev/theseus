@@ -22,17 +22,15 @@ leave player
 join medic 1 [animation="Slide In Left"]
 join mechanic 3 [animation="Slide In Right"]
 medic: The king wants to see you. It seems there is more to that attack than it first seems.
-- Talk to the king
 leave medic [animation="Slide Out Left"]
 leave mechanic [animation="Slide Out Right" wait="true"]
 [background fade="0.5"]
 join king 1
 join player 2
-king: Hey. Glad you could make it. Your bravery out there was most appreciated. I'm glad you survived. Or rather, most of you did.
+king: Glad you could make it. Your bravery out there was most appreciated. I'm glad you survived. Or rather, most of you did.
 label Please repeat
-king: Those creatures... The enemy you fought... I believe they are the first of many. We are under attack, - but the threat isn't imminent, thankfully. Scouting reports reckon we have 100 days to prepare defences before any serious threat is mustered.
-king: As such, I need you to go and bring this news to our neighbouring kingdoms. I need you to convince them to help us defend against this oncoming threat.
-king: After you have spoken to all of them, or alternatively, if you are delayed and 100 days have already passed, I need to you return here as soon as possible to assist us against this great threat.
+king: The enemy you fought... I believe they are the first of many. We are under attack, - but the threat isn't imminent. Scouting reports reckon we have 100 days to prepare defences before any serious threat is mustered.
+king: As such, I need you to go and bring this news to our neighbouring kingdom. I need you to convince them to help us defend against this oncoming threat.
 king: Do you understand what I am asking you to do?
 - Yes
 	jump i understand
@@ -41,18 +39,5 @@ king: Do you understand what I am asking you to do?
 label i understand
 king: Thank you. You best be on your way then.
 leave --All-- [animation="Slide Out Down" wait="true"]
-join mechanic 2
-mechanic: Hey, one more thing.
-update mechanic 1 [ move_time="0.5"]
-join item (sword) 2
-mechanic: I repaired your sword as well. It got shattered during the fight.
-mechanic: Had to forge a completeley new blade for you. The remnants of the old one weren't even worth melting down to try and reforge it. Poor quality materials.
-mechanic: I wasn't too pleased with the handle that you had either. The thing was so dented that I don't know how you've never lost any fingers. I figured we might as well replace all of that too.
-join player 2
-player: ...
-mechanic: What? It's still the same sword! I just replaced all the parts. It's the thought that counts!
-player: ...
-mechanic: Come on. We'd better set out.
 [signal arg="intro_cutscene_end"]
-leave --All-- [animation="Fade Out Down" wait="true"]
 [end_timeline]

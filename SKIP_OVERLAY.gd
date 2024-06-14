@@ -10,6 +10,13 @@ func _ready():
 	get_game_manager()
 	$Panel.visible = false
 	game_manager.input_changed.connect(_on_input_changed)
+	
+	if game_manager.game_input == game_manager.GameInputs.KEYBOARD_MOUSE:
+		$Panel/ControllerSkip.visible = false
+		$Panel/KeyboardSkip.visible = true
+	elif game_manager.game_input == game_manager.GameInputs.CONTROLLER:
+		$Panel/ControllerSkip.visible = true
+		$Panel/KeyboardSkip.visible = false
 
 func get_input():
 	#print("input")

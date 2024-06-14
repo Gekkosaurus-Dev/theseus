@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bpp2yno1b40mt"]
+[gd_scene load_steps=14 format=3 uid="uid://bpp2yno1b40mt"]
 
 [ext_resource type="Script" path="res://menus/UI.gd" id="1_4yscg"]
 [ext_resource type="Texture2D" uid="uid://cfj4mef1krbl0" path="res://menus/bars/timer_top.png" id="2_716hd"]
@@ -14,6 +14,12 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mkc6r"]
 shader = ExtResource("2_f1ft1")
 shader_parameter/gradient = ExtResource("3_opcl4")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c14vy"]
+bg_color = Color(0.0156863, 0.176471, 0.219608, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_822uq"]
+bg_color = Color(0.247059, 0.631373, 0.509804, 1)
 
 [node name="UI" type="CanvasLayer"]
 layer = 2
@@ -105,14 +111,18 @@ offset_left = -169.0
 offset_top = 15.0
 offset_right = 228.0
 offset_bottom = 39.0
+theme_override_styles/background = SubResource("StyleBoxFlat_c14vy")
+theme_override_styles/fill = SubResource("StyleBoxFlat_822uq")
 value = 90.0
+show_percentage = false
 
 [node name="SoulLabel" type="Label" parent="SoulUI/SoulBar"]
 layout_mode = 0
-offset_left = 66.0
-offset_right = 138.0
+offset_left = 152.0
+offset_right = 238.0
 offset_bottom = 23.0
-text = "soul"
+text = "HUMANITY
+"
 
 [node name="DayCounterUI" type="Control" parent="."]
 layout_mode = 3
@@ -149,7 +159,7 @@ offset_bottom = 233.0
 value = 100.0
 fill_mode = 3
 texture_progress = ExtResource("2_716hd")
-tint_progress = Color(0.811765, 0.811765, 0.811765, 1)
+tint_progress = Color(0.984314, 0.627451, 0.45098, 1)
 
 [node name="TimerBottom" type="TextureProgressBar" parent="DayCounterUI/TimerTop"]
 layout_mode = 0
@@ -159,5 +169,5 @@ fill_mode = 3
 texture_under = ExtResource("3_vwys6")
 texture_over = ExtResource("3_nyejh")
 texture_progress = ExtResource("4_7xpkh")
-tint_under = Color(0.811765, 0.811765, 0.811765, 1)
-tint_progress = Color(0.811765, 0.811765, 0.811765, 1)
+tint_under = Color(0.984314, 0.627451, 0.45098, 1)
+tint_progress = Color(0.984314, 0.627451, 0.45098, 1)

@@ -1,9 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://capi6uluh7cjl"]
+[gd_scene load_steps=7 format=3 uid="uid://capi6uluh7cjl"]
 
 [ext_resource type="TileSet" uid="uid://dna5pqp0m2t01" path="res://levels/tileset4.tres" id="1_2ggi4"]
 [ext_resource type="Script" path="res://levels/boss_arena.gd" id="1_xhrv0"]
 [ext_resource type="PackedScene" uid="uid://ca3il8qfcg5fv" path="res://entities/player/player_new.tscn" id="2_tevop"]
 [ext_resource type="PackedScene" uid="uid://hx0ff17h75bt" path="res://entities/enemies/mini_boss.tscn" id="3_oexnq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ab62w"]
+bg_color = Color(0.0156863, 0.176471, 0.219608, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hr8vm"]
+bg_color = Color(0.0666667, 0.411765, 0.356863, 1)
 
 [node name="Boss_Arena" type="Node2D"]
 y_sort_enabled = true
@@ -36,10 +42,10 @@ position_smoothing_speed = 10.0
 position = Vector2(1445, 632)
 
 [node name="HitboxComponent" parent="MiniBoss/DirectionFlipper" index="3"]
-damage_amount = 40
+damage_amount = 30
 
 [node name="HealthComponent" parent="MiniBoss" index="2"]
-max_health = 500
+max_health = 300
 
 [node name="AttackCooldown" parent="MiniBoss" index="4"]
 wait_time = 2.0
@@ -47,13 +53,16 @@ wait_time = 2.0
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="ProgressBar" type="ProgressBar" parent="CanvasLayer"]
-offset_left = 518.0
-offset_top = 85.0
-offset_right = 1281.0
-offset_bottom = 129.0
+offset_left = 275.0
+offset_top = 873.0
+offset_right = 1645.0
+offset_bottom = 917.0
+theme_override_styles/background = SubResource("StyleBoxFlat_ab62w")
+theme_override_styles/fill = SubResource("StyleBoxFlat_hr8vm")
 value = 100.0
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
 one_shot = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

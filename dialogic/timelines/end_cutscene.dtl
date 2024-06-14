@@ -1,5 +1,8 @@
 join king 1
-join player 2
+if {soul_percent} > 0:
+	join player 2
+else:
+	join player2 2
 king: Congratulations, the kingdom is safe, thanks to you. I'm glad to see you're still in one piece.
 if {soul_percent} > 80:
 	king: Or at least, you haven't lost much more of yourself since I last saw you.

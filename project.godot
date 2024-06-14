@@ -22,13 +22,16 @@ Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 [dialogic]
 
 directories/dch_directory={
+"croc": "res://dialogic/characters/croc.dch",
 "item": "res://dialogic/characters/item.dch",
 "king": "res://dialogic/characters/king.dch",
 "mechanic": "res://dialogic/characters/mechanic.dch",
 "medic": "res://dialogic/characters/medic.dch",
-"player": "res://dialogic/characters/player.dch"
+"player": "res://dialogic/characters/player.dch",
+"player2": "res://dialogic/characters/player2.dch"
 }
 directories/dtl_directory={
+"communicate": "res://dialogic/timelines/communicate.dtl",
 "end_cutscene": "res://dialogic/timelines/end_cutscene.dtl",
 "intro_cutscene": "res://dialogic/timelines/intro_cutscene.dtl",
 "medic_report": "res://dialogic/characters/medic_report.dtl"
